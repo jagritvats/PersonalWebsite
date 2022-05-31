@@ -68,6 +68,15 @@ section{
     margin: 1em 10% 2em 10%;
 }
 
+section h2,p {
+    font-weight: 600;
+    margin: 0;
+}
+
+h2{
+    font-weight: bold;
+}
+
 /* ============ */
 /* == Navbar == */
 /* ============ */
@@ -123,7 +132,7 @@ section{
 }
 
 .heroSection__left h1, h2,p {
-    font-weight: normal;
+    /* font-weight: normal; */
     margin: 0;
 }
 
@@ -563,17 +572,23 @@ footer a{
         font-size: 1.1em;
     }
 
-        /* Education */
+    /* Education */
 
-        .subsection__container{
-            flex-wrap: wrap;
-            font-size: 0.9em;
-        }
+    .subsection__container{
+        flex-wrap: wrap;
+        font-size: 0.9em;
+    }
 
-        .heroSection__right{
-            padding:1em;
-            width: 300px;
-        }
+    .heroSection__right{
+        padding:1em;
+        width: 300px;
+    }
+
+    /* Certifications */
+    .certificationsSection .subsection__container{
+        font-size: 2em;
+        font-weight: 500;
+    }
 
 }
 
