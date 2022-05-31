@@ -35,6 +35,16 @@ function init(){
     setTimeout(()=>{
         removeInterval = setInterval(removeText, 200);
     }, 500);
+
+    var imgs = document.getElementsByTagName("img");
+    imgs = [...imgs];
+    imgs.forEach(img => {
+        img.ondragstart = () => {
+            return false;
+        };
+    });
+
+    // manually set skill images?
 }
 
 init();
