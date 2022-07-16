@@ -12,6 +12,11 @@
     --secondary-darktheme-fg: #F0C961;
     --tertiary-darktheme-fg: #F6EBFF;
 
+    --theme: dark;
+
+    --plain-col: white;
+    --plain-dark: black;
+
 
     /* fonts */
     --primary-font: 'Segoe UI', sans-serif;
@@ -19,6 +24,24 @@
     --highlighted-font: 'Courier New', monospace;
 
     color-scheme: dark;
+}
+
+#themeBtn{
+    position: fixed;
+    display: inline-block;
+    bottom: 10px;
+    right: 10px;
+    background-color: var(--primary-darktheme-fg);
+    /* color: var(--plain-col); */
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#themeBtn img{
+    width: 100%;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -125,7 +148,7 @@ h2{
     font-size: 1.3em;
     width: 62%;
     /* offset-x | offset-y | blur-radius | spread-radius | color */
-    box-shadow: inset 10px 10px 32px -20px black;
+    box-shadow: inset 10px 10px 32px -20px var(--plain-dark);
     transition: transform 0.5s, box-shadow 0.5s;
     margin-right: 1em;
 }
@@ -147,7 +170,7 @@ h2{
 /* ================================ */
 .heroSection__left:hover{
     transform: scale(1.05) skew(-1deg, -1deg);
-    box-shadow: inset 10px 10px 48px -20px black;
+    box-shadow: inset 10px 10px 48px -20px var(--plain-dark);
     transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
@@ -213,7 +236,7 @@ h2{
 .learn-text{
     font-size: 1.6em;
     font-family: var(--secondary-font);
-    color: var(--secondary-darktheem-fg);
+    color: var(--secondary-darktheme-fg);
     margin-left: 1em;
 }
 
@@ -376,6 +399,7 @@ h2{
     position: absolute;
     top:50%;
     right:10px;
+    /* filter: invert(1); */
 }
 
 /* === Skills === */
@@ -502,7 +526,7 @@ h2{
 
 footer{
     display: flex;
-    background-color: white;
+    background-color: var(--plain-col);
     color: var(--primary-dark-bg);
     justify-content: space-around;
     align-items: center;
