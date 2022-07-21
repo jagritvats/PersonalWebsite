@@ -1,11 +1,13 @@
 const roleElement = document.getElementById('role-text');
-
 const roles = [
 	'Web Developer',
 	'Cloud Enthusiast',
 	'Coder',
 	'Cyber Sec Enthusiast',
 ];
+
+let currentThemeVar;
+
 var roleIndex = 0,
 	textLength = roles[roleIndex].length;
 
@@ -44,12 +46,17 @@ function switchTheme() {
 	// --tertiary-darktheme-fg: #F6EBFF;
 	// swap
 	// get current theme
+	console.log('Switch theme called ', localStorage.getItem('theme'));
 
 	const root = document.querySelector(':root');
 
 	const props = getComputedStyle(root);
 
-	const currentTheme = props.getPropertyValue('--theme');
+	const currentTheme = localStorage.getItem('theme')
+		? localStorage.getItem('theme')
+		: props.getPropertyValue('--theme');
+
+	console.log(currentTheme);
 
 	let primarydarkbg = props.getPropertyValue('--primary-dark-bg');
 	let secondarydarkbg = props.getPropertyValue('--secondary-dark-bg');
@@ -83,10 +90,13 @@ function switchTheme() {
 	const plinks = document.querySelectorAll('.project__link img');
 	//findMe
 	const footer_icons = document.querySelectorAll('.footer__icon');
+
 	if (currentTheme == 'dark') {
+		localStorage.setItem('theme', 'light');
 		// change the theme to light
 		root.style.setProperty('--theme', 'light');
 		root.style.setProperty('color-scheme', 'light');
+
 		more_cert_btn.style.setProperty('filter', 'invert(1)');
 		hero_section.style.setProperty('filter', 'invert(1)');
 		theme_btn.style.setProperty('filter', 'invert(1)');
@@ -97,28 +107,31 @@ function switchTheme() {
 		for (let i = 0; i < footer_icons.length; i++) {
 			footer_icons[i].style.setProperty('filter', 'invert(1)');
 		}
-
-		localStorage.setItem('theme', 'light');
 	} else {
 		// change the theme to dark
+		localStorage.setItem('theme', 'dark');
+
 		root.style.setProperty('--theme', 'dark');
 		root.style.setProperty('color-scheme', 'dark');
+
 		more_cert_btn.style.setProperty('filter', 'none');
 		hero_section.style.setProperty('filter', 'none');
 		theme_btn.style.setProperty('filter', 'none');
 
 		for (var i = 0; i < plinks.length; i++) {
 			plinks[i].style.setProperty('filter', 'none');
+			plinks[i].style.setProperty('-webkit-filter', 'none');
 		}
 		for (var i = 0; i < footer_icons.length; i++) {
 			footer_icons[i].style.setProperty('filter', 'none');
+			plinks[i].style.setProperty('-webkit-filter', 'none');
 		}
-
-		localStorage.setItem('theme', 'dark');
 	}
 }
 
 function init() {
+	console.log('init');
+	console.log(localStorage.getItem('theme'));
 	roleElement.innerText = roles[roleIndex];
 	setTimeout(() => {
 		removeInterval = setInterval(removeText, 200);
@@ -133,6 +146,7 @@ function init() {
 	});
 
 	if (localStorage.getItem('theme') == 'light') {
+		console.log('Switching theme.');
 		switchTheme();
 	}
 

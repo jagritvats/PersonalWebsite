@@ -76,6 +76,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color:var(--plain-col);
 }
 
 body > *{
@@ -561,6 +562,15 @@ footer .findMe{
 footer a{
     color: var(--primary-dark-bg);
 }
+
+/* .project__links img{
+    
+    -webkit-filter: invert(100%);
+}
+
+.footer_icons img{
+    -webkit-filter: invert(100%);
+} */
 
 
 /* =============== */
