@@ -46,7 +46,6 @@ function switchTheme() {
 	// --tertiary-darktheme-fg: #F6EBFF;
 	// swap
 	// get current theme
-	console.log('Switch theme called ', localStorage.getItem('theme'));
 
 	const root = document.querySelector(':root');
 
@@ -55,8 +54,6 @@ function switchTheme() {
 	const currentTheme = localStorage.getItem('theme')
 		? localStorage.getItem('theme')
 		: props.getPropertyValue('--theme');
-
-	console.log(currentTheme);
 
 	let primarydarkbg = props.getPropertyValue('--primary-dark-bg');
 	let secondarydarkbg = props.getPropertyValue('--secondary-dark-bg');
@@ -120,18 +117,14 @@ function switchTheme() {
 
 		for (var i = 0; i < plinks.length; i++) {
 			plinks[i].style.setProperty('filter', 'none');
-			plinks[i].style.setProperty('-webkit-filter', 'none');
 		}
 		for (var i = 0; i < footer_icons.length; i++) {
 			footer_icons[i].style.setProperty('filter', 'none');
-			plinks[i].style.setProperty('-webkit-filter', 'none');
 		}
 	}
 }
 
 function init() {
-	console.log('init');
-	console.log(localStorage.getItem('theme'));
 	roleElement.innerText = roles[roleIndex];
 	setTimeout(() => {
 		removeInterval = setInterval(removeText, 200);
@@ -146,14 +139,11 @@ function init() {
 	});
 
 	if (localStorage.getItem('theme') == 'light') {
-		console.log('Switching theme.');
 		switchTheme();
 	}
 
 	const themeBtn = document.getElementById('themeBtn');
 	themeBtn.addEventListener('click', switchTheme);
-
-	// manually set skill images?
 }
 
 init();
