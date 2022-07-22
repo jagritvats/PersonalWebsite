@@ -1,3 +1,7 @@
+const root = document.querySelector(':root');
+const props = getComputedStyle(root);
+let currentTheme;
+
 const roleElement = document.getElementById('role-text');
 const roles = [
 	'Web Developer',
@@ -36,25 +40,7 @@ function addText() {
 	}
 }
 
-function switchTheme() {
-	// --primary-dark-bg: #483756;
-	// --secondary-dark-bg: #564785;
-	// --tertiary-dark-bg: #343431;
-	//
-	// --primary-darktheme-fg: #FFFADE;
-	// --secondary-darktheme-fg: #F0C961;
-	// --tertiary-darktheme-fg: #F6EBFF;
-	// swap
-	// get current theme
-
-	const root = document.querySelector(':root');
-
-	const props = getComputedStyle(root);
-
-	const currentTheme = localStorage.getItem('theme')
-		? localStorage.getItem('theme')
-		: props.getPropertyValue('--theme');
-
+function switchColors() {
 	let primarydarkbg = props.getPropertyValue('--primary-dark-bg');
 	let secondarydarkbg = props.getPropertyValue('--secondary-dark-bg');
 	let tertiarydarkbg = props.getPropertyValue('--tertiary-dark-bg');
@@ -88,12 +74,7 @@ function switchTheme() {
 	//findMe
 	const footer_icons = document.querySelectorAll('.footer__icon');
 
-	if (currentTheme == 'dark') {
-		localStorage.setItem('theme', 'light');
-		// change the theme to light
-		root.style.setProperty('--theme', 'light');
-		root.style.setProperty('color-scheme', 'light');
-
+	if (currentTheme == 'light') {
 		more_cert_btn.style.setProperty('filter', 'invert(1)');
 		hero_section.style.setProperty('filter', 'invert(1)');
 		theme_btn.style.setProperty('filter', 'invert(1)');
@@ -105,12 +86,6 @@ function switchTheme() {
 			footer_icons[i].style.setProperty('filter', 'invert(1)');
 		}
 	} else {
-		// change the theme to dark
-		localStorage.setItem('theme', 'dark');
-
-		root.style.setProperty('--theme', 'dark');
-		root.style.setProperty('color-scheme', 'dark');
-
 		more_cert_btn.style.setProperty('filter', 'none');
 		hero_section.style.setProperty('filter', 'none');
 		theme_btn.style.setProperty('filter', 'none');
@@ -122,6 +97,25 @@ function switchTheme() {
 			footer_icons[i].style.setProperty('filter', 'none');
 		}
 	}
+}
+
+// Manages Theme Variables (state*) across CSS and JS
+function switchTheme() {
+	if (currentTheme == 'dark') {
+		currentTheme = 'light';
+		localStorage.setItem('theme', 'light');
+		// change the theme to light
+		root.style.setProperty('--theme', 'light');
+		root.style.setProperty('color-scheme', 'light');
+	} else {
+		// change the theme to dark
+		currentTheme = 'dark';
+		localStorage.setItem('theme', 'dark');
+
+		root.style.setProperty('--theme', 'dark');
+		root.style.setProperty('color-scheme', 'dark');
+	}
+	switchColors();
 }
 
 function init() {
@@ -138,8 +132,16 @@ function init() {
 		};
 	});
 
-	if (localStorage.getItem('theme') == 'light') {
-		switchTheme();
+	currentTheme = localStorage.getItem('theme')
+		? localStorage.getItem('theme')
+		: props.getPropertyValue('--theme');
+
+	if (currentTheme) {
+		root.style.setProperty('--theme', currentTheme); // update CSS var from localStorage
+	}
+
+	if (localStorage.getItem('theme') === 'light') {
+		switchColors();
 	}
 
 	const themeBtn = document.getElementById('themeBtn');
