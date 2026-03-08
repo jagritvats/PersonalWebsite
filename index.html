@@ -4,14 +4,14 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Jagrit Vats | Who am I ?</title>
+		<title>Jagrit Vats | Software Engineer</title>
 		<meta
 			name="description"
-			content="Jagrit Vats is a Full-Stack developer, programmer and a CS Student exploring new technologies."
+			content="Jagrit Vats is a Backend-focused Software Engineer building containerized Spring Boot microservices, event-driven systems, and distributed workflows at scale."
 		/>
 		<meta
 			name="keywords"
-			content="jagrit, jagrit vats, vats jagrit, vats, jagrit vats chitkara, jagrit vats website, jagrit personal website"
+			content="jagrit, jagrit vats, software engineer, backend developer, spring boot, kafka, microservices, distributed systems"
 		/>
 		<meta name="author" content="Jagrit Vats" />
 		<link rel="stylesheet" href="style.css" />
@@ -22,428 +22,277 @@
 		/>
 	</head>
 	<body>
-		<nav class="navBar">
-			<div class="navBar__right">
-				<ul class="navBar__list">
-					<li><a href="#">Home</a></li>
-					<li><a href="#about">About</a></li>
-					<li><a href="#projects">Projects</a></li>
-				</ul>
-			</div>
+		<nav class="navbar">
+			<a href="#" class="navbar__logo">JV</a>
+			<ul class="navbar__links">
+				<li><a href="#about">About</a></li>
+				<li><a href="#certifications">Certs</a></li>
+				<li><a href="#experience">Experience</a></li>
+				<li><a href="#projects">Projects</a></li>
+				<li><a href="#skills">Skills</a></li>
+				<li><a href="#education">Education</a></li>
+			</ul>
+			<button id="themeBtn" class="theme-toggle" aria-label="Toggle theme">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<circle cx="12" cy="12" r="5"/>
+					<line x1="12" y1="1" x2="12" y2="3"/>
+					<line x1="12" y1="21" x2="12" y2="23"/>
+					<line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+					<line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+					<line x1="1" y1="12" x2="3" y2="12"/>
+					<line x1="21" y1="12" x2="23" y2="12"/>
+					<line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+					<line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+				</svg>
+			</button>
 		</nav>
 
-		<section class="heroSection">
-			<div class="heroSection__left">
-				<h2 class="heroSection__head">Hello World!</h2>
-				<h1>I'm <span id="name-text">Jagrit Vats</span>, a</h1>
+		<section class="hero">
+			<div class="hero__content">
+				<p class="hero__greeting">Hi, I'm</p>
+				<h1 class="hero__name">Jagrit Vats</h1>
+				<h2 class="hero__role"><span id="role-text">Software Engineer</span></h2>
+				<p class="hero__summary">
+					Backend-focused engineer building containerized Spring Boot microservices,
+					event-driven systems, and distributed workflows at scale.
+				</p>
+				<div class="hero__cta">
+					<a href="mailto:jagritvats6@gmail.com" class="btn btn--primary">Get in Touch</a>
+					<a href="https://www.linkedin.com/in/jagrit-v-1ab521111/" target="_blank" class="btn btn--secondary">LinkedIn</a>
+				</div>
+			</div>
+		</section>
+
+		<section id="about" class="section">
+			<h2 class="section__title">About Me</h2>
+			<div class="about__content">
 				<p>
-					<span id="role-text">Full-Stack Developer</span> <br />
-					and a <span id="sec-role">CS student<i style="font-size:40%; vertical-align:super;">*(metaphorically)</i></span>
+					Backend-focused Software Engineer with experience building containerized
+					Spring Boot microservices, event-driven systems, and distributed workflows
+					at scale. Skilled in designing async flows using Kafka, optimizing and
+					improving deployment automation, and implementing reliable multi-stage journeys.
+				</p>
+				<p>
+					Comfortable with debugging real-world issues, contributing to architecture
+					decisions, and working across CI/CD, cloud infrastructure, and application
+					development.
 				</p>
 			</div>
+		</section>
 
-			<div class="heroSection__right">
-				<img src="images/main.svg" alt="A Stack of Shapes" />
+		<section id="certifications" class="section">
+			<h2 class="section__title">Certifications</h2>
+			<div class="certifications__grid">
+				<a target="_blank" href="https://www.credly.com/badges/1702378c-cf55-40ec-aa00-b3e1c7cbd701/public_url" class="cert-card">
+					<img src="images/azure_fundamentals.png" alt="Azure Fundamentals badge" class="cert-card__badge" />
+					<div class="cert-card__info">
+						<h3>AZ-900</h3>
+						<p>Azure Fundamentals</p>
+					</div>
+				</a>
+				<a target="_blank" href="https://www.credly.com/badges/1535c2b5-1727-4564-994e-013d0cfe43a1/public_url" class="cert-card">
+					<img src="images/azure_data_fundamentals.png" alt="Azure Data Fundamentals badge" class="cert-card__badge" />
+					<div class="cert-card__info">
+						<h3>DP-900</h3>
+						<p>Azure Data Fundamentals</p>
+					</div>
+				</a>
+			</div>
+			<p class="certifications__more">
+				<a target="_blank" href="https://www.linkedin.com/in/jagrit-v-1ab521111/details/certifications/">View all certifications &rarr;</a>
+			</p>
+		</section>
+
+		<section id="experience" class="section">
+			<h2 class="section__title">Work Experience</h2>
+
+			<div class="timeline">
+				<div class="timeline__item">
+					<div class="timeline__header">
+						<div>
+							<h3 class="timeline__company">Bajaj Finserv Health Limited</h3>
+							<p class="timeline__role">Intern &rarr; Associate SDE &rarr; Software Development Engineer</p>
+						</div>
+						<span class="timeline__date">July 2023 &ndash; Present</span>
+					</div>
+					<ul class="timeline__details">
+						<li>Owning end-to-end design of async/event-driven features using Kafka with DLQs, retries, in-memory and Redis caching, and multi-stage orchestration of business workflows.</li>
+						<li>Developing high-reliability Spring Boot microservices with focus on fault tolerance, throughput, and production stability using modern design patterns.</li>
+						<li>Improved service startup time by approximately 2x and contributed to backend architecture reviews for new modules.</li>
+						<li>Automated deployment workflows via CI/CD, OpenAPI/Swagger-based contract automation, and custom scripts, improving release consistency.</li>
+						<li>Implemented backend modules during internship involving async flows, scheduled jobs, and business logic; contributed to production debugging and tracing enhancements.</li>
+					</ul>
+				</div>
+
+				<div class="timeline__item">
+					<div class="timeline__header">
+						<div>
+							<h3 class="timeline__company">Angrybaaz Services Pvt. Ltd.</h3>
+							<p class="timeline__role">Frontend Development Intern</p>
+						</div>
+						<span class="timeline__date">Nov 2022 &ndash; Jan 2023</span>
+					</div>
+					<ul class="timeline__details">
+						<li>Worked on a React + TypeScript application with Figma API for plugin creation.</li>
+						<li>Developed and implemented UI components using appropriate frontend design patterns.</li>
+					</ul>
+				</div>
 			</div>
 		</section>
 
-		<section>
-			<p class="learn-text">Scroll Down to learn more about me</p>
+		<section id="projects" class="section">
+			<h2 class="section__title">Projects</h2>
+
+			<div class="projects__grid">
+				<div class="project-card">
+					<div class="project-card__header">
+						<h3>Synpse</h3>
+						<span class="project-card__year">2025</span>
+					</div>
+					<p class="project-card__subtitle">Locally Hosted AI Assistant Platform</p>
+					<div class="project-card__tags">
+						<span class="tag">Next.js</span>
+						<span class="tag">Express</span>
+						<span class="tag">MongoDB</span>
+						<span class="tag">Kafka</span>
+						<span class="tag">Ollama</span>
+					</div>
+					<ul class="project-card__details">
+						<li>Built a locally-hosted AI assistant supporting contextual conversations, threaded activities, and action execution.</li>
+						<li>Designed an event-driven backend using Kafka to handle message flows, task execution, and cross-platform delivery.</li>
+						<li>Implemented concurrency using threaded workers to support parallel LLM interactions and background actions.</li>
+						<li>Developed multi-platform delivery (Web + Telegram bot) with shared backend services.</li>
+						<li>Engineered contextual memory storage and retrieval using MongoDB for persistent AI state across sessions.</li>
+					</ul>
+				</div>
+
+				<div class="project-card">
+					<div class="project-card__header">
+						<h3>Shopify Email Template Application</h3>
+						<span class="project-card__year">2022</span>
+					</div>
+					<p class="project-card__subtitle">Email Template Management System</p>
+					<div class="project-card__tags">
+						<span class="tag">Next.js</span>
+						<span class="tag">MongoDB</span>
+						<span class="tag">Shopify API</span>
+					</div>
+					<div class="project-card__showcase">
+						<img src="images/sh1.png" alt="Shopify Email Template screenshot 1" />
+						<img src="images/sh2.png" alt="Shopify Email Template screenshot 2" />
+					</div>
+					<ul class="project-card__details">
+						<li>Built an application authenticating with Shopify stores to send transactional emails based on reusable templates.</li>
+						<li>Implemented template management and persistence using MongoDB.</li>
+					</ul>
+					<div class="project-card__links">
+						<a target="_blank" href="https://github.com/jagritvats/supassisttask" class="project-card__link">
+							<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+							GitHub
+						</a>
+					</div>
+				</div>
+			</div>
 		</section>
 
-		<section id="about">
-			<h2>About Me</h2>
+		<section id="skills" class="section">
+			<h2 class="section__title">Skills</h2>
 
+			<div class="skills__grid">
+				<div class="skill-category">
+					<h3 class="skill-category__title">Backend & Distributed Systems</h3>
+					<div class="skill-category__tags">
+						<span class="skill-tag">Java</span>
+						<span class="skill-tag">Spring Boot</span>
+						<span class="skill-tag">Microservices</span>
+						<span class="skill-tag">Kafka</span>
+						<span class="skill-tag">REST APIs</span>
+						<span class="skill-tag">Multithreading</span>
+						<span class="skill-tag">Concurrency</span>
+					</div>
+				</div>
 
+				<div class="skill-category">
+					<h3 class="skill-category__title">Application Layer</h3>
+					<div class="skill-category__tags">
+						<span class="skill-tag">TypeScript</span>
+						<span class="skill-tag">Node.js (Express)</span>
+					</div>
+				</div>
 
-			<div class="certificationsSection subsection">
-				<h3>Certifications and Badges</h3>
-				<div class="subsection__container">
-					<a
-						target="_blank"
-						href="https://www.credly.com/badges/1702378c-cf55-40ec-aa00-b3e1c7cbd701/public_url"
-						class="subsectionCard"
-					>
-						<img src="images/azure_fundamentals.png" alt="badge" />
-						<h4>AZ-900</h4>
+				<div class="skill-category">
+					<h3 class="skill-category__title">Databases & Storage</h3>
+					<div class="skill-category__tags">
+						<span class="skill-tag">MongoDB</span>
+						<span class="skill-tag">Redis</span>
+					</div>
+				</div>
+
+				<div class="skill-category">
+					<h3 class="skill-category__title">DevOps & Cloud</h3>
+					<div class="skill-category__tags">
+						<span class="skill-tag">Docker</span>
+						<span class="skill-tag">CI/CD</span>
+						<span class="skill-tag">Azure Pipelines</span>
+						<span class="skill-tag">Containerized Deployments</span>
+					</div>
+				</div>
+
+				<div class="skill-category">
+					<h3 class="skill-category__title">Frontend</h3>
+					<div class="skill-category__tags">
+						<span class="skill-tag">React</span>
+					</div>
+				</div>
+
+				<div class="skill-category">
+					<h3 class="skill-category__title">AI & Systems</h3>
+					<div class="skill-category__tags">
+						<span class="skill-tag">Ollama (Local LLMs)</span>
+						<span class="skill-tag">Context Pipelines</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="education" class="section">
+			<h2 class="section__title">Education</h2>
+			<div class="education-card">
+				<div class="education-card__header">
+					<div>
+						<h3>Chitkara University</h3>
+						<p>Bachelor's of Engineering &mdash; Computer Science Engineering</p>
+					</div>
+					<span class="education-card__date">2020 &ndash; July 2024</span>
+				</div>
+			</div>
+		</section>
+
+		<footer class="footer">
+			<div class="footer__content">
+				<p class="footer__name">Jagrit Vats</p>
+				<div class="footer__links">
+					<a target="_blank" href="https://github.com/jagritvats" class="footer__link">
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+						GitHub
 					</a>
-					<a
-						target="_blank"
-						href="https://www.credly.com/badges/1535c2b5-1727-4564-994e-013d0cfe43a1/public_url"
-						class="subsectionCard"
-					>
-						<img
-							src="images/azure_data_fundamentals.png"
-							alt="badge"
-						/>
-						<h4>DP-900</h4>
+					<a target="_blank" href="https://www.linkedin.com/in/jagrit-v-1ab521111/" class="footer__link">
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+						LinkedIn
 					</a>
-					<a
-						target="_blank"
-						href="https://www.credly.com/badges/56bcb910-2807-43dd-ac71-487a20f21f09/public_url"
-						class="subsectionCard"
-					>
-						<img src="images/Intro2IoT.png" alt="badge" />
-						<h4>Intro to IoT</h4>
+					<a href="mailto:jagritvats6@gmail.com" class="footer__link">
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+						Email
 					</a>
-					<a
-						target="_blank"
-						href="https://www.credly.com/badges/78de4f85-46ea-4495-ae56-e5ad5fa1d98e/public_url"
-						class="subsectionCard"
-					>
-						<img src="images/Intro2CyberSec.png" alt="badge" />
-						<h4>Intro to Cybersecurity</h4>
+					<a href="tel:+918901523579" class="footer__link">
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+						+91-8901523579
 					</a>
 				</div>
-
-				<a
-					target="_blank"
-					class="more_cert_btn"
-					href="https://www.linkedin.com/in/jagrit-v-1ab521111/details/certifications/"
-					><img src="images/more_icon.svg" alt="more button"
-				/></a>
+				<p class="footer__copy">&copy; 2025 Jagrit Vats</p>
 			</div>
-
-			<div class="skillsSection subsection">
-				<h3>Skills</h3>
-
-				<p>Some of the technologies that I've worked with:</p>
-
-				<div class="subsection__container">
-					<div id="java" class="skillStat">
-						<img src="images/skillLogos/java.svg" alt="java logo" />
-						<h5>Java</h5>
-						<div class="skillBar"></div>
-					</div>
-					<div id="mongodb" class="skillStat">
-						<img
-							src="images/skillLogos/kafka.svg"
-							alt="kafka logo"
-						/>
-						<h5>Kafka</h5>
-						<div class="skillBar"></div>
-					</div>
-					<div id="mongodb" class="skillStat">
-						<img
-							src="images/skillLogos/mongodb.svg"
-							alt="mongo db logo"
-						/>
-						<h5>MongoDB</h5>
-						<div class="skillBar"></div>
-					</div>
-					<div id="react" class="skillStat">
-						<img
-							src="images/skillLogos/react.svg"
-							alt="react logo"
-						/>
-						<h5>React</h5>
-						<div class="skillBar"></div>
-					</div>
-					<div id="node" class="skillStat">
-						<img src="images/skillLogos/node.svg" alt="node logo" />
-						<h5>Node.js</h5>
-						<div class="skillBar"></div>
-					</div>
-					<div id="cloud" class="skillStat">
-						<img
-							src="images/skillLogos/cloud.svg"
-							alt="cloud logo"
-						/>
-						<h5>Cloud</h5>
-						<div class="skillBar"></div>
-					</div>
-					<div id="mongodb" class="skillStat">
-						<img
-							src="images/skillLogos/docker.svg"
-							alt="kafka logo"
-						/>
-						<h5>Docker</h5>
-						<div class="skillBar"></div>
-					</div>
-					<div id="firebase" class="skillStat">
-						<img
-							src="images/skillLogos/firebase.svg"
-							alt="firebase logo"
-						/>
-						<h5>Firebase</h5>
-						<div class="skillBar"></div>
-					</div>
-					<div id="SQL" class="skillStat">
-						<img src="images/skillLogos/sql.webp" alt="sql logo" />
-						<h5>SQL</h5>
-						<div class="skillBar"></div>
-					</div>
-
-					<div id="linux" class="skillStat">
-						<img
-							src="images/skillLogos/linux.svg"
-							alt="linux logo"
-						/>
-						<h5>Linux</h5>
-						<div class="skillBar"></div>
-					</div>
-					<div id="networking" class="skillStat">
-						<img
-							src="images/skillLogos/networking.svg"
-							alt="networking image"
-						/>
-						<h5>Networking</h5>
-						<div class="skillBar"></div>
-					</div>
-					<div id="javascript" class="skillStat">
-						<img
-							src="images/skillLogos/javascript.svg"
-							alt="js logo"
-						/>
-						<h5>JavaScript</h5>
-						<div class="skillBar"></div>
-					</div>
-					<div id="networking" class="skillStat">
-						<img
-							src="images/skillLogos/explore.svg"
-							alt="explore"
-						/>
-						<h5>and learning more...</h5>
-						<div class="skillBar"></div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section id="projects">
-			<h2>Projects</h2>
-
-			<div class="section__container">
-				<div class="project__container">
-					<div class="project__head">
-						<h4>Presto</h4>
-						<div class="project__links">
-							<span>Links:</span>
-							<a
-								target="_blank"
-								href="https://prestoj.netlify.app"
-								class="project__link"
-								><img src="images/web_icon.svg" alt="web icon"
-							/></a>
-							<a
-								target="_blank"
-								href="https://github.com/jagritvats/Presto-ECommerce-Website"
-								class="project__link"
-								><img
-									src="images/github_alt.svg"
-									alt="github icon"
-							/></a>
-						</div>
-					</div>
-
-					<div class="project__showcase">
-						<img
-							src="images/presto1.png"
-							alt="presto showcase image 1"
-						/>
-						<img
-							src="images/presto2.png"
-							alt="presto showcase image 2"
-						/>
-					</div>
-
-					<p>
-						An E-Commerce Website with ordering functionality, a
-						team project leveraging GitHub for collaboration.
-					</p>
-				</div>
-
-				<div class="project__container">
-					<div class="project__head">
-						<h4>Twitter Clone</h4>
-						<div class="project__links">
-							<span>Links:</span>
-							<a
-								target="_blank"
-								href="https://twitter-clone-jv.netlify.app/"
-								class="project__link"
-								><img src="images/web_icon.svg" alt="web icon"
-							/></a>
-							<a
-								target="_blank"
-								class="project__link"
-								href="https://github.com/jagritvats/twitterclone"
-								><img
-									src="images/github_alt.svg"
-									alt="github icon"
-							/></a>
-						</div>
-					</div>
-
-					<div class="project__showcase">
-						<img
-							src="images/twitter1.png"
-							alt="twitter clone showcase image 1"
-						/>
-						<img
-							src="images/twitter2.png"
-							alt="twitter clone showcase image 2"
-						/>
-					</div>
-
-					<p>
-						A clone of twitter with limited features such as
-						accounts, tweets etc.
-					</p>
-				</div>
-
-				<div class="project__container">
-					<div class="project__head">
-						<h4>Shopify Email Template</h4>
-						<div class="project__links">
-							<span>Links:</span>
-							<a
-								target="_blank"
-								href="https://supassisttask.herokuapp.com/"
-								class="project__link"
-								><img src="images/web_icon.svg" alt="web icon"
-							/></a>
-							<a
-								target="_blank"
-								class="project__link"
-								href="https://github.com/jagritvats/supassisttask"
-								><img
-									src="images/github_alt.svg"
-									alt="github icon"
-							/></a>
-						</div>
-					</div>
-
-					<div class="project__showcase">
-						<img
-							src="images/sh1.png"
-							alt="shopify app showcase image 1"
-						/>
-						<img
-							src="images/sh2.png"
-							alt="shopify app showcase image 2"
-						/>
-					</div>
-
-					<p>
-						A shopify (MERN) application with Email Template
-						creation, modification, saving and sending
-						functionality. (web link won't work directly to no
-						shopify store selection)
-					</p>
-				</div>
-
-				<div class="project__container">
-					<div class="project__head">
-						<h4>Synapse</h4>
-						<div class="project__links">
-							<span>Links:</span>
-							
-						</div>
-					</div>
-
-					<div class="project__showcase">
-					
-					</div>
-
-					<p>
-						working on it...
-					</p>
-				</div>
-
-				<!-- tech used -->
-			</div>
-		</section>
-
-		<section id="background">
-			<div class="educationSection subsection">
-				<h3>Education</h3>
-				<div class="subsection__container">
-					<div class="subsectionCard">
-						<div class="subsectionCard__head">
-							<span></span>
-							<img src="images/stcs_logo.jpeg" alt="stcs logo" />
-							<h4>St. Theresa's Convent Sr. Sec. School</h4>
-							<div class="subsection__details" style="display: flex; flex-direction: column; align-items: end; width: 40%;">
-								<span class="subsection__field"
-									>Non Medical</span
-								>
-								<span class="subsection__timePeriod"
-									>2008-2020</span
-								>
-							</div>
-						</div>
-					</div>
-
-					<div class="subsectionCard">
-						<div class="subsectionCard__head">
-							<img
-								src="images/chitkara_logo.jpg"
-								alt="chitkara university logo"
-							/>
-							<h4>Chitkara University</h4>
-
-							<div class="subsection__details"  style="display: flex; flex-direction: column; align-items: end; width: 40%;">
-								<span class="subsection__field"
-									>BE CSE</span
-								>
-								<span class="subsection__timePeriod"
-									>2020-2024</span
-								>
-							</div>
-						</div>
-						
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<button id="themeBtn">
-			<img src="./images/theme_icon.png" alt="theme change icon" />
-		</button>
-
-		<footer>
-			<div class="findMe">
-				<p>Find me at:</p>
-				<ul type="none">
-					<li>
-						<a target="_blank" href="https://github.com/jagritvats">
-							<img
-								src="images/github_logo.svg"
-								alt="github logo"
-								class="footer__icon"
-							/>
-							GitHub</a
-						>
-					</li>
-					<li>
-						<a
-							target="_blank"
-							href="https://www.linkedin.com/in/jagrit-v-1ab521111/"
-						>
-							<img
-								src="images/linkedin_logo.png"
-								alt="linkedin logo"
-								class="footer__icon"
-							/>
-							LinkedIn</a
-						>
-					</li>
-					<li>
-						<a href="mailto:jagritvats6@gmail.com">
-							<img
-								src="images/mail.svg"
-								alt="github logo"
-								class="footer__icon"
-							/>
-							Mail</a
-						>
-					</li>
-				</ul>
-			</div>
-
-			<p>Copyright 2022 @ Jagrit Vats</p>
 		</footer>
+
 		<script src="script.js"></script>
 	</body>
 </html>
