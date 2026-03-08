@@ -143,52 +143,32 @@ ul {
 .hero {
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 6rem 2rem 4rem;
-    min-height: 70vh;
+    padding: 5rem 2rem 3rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-}
-
-.hero__illustration {
-    flex-shrink: 0;
-    width: 220px;
-    user-select: none;
-}
-
-.hero__illustration img {
-    width: 100%;
-    height: auto;
-    opacity: 0.85;
-    transition: opacity var(--transition);
-}
-
-:root[data-theme="light"] .hero__illustration img {
-    filter: invert(0.15) hue-rotate(200deg);
 }
 
 .hero__greeting {
     color: var(--accent);
     font-family: var(--font-mono);
     font-size: 1rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
 }
 
 .hero__name {
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: 700;
     line-height: 1.1;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
     letter-spacing: -1px;
 }
 
 .hero__role {
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-weight: 600;
     color: var(--text-secondary);
-    margin-bottom: 1.5rem;
-    min-height: 2.5rem;
+    margin-bottom: 1rem;
+    min-height: 2.2rem;
 }
 
 #role-text {
@@ -207,11 +187,11 @@ ul {
 }
 
 .hero__summary {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     color: var(--text-secondary);
     max-width: 560px;
     line-height: 1.7;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .hero__cta {
@@ -258,13 +238,13 @@ ul {
 .section {
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 4rem 2rem;
+    padding: 2.5rem 2rem;
 }
 
 .section__title {
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-weight: 700;
-    margin-bottom: 2rem;
+    margin-bottom: 1.25rem;
     color: var(--text-primary);
     position: relative;
     padding-bottom: 0.5rem;
@@ -354,7 +334,7 @@ ul {
 .timeline {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.25rem;
 }
 
 .timeline__item {
@@ -637,8 +617,8 @@ ul {
 /* ============ */
 .footer {
     border-top: 1px solid var(--border);
-    margin-top: 2rem;
-    padding: 3rem 2rem;
+    margin-top: 1rem;
+    padding: 2rem 2rem;
     transition: border-color var(--transition);
 }
 
@@ -708,14 +688,7 @@ ul {
     }
 
     .hero {
-        padding: 4rem 1.5rem 3rem;
-        min-height: auto;
-        flex-direction: column;
-    }
-
-    .hero__illustration {
-        width: 160px;
-        order: -1;
+        padding: 3rem 1.5rem 2rem;
     }
 
     .hero__name {
@@ -727,7 +700,7 @@ ul {
     }
 
     .section {
-        padding: 3rem 1.5rem;
+        padding: 2rem 1.5rem;
     }
 
     .section__title {
@@ -789,10 +762,6 @@ ul {
 
     .hero__cta {
         flex-direction: column;
-    }
-
-    .hero__illustration {
-        width: 120px;
     }
 
     .project-card__header {
