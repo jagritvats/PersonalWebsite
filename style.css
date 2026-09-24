@@ -1,4 +1,33 @@
 /* ================================ */
+/* == Fonts                      == */
+/* ================================ */
+/* Self-hosted and trimmed to Latin and the axes this page uses. Licences are in fonts/. */
+@font-face {
+    font-family: "Archivo";
+    src: url("fonts/archivo-var.woff2") format("woff2");
+    font-weight: 400 800;
+    font-stretch: 100% 125%;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Newsreader";
+    src: url("fonts/newsreader-regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Newsreader";
+    src: url("fonts/newsreader-italic.woff2") format("woff2");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* ================================ */
 /* == Tokens                     == */
 /* ================================ */
 :root {
