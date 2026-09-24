@@ -2,301 +2,548 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Jagrit Vats | Software Engineer</title>
+		<title>Jagrit Vats, backend engineer</title>
 		<meta
 			name="description"
-			content="Jagrit Vats is a Backend-focused Software Engineer building containerized Spring Boot microservices, event-driven systems, and distributed workflows at scale."
-		/>
-		<meta
-			name="keywords"
-			content="jagrit, jagrit vats, software engineer, backend developer, spring boot, kafka, microservices, distributed systems"
+			content="Jagrit Vats is a backend engineer at Bajaj Finserv Health, based in Bangalore, working with Java, Spring Boot and Kafka. His side projects include TeamTakes, ScenePilot and Synpse."
 		/>
 		<meta name="author" content="Jagrit Vats" />
-		<link rel="stylesheet" href="style.css" />
-		<link rel="shortcut icon" href="favicon1.ico" type="image/x-icon" />
+		<link rel="canonical" href="https://jagritvats.netlify.app/" />
+		<meta name="google-site-verification" content="TCLg7nEC5hshZFBl_7O60VPBuuevBTK46jz0lnZ3QvM" />
+
+		<meta property="og:type" content="profile" />
+		<meta property="og:title" content="Jagrit Vats, backend engineer" />
 		<meta
-			name="google-site-verification"
-			content="TCLg7nEC5hshZFBl_7O60VPBuuevBTK46jz0lnZ3QvM"
+			property="og:description"
+			content="Backend engineer at Bajaj Finserv Health, based in Bangalore. Side projects include TeamTakes, ScenePilot and Synpse."
 		/>
+		<meta property="og:url" content="https://jagritvats.netlify.app/" />
+		<meta property="og:image" content="https://jagritvats.netlify.app/images/og.png" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content="Jagrit Vats, backend engineer at Bajaj Finserv Health, next to a diagram of a Kafka retry and dead-letter queue flow." />
+		<meta name="twitter:card" content="summary_large_image" />
+
+		<meta name="theme-color" content="#f1f4ef" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#10251f" media="(prefers-color-scheme: dark)" />
+		<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+		<link rel="icon" href="favicon1.ico" sizes="any" />
+
+		<script>
+			// Apply a saved theme before first paint so the page doesn't flash.
+			(function () {
+				try {
+					var saved = localStorage.getItem('theme');
+					if (saved === 'light' || saved === 'dark') {
+						document.documentElement.setAttribute('data-theme', saved);
+					}
+				} catch (e) {}
+			})();
+		</script>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&display=swap"
+		/>
+		<link rel="stylesheet" href="style.css" />
+
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Person",
+				"name": "Jagrit Vats",
+				"jobTitle": "Software Development Engineer",
+				"worksFor": { "@type": "Organization", "name": "Bajaj Finserv Health" },
+				"address": { "@type": "PostalAddress", "addressLocality": "Bangalore", "addressCountry": "IN" },
+				"alumniOf": { "@type": "CollegeOrUniversity", "name": "Chitkara University" },
+				"email": "mailto:jagritvats6@gmail.com",
+				"url": "https://jagritvats.netlify.app/",
+				"sameAs": ["https://github.com/jagritvats", "https://www.linkedin.com/in/jagritvats/"]
+			}
+		</script>
 	</head>
 	<body>
-		<nav class="navbar">
-			<a href="#" class="navbar__logo">JV</a>
-			<ul class="navbar__links">
-				<li><a href="#about">About</a></li>
-				<li><a href="#certifications">Certs</a></li>
-				<li><a href="#experience">Experience</a></li>
-				<li><a href="#projects">Projects</a></li>
-				<li><a href="#skills">Skills</a></li>
-				<li><a href="#education">Education</a></li>
-			</ul>
-			<button id="themeBtn" class="theme-toggle" aria-label="Toggle theme">
-				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-					<circle cx="12" cy="12" r="5"/>
-					<line x1="12" y1="1" x2="12" y2="3"/>
-					<line x1="12" y1="21" x2="12" y2="23"/>
-					<line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-					<line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-					<line x1="1" y1="12" x2="3" y2="12"/>
-					<line x1="21" y1="12" x2="23" y2="12"/>
-					<line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-					<line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-				</svg>
-			</button>
-		</nav>
+		<a class="skip-link" href="#main">Skip to content</a>
 
-		<section class="hero">
-			<div class="hero__content">
-				<p class="hero__greeting">Hi, I'm</p>
-				<h1 class="hero__name">Jagrit Vats</h1>
-				<h2 class="hero__role"><span id="role-text">Software Engineer</span></h2>
-				<p class="hero__summary">
-					Backend-focused engineer building containerized Spring Boot microservices,
-					event-driven systems, and distributed workflows at scale.
-				</p>
-				<div class="hero__cta">
-					<a href="mailto:jagritvats6@gmail.com" class="btn btn--primary">Get in Touch</a>
-					<a href="https://www.linkedin.com/in/jagrit-v-1ab521111/" target="_blank" class="btn btn--secondary">LinkedIn</a>
-				</div>
-			</div>
-		</section>
+		<!-- Arrowheads shared by every diagram on the page -->
+		<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+			<defs>
+				<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+					<path class="ah" d="M0 1 L9 5 L0 9 Z" />
+				</marker>
+				<marker id="ah-retry" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+					<path class="ah ah--retry" d="M0 1 L9 5 L0 9 Z" />
+				</marker>
+				<marker id="ah-fail" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+					<path class="ah ah--fail" d="M0 1 L9 5 L0 9 Z" />
+				</marker>
+				<marker id="ah-ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+					<path class="ah ah--ok" d="M0 1 L9 5 L0 9 Z" />
+				</marker>
+			</defs>
+		</svg>
 
-		<section id="about" class="section">
-			<h2 class="section__title">About Me</h2>
-			<div class="about__content">
-				<p>
-					Backend-focused Software Engineer with experience building containerized
-					Spring Boot microservices, event-driven systems, and distributed workflows
-					at scale. Skilled in designing async flows using Kafka, optimizing and
-					improving deployment automation, and implementing reliable multi-stage journeys.
-				</p>
-				<p>
-					Comfortable with debugging real-world issues, contributing to architecture
-					decisions, and working across CI/CD, cloud infrastructure, and application
-					development.
-				</p>
-			</div>
-		</section>
-
-		<section id="certifications" class="section">
-			<h2 class="section__title">Certifications</h2>
-			<div class="certifications__grid">
-				<a target="_blank" href="https://www.credly.com/badges/1702378c-cf55-40ec-aa00-b3e1c7cbd701/public_url" class="cert-card">
-					<img src="images/azure_fundamentals.png" alt="Azure Fundamentals badge" class="cert-card__badge" />
-					<div class="cert-card__info">
-						<h3>AZ-900</h3>
-						<p>Azure Fundamentals</p>
-					</div>
-				</a>
-				<a target="_blank" href="https://www.credly.com/badges/1535c2b5-1727-4564-994e-013d0cfe43a1/public_url" class="cert-card">
-					<img src="images/azure_data_fundamentals.png" alt="Azure Data Fundamentals badge" class="cert-card__badge" />
-					<div class="cert-card__info">
-						<h3>DP-900</h3>
-						<p>Azure Data Fundamentals</p>
-					</div>
-				</a>
-			</div>
-			<p class="certifications__more">
-				<a target="_blank" href="https://www.linkedin.com/in/jagrit-v-1ab521111/details/certifications/">View all certifications &rarr;</a>
-			</p>
-		</section>
-
-		<section id="experience" class="section">
-			<h2 class="section__title">Work Experience</h2>
-
-			<div class="timeline">
-				<div class="timeline__item">
-					<div class="timeline__header">
-						<div>
-							<h3 class="timeline__company">Bajaj Finserv Health Limited</h3>
-							<p class="timeline__role">Intern &rarr; Associate SDE &rarr; Software Development Engineer</p>
-						</div>
-						<span class="timeline__date">July 2023 &ndash; Present</span>
-					</div>
-					<ul class="timeline__details">
-						<li>Owning end-to-end design of async/event-driven features using Kafka with DLQs, retries, in-memory and Redis caching, and multi-stage orchestration of business workflows.</li>
-						<li>Developing high-reliability Spring Boot microservices with focus on fault tolerance, throughput, and production stability using modern design patterns.</li>
-						<li>Improved service startup time by approximately 2x and contributed to backend architecture reviews for new modules.</li>
-						<li>Automated deployment workflows via CI/CD, OpenAPI/Swagger-based contract automation, and custom scripts, improving release consistency.</li>
-						<li>Implemented backend modules during internship involving async flows, scheduled jobs, and business logic; contributed to production debugging and tracing enhancements.</li>
+		<header class="site-header">
+			<div class="site-header__inner">
+				<a href="#top" class="site-header__name">Jagrit Vats</a>
+				<nav class="site-nav" aria-label="Sections">
+					<ul>
+						<li><a href="#work">Work</a></li>
+						<li><a href="#projects">Projects</a></li>
+						<li><a href="#contact">Contact</a></li>
 					</ul>
+				</nav>
+				<button id="themeBtn" class="theme-toggle" type="button" aria-label="Switch theme">
+					<svg class="theme-toggle__moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+						<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+					</svg>
+					<svg class="theme-toggle__sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+						<circle cx="12" cy="12" r="4.5" />
+						<path d="M12 1.5v2.5M12 20v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M1.5 12H4M20 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8" />
+					</svg>
+				</button>
+			</div>
+		</header>
+
+		<main id="main">
+			<section class="hero" id="top" aria-labelledby="name">
+				<div class="hero__text">
+					<h1 class="hero__name" id="name"><span>Jagrit</span> <span>Vats</span></h1>
+					<p class="hero__lead">Backend engineer at Bajaj Finserv Health, based in Bangalore.</p>
+					<p class="hero__summary">
+						I work on event-driven Spring Boot services that use Kafka. Outside work I build and host
+						my own apps, including TeamTakes, a polling app for engineering teams, and Synpse, an AI
+						companion with over 500 installs on Google Play.
+					</p>
+					<div class="actions">
+						<a class="button" href="mailto:jagritvats6@gmail.com">Email me</a>
+						<a href="https://github.com/jagritvats" rel="me">GitHub</a>
+						<a href="https://www.linkedin.com/in/jagritvats/" rel="me">LinkedIn</a>
+					</div>
 				</div>
 
-				<div class="timeline__item">
-					<div class="timeline__header">
-						<div>
-							<h3 class="timeline__company">Angrybaaz Services Pvt. Ltd.</h3>
-							<p class="timeline__role">Frontend Development Intern</p>
-						</div>
-						<span class="timeline__date">Nov 2022 &ndash; Jan 2023</span>
-					</div>
-					<ul class="timeline__details">
-						<li>Worked on a React + TypeScript application with Figma API for plugin creation.</li>
-						<li>Developed and implemented UI components using appropriate frontend design patterns.</li>
+				<figure class="diagram diagram--hero">
+					<svg class="dg" viewBox="0 0 360 290" role="img" aria-labelledby="flow-title flow-desc">
+						<title id="flow-title">Retry, then dead-letter</title>
+						<desc id="flow-desc">
+							An event moves from a Kafka topic to a consumer. If processing succeeds, it moves on to
+							the next stage. If it fails, it goes to a retry topic and back to the consumer. When the
+							retries are used up, it moves to a dead-letter queue so it can be replayed.
+						</desc>
+
+						<path class="e" d="M76 58 V108" marker-end="url(#ah)" />
+						<text class="l" x="84" y="88">consume</text>
+						<path class="e e--ok" d="M76 158 V228" marker-end="url(#ah-ok)" />
+						<text class="l" x="84" y="198">succeeds</text>
+						<path class="e e--retry" d="M140 127 H192" marker-end="url(#ah-retry)" />
+						<text class="l" x="168" y="121" text-anchor="middle">fails</text>
+						<path class="e e--retry" d="M196 143 H144" marker-end="url(#ah-retry)" />
+						<text class="l" x="168" y="157" text-anchor="middle">retry</text>
+						<path class="e e--fail" d="M274 158 V228" marker-end="url(#ah-fail)" />
+						<text class="l" x="266" y="198" text-anchor="end">retries used up</text>
+
+						<!-- Tokens are drawn under the nodes, so a node "absorbs" an event while it handles it -->
+						<circle class="tok" data-token="a" cx="76" cy="35" r="5.5" opacity="0" />
+						<circle class="tok" data-token="b" cx="76" cy="35" r="5.5" opacity="0" />
+
+						<g class="node">
+							<rect x="12" y="12" width="128" height="46" rx="5" />
+							<text class="t" x="24" y="32">Kafka topic</text>
+							<text class="s" x="24" y="48">workflow events</text>
+						</g>
+						<g class="node">
+							<rect x="12" y="112" width="128" height="46" rx="5" />
+							<text class="t" x="24" y="132">Consumer</text>
+							<text class="s" x="24" y="148">Spring Boot</text>
+						</g>
+						<g class="node">
+							<rect x="12" y="232" width="128" height="46" rx="5" />
+							<text class="t" x="24" y="252">Next stage</text>
+							<text class="s" x="24" y="268">processed</text>
+						</g>
+						<g class="node node--retry">
+							<rect x="196" y="112" width="156" height="46" rx="5" />
+							<text class="t" x="208" y="132">Retry topic</text>
+							<text class="s" x="208" y="148">back off, try again</text>
+						</g>
+						<g class="node node--fail">
+							<rect x="196" y="232" width="156" height="46" rx="5" />
+							<text class="t" x="208" y="252">Dead-letter queue</text>
+							<text class="s" x="208" y="268">parked for replay</text>
+						</g>
+
+						<circle class="dot dot--ok" cx="124" cy="255" r="4.5" />
+						<circle class="dot dot--fail" cx="338" cy="255" r="4.5" />
+					</svg>
+					<figcaption>
+						A simplified version of the Kafka flows I work on. When a consumer can't process an
+						event, the event goes to a retry topic and is tried again. After a few failed attempts
+						it moves to a dead-letter queue, where it can be checked and replayed.
+						<button class="replay" id="replayBtn" type="button" hidden>Replay</button>
+					</figcaption>
+				</figure>
+			</section>
+
+			<section class="section" id="work" aria-labelledby="work-title">
+				<div class="section__head">
+					<h2 class="section__title" id="work-title">Work</h2>
+				</div>
+
+				<article class="job">
+					<header class="job__head">
+						<h3 class="job__company">Bajaj Finserv Health</h3>
+						<p class="job__meta">July 2023 to now</p>
+					</header>
+					<ol class="ladder">
+						<li>
+							<span class="ladder__role">Software Development Engineer Intern</span>
+							<span class="ladder__when">Jul 2023 to Jun 2024</span>
+						</li>
+						<li>
+							<span class="ladder__role">Associate Software Development Engineer</span>
+							<span class="ladder__when">From Jul 2024</span>
+						</li>
+						<li aria-current="step">
+							<span class="ladder__role">Software Development Engineer</span>
+							<span class="ladder__when">Current role</span>
+						</li>
+					</ol>
+					<ul class="points">
+						<li>Design and build asynchronous features on Kafka, with retries, dead-letter queues, Redis and in-memory caching, and multi-step business workflows.</li>
+						<li>Build and maintain Spring Boot microservices, and work on production debugging and distributed tracing.</li>
+						<li>Cut service startup time roughly in half.</li>
+						<li>Automated parts of the release process with Azure Pipelines, OpenAPI/Swagger contract generation and custom scripts.</li>
+						<li>Take part in architecture reviews for new backend modules.</li>
+						<li>As an intern, I built backend modules with async flows, scheduled jobs and business logic.</li>
 					</ul>
+				</article>
+
+				<article class="job job--past">
+					<header class="job__head">
+						<h3 class="job__company">Angrybaaz Services</h3>
+						<p class="job__meta">Frontend development intern, Nov 2022 to Jan 2023</p>
+					</header>
+					<p>Built UI components for a Figma plugin, using React, TypeScript and the Figma API.</p>
+				</article>
+			</section>
+
+			<section class="section" id="projects" aria-labelledby="projects-title">
+				<div class="section__head">
+					<h2 class="section__title" id="projects-title">Projects</h2>
 				</div>
-			</div>
-		</section>
-
-		<section id="projects" class="section">
-			<h2 class="section__title">Projects</h2>
-
-			<div class="projects__grid">
-				<div class="project-card">
-					<div class="project-card__header">
-						<h3>Synpse</h3>
-						<span class="project-card__year">2025-*</span>
+				<article class="project" id="teamtakes">
+					<div class="project__text">
+						<h3 class="project__name">TeamTakes <span class="project__status">Live</span></h3>
+						<p class="project__summary">Opinionated polls and play-money prediction games for engineering teams.</p>
+						<p>
+							Each team gets its own subdomain with polls, prediction markets and 1v1 duels. There's
+							also a league that runs across teams. I first built it for one team and made it
+							multi-tenant later, while people were already using it.
+						</p>
+						<ul class="points">
+							<li>Row-level security limits every query to teams the user belongs to. The app sends the active team in a request header, and the database ignores it unless the user is a member of that team.</li>
+							<li>A leak test signs in as one team and tries to read and change another team's data through the normal API. A check in the migrations stops the deploy if a table is missing its policy.</li>
+							<li>Most of the game logic, including market pricing and the points ledger, runs in Postgres functions, with pg_cron handling scheduled rounds.</li>
+						</ul>
+						<p class="project__stack">TanStack Start (React 19), self-hosted Supabase (Postgres, Auth, Realtime), Docker Compose, Traefik, Cloudflare, GitHub Actions</p>
+						<p class="project__links"><a href="https://teamtakes.app">teamtakes.app</a></p>
 					</div>
-					<p class="project-card__subtitle">Locally Hosted AI Assistant Platform</p>
-					<div class="project-card__tags">
-						<span class="tag">Next.js</span>
-						<span class="tag">Express</span>
-						<span class="tag">MongoDB</span>
-						<span class="tag">Kafka</span>
-						<span class="tag">Ollama</span>
+					<figure class="diagram">
+						<svg class="dg" viewBox="0 0 360 306" role="img" aria-labelledby="tt-title tt-desc">
+							<title id="tt-title">How TeamTakes keeps teams apart</title>
+							<desc id="tt-desc">
+								Requests from team A and team B reach the same Postgres database, each tagged with
+								its active team. Row-level security on every table only returns rows from that team. A
+								leak test probes the database, and a migration check confirms every table has a policy.
+							</desc>
+							<path class="e" d="M92 58 V116" marker-end="url(#ah)" />
+							<text class="l" x="100" y="92">x-team-id: A</text>
+							<path class="e" d="M268 58 V116" marker-end="url(#ah)" />
+							<text class="l" x="276" y="92">x-team-id: B</text>
+							<path class="e e--guard" d="M92 232 V178" marker-end="url(#ah)" />
+							<text class="l" x="100" y="210">probes</text>
+							<path class="e e--guard" d="M268 232 V178" marker-end="url(#ah)" />
+							<text class="l" x="276" y="210">checks</text>
+
+							<g class="node">
+								<rect x="12" y="12" width="160" height="46" rx="5" />
+								<text class="t" x="24" y="32">Team A</text>
+								<text class="s" x="24" y="48">team-a.teamtakes.app</text>
+							</g>
+							<g class="node">
+								<rect x="188" y="12" width="160" height="46" rx="5" />
+								<text class="t" x="200" y="32">Team B</text>
+								<text class="s" x="200" y="48">team-b.teamtakes.app</text>
+							</g>
+							<g class="node">
+								<rect x="12" y="120" width="336" height="54" rx="5" />
+								<text class="t" x="24" y="142">Postgres (self-hosted Supabase)</text>
+								<text class="s" x="24" y="160">restrictive row-level security on every table</text>
+							</g>
+							<g class="node node--ok">
+								<rect x="12" y="232" width="160" height="62" rx="5" />
+								<text class="t" x="24" y="252">Leak test</text>
+								<text class="s" x="24" y="269">signs in as team A,</text>
+								<text class="s" x="24" y="284">gets no rows from B</text>
+							</g>
+							<g class="node node--ok">
+								<rect x="188" y="232" width="160" height="62" rx="5" />
+								<text class="t" x="200" y="252">Migration check</text>
+								<text class="s" x="200" y="269">deploy stops if any</text>
+								<text class="s" x="200" y="284">table lacks its policy</text>
+							</g>
+						</svg>
+					</figure>
+				</article>
+
+				<article class="project" id="scenepilot">
+					<div class="project__text">
+						<h3 class="project__name">ScenePilot <span class="project__status">Hackathon project, 2026</span></h3>
+						<p class="project__summary">An AI assistant director that reschedules film shoots when plans change.</p>
+						<p>
+							I built it for Google Cloud's Agentic Cinema hackathon, in the Parallel partner track.
+							When something disrupts a shoot day, like a rain forecast, Gemini agents look it up on
+							the web and suggest new schedules. A deterministic rule checker then rejects any schedule
+							that breaks a permit window, a noise curfew or the available daylight, and links the
+							source for each rejection. The producer has to approve a change before it's applied.
+						</p>
+						<ul class="points">
+							<li>Facts from the web are graded by how well they're sourced. Only a cited, high-confidence fact can reject a schedule. Weaker facts add cost or get flagged for a person to check.</li>
+							<li>The same checker handles recovery options, the multi-day schedule and manual edits.</li>
+							<li>It uses six of Parallel's web APIs, calculates sun position and union labour rules in code, and has more than 600 tests.</li>
+						</ul>
+						<p class="project__stack">Python, FastAPI, Google ADK, Gemini 3.5 Flash, Parallel APIs, Next.js 16, Cloud Run</p>
+						<p class="project__links">
+							<a href="https://scenepilot-web-483371182667.asia-south1.run.app">Live demo</a>
+							<a href="https://github.com/jagritvats/scenepilot-public">Source on GitHub</a>
+						</p>
 					</div>
-					<ul class="project-card__details">
-						<li>Built a locally-hosted AI assistant supporting contextual conversations, threaded activities, and action execution.</li>
-						<li>Designed an event-driven backend using Kafka to handle message flows, task execution, and cross-platform delivery.</li>
-						<li>Implemented concurrency using threaded workers to support parallel LLM interactions and background actions.</li>
-						<li>Developed multi-platform delivery (Web + Telegram bot) with shared backend services.</li>
-						<li>Engineered contextual memory storage and retrieval using MongoDB for persistent AI state across sessions.</li>
+					<figure class="diagram">
+						<svg class="dg" viewBox="0 0 360 350" role="img" aria-labelledby="sp-title sp-desc">
+							<title id="sp-title">How ScenePilot decides</title>
+							<desc id="sp-desc">
+								A rain forecast goes to Gemini agents built with Google ADK, which research it using
+								Parallel's web APIs and suggest new plans. A rule checker tests each plan against sourced
+								facts such as permit windows, noise curfews and sunset. Plan B is rejected because it runs
+								past a curfew. Plan A is kept and waits for the producer to approve it.
+							</desc>
+							<path class="e" d="M100 58 V100" marker-end="url(#ah)" />
+							<text class="l" x="108" y="84">disruption</text>
+							<path class="e" d="M184 131 H212" marker-start="url(#ah)" marker-end="url(#ah)" />
+							<path class="e" d="M100 158 V202" marker-end="url(#ah)" />
+							<text class="l" x="108" y="186">plans</text>
+							<path class="e" d="M282 158 V202" marker-end="url(#ah)" />
+							<text class="l" x="274" y="186" text-anchor="end">cited facts</text>
+							<path class="e e--fail" d="M92 260 V292" marker-end="url(#ah-fail)" />
+							<path class="e e--ok" d="M268 260 V292" marker-end="url(#ah-ok)" />
+
+							<g class="node">
+								<rect x="12" y="12" width="336" height="46" rx="5" />
+								<text class="t" x="24" y="32">Rain forecast for day 4</text>
+								<text class="s" x="24" y="48">checked against live web sources</text>
+							</g>
+							<g class="node">
+								<rect x="12" y="104" width="170" height="54" rx="5" />
+								<text class="t" x="24" y="126">Gemini agents</text>
+								<text class="s" x="24" y="144">research, propose plans</text>
+							</g>
+							<g class="node">
+								<rect x="216" y="104" width="132" height="54" rx="5" />
+								<text class="t" x="228" y="126">Parallel APIs</text>
+								<text class="s" x="228" y="144">web research</text>
+							</g>
+							<g class="node">
+								<rect x="12" y="206" width="336" height="54" rx="5" />
+								<text class="t" x="24" y="228">Rule checker</text>
+								<text class="s" x="24" y="246">permit windows, cited noise curfews, sunset</text>
+							</g>
+							<g class="node node--fail">
+								<rect x="12" y="296" width="160" height="46" rx="5" />
+								<text class="t" x="24" y="316">Plan B rejected</text>
+								<text class="s" x="24" y="332">past a cited curfew</text>
+							</g>
+							<g class="node node--ok">
+								<rect x="188" y="296" width="160" height="46" rx="5" />
+								<text class="t" x="200" y="316">Plan A kept</text>
+								<text class="s" x="200" y="332">waits for producer</text>
+							</g>
+						</svg>
+					</figure>
+				</article>
+
+				<article class="project" id="synpse">
+					<div class="project__text">
+						<h3 class="project__name">Synpse <span class="project__status">Live since 2025</span></h3>
+						<p class="project__summary">An AI companion with long-term memory, on the web, Android and Telegram.</p>
+						<p>
+							The companion is called Synapy, and the Android app has over 500 installs on Google Play.
+							Users can see, edit and delete what it remembers about them. It also writes daily and
+							weekly journal entries.
+						</p>
+						<ul class="points">
+							<li>Memories are ranked by how well they match the message, recency, importance, links to other memories, mood and context. Linked memories are pulled in as well.</li>
+							<li>A background job runs every four hours to merge similar memories and prune old ones.</li>
+							<li>The model provider can be switched between Grok, Gemini, OpenAI and local models through Ollama. Embedding calls have a timeout and a circuit breaker, and Kafka is optional, with an in-process fallback.</li>
+						</ul>
+						<p class="project__stack">Next.js 14, Express, TypeScript, MongoDB, LangChain, Expo (React Native), grammY, Docker, GitHub Actions</p>
+						<p class="project__links">
+							<a href="https://web.synpse.app">web.synpse.app</a>
+							<a href="https://play.google.com/store/apps/details?id=com.synapy.app">Google Play</a>
+						</p>
+					</div>
+					<figure class="diagram">
+						<svg class="dg" viewBox="0 0 360 364" role="img" aria-labelledby="sy-title sy-desc">
+							<title id="sy-title">How Synpse remembers</title>
+							<desc id="sy-desc">
+								The web app, Android app and Telegram bot share one Express API. For each message, a
+								retrieval step ranks memories from MongoDB on six signals and builds the prompt for the
+								language model. A background job consolidates memories every four hours.
+							</desc>
+							<path class="e" d="M62 52 V90" marker-end="url(#ah)" />
+							<path class="e" d="M180 52 V90" marker-end="url(#ah)" />
+							<path class="e" d="M298 52 V90" marker-end="url(#ah)" />
+							<path class="e" d="M180 140 V180" marker-end="url(#ah)" />
+							<text class="l" x="188" y="166">each message</text>
+							<path class="e" d="M92 288 V250" marker-end="url(#ah)" />
+							<text class="l" x="100" y="274">reads</text>
+							<path class="e" d="M268 246 V288" marker-end="url(#ah)" />
+							<text class="l" x="276" y="274">prompt</text>
+
+							<g class="node">
+								<rect x="12" y="12" width="100" height="40" rx="5" />
+								<text class="t" x="24" y="36">Web app</text>
+							</g>
+							<g class="node">
+								<rect x="130" y="12" width="100" height="40" rx="5" />
+								<text class="t" x="142" y="36">Android</text>
+							</g>
+							<g class="node">
+								<rect x="248" y="12" width="100" height="40" rx="5" />
+								<text class="t" x="260" y="36">Telegram</text>
+							</g>
+							<g class="node">
+								<rect x="12" y="94" width="336" height="46" rx="5" />
+								<text class="t" x="24" y="114">Express API</text>
+								<text class="s" x="24" y="130">streams replies as server-sent events</text>
+							</g>
+							<g class="node">
+								<rect x="12" y="184" width="336" height="62" rx="5" />
+								<text class="t" x="24" y="204">Memory retrieval</text>
+								<text class="s" x="24" y="221">scores six signals: meaning, recency, importance,</text>
+								<text class="s" x="24" y="236">links to other memories, mood and context</text>
+							</g>
+							<g class="node">
+								<rect x="12" y="292" width="160" height="46" rx="5" />
+								<text class="t" x="24" y="312">MongoDB</text>
+								<text class="s" x="24" y="328">memories, journals</text>
+							</g>
+							<g class="node">
+								<rect x="188" y="292" width="160" height="46" rx="5" />
+								<text class="t" x="200" y="312">Language model</text>
+								<text class="s" x="200" y="328">Grok, Gemini or Ollama</text>
+							</g>
+							<text class="l" x="12" y="358">consolidation job every 4 hours</text>
+						</svg>
+					</figure>
+				</article>
+
+				<div class="more">
+					<h3 class="more__title">Also built in 2026</h3>
+					<ul class="more__list">
+						<li class="more__item">
+							<h4 class="more__name">ResidentOps</h4>
+							<p>Handles maintenance issues for a residents' association. When several residents report different faults, it uses a map of the building's equipment to find a shared cause, asks contractors for quotes, and goes to the committee only when money or a judgement call is involved. Spending limits are checked in code, and blocked actions are logged.</p>
+							<p class="more__meta">AWS Agents for Humans hackathon. Python, Strands Agents, Amazon Bedrock.</p>
+							<p class="more__links">
+								<a href="https://residentops.synpse.app">Live demo</a>
+								<a href="https://github.com/jagritvats/residentops-pb">Code</a>
+							</p>
+						</li>
+						<li class="more__item">
+							<h4 class="more__name">Parley</h4>
+							<p>Lets two AI agents from different vendors talk in a shared room. Their claims have to cite evidence, and the meeting minutes are put together from the event log.</p>
+							<p class="more__meta">TypeScript, Hono, MCP, React.</p>
+							<p class="more__links"><a href="https://parley.synpse.app">Live</a></p>
+						</li>
+						<li class="more__item">
+							<h4 class="more__name">SAMAY</h4>
+							<p>Helps people in India respond to online fraud. It lists the urgent steps, like calling the 1930 helpline and the bank, keeps the evidence in one case, and prepares a report to file on cybercrime.gov.in.</p>
+							<p class="more__meta">Build What Moves India hackathon. Next.js, Postgres.</p>
+							<p class="more__links"><a href="https://samay.synpse.app">Live</a></p>
+						</li>
+						<li class="more__item">
+							<h4 class="more__name">Presentic</h4>
+							<p>A command-line tool that makes narrated demo videos from a JSON plan. Playwright clicks through the real app, Remotion adds captions and zoom, and scene lengths are matched to the narration. It can also run as an MCP server. I've used it for my hackathon demo videos.</p>
+							<p class="more__meta">TypeScript, Playwright, Remotion. Private repository.</p>
+						</li>
 					</ul>
-					<div class="project-card__links">
-						<a target="_blank" href="https://web.synpse.app" class="project-card__link">
-							<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-							Hosted Version
-						</a>
-					</div>
+					<p class="earlier">
+						Older work includes an
+						<a href="https://github.com/jagritvats/Shopify-Email-Template-App">email template app for Shopify stores</a>
+						(2022),
+						<a href="https://github.com/jagritvats/PresentKon">PresentKon</a> for Hack the Mountains 3.0 (2022),
+						the <a href="https://prestoj.netlify.app/">Presto e-commerce site</a> (2022) and a
+						<a href="https://github.com/gladly-team/next-firebase-auth/pull/635">merged fix to next-firebase-auth</a>
+						(2023).
+					</p>
 				</div>
+			</section>
 
-				<div class="project-card">
-					<div class="project-card__header">
-						<h3>Shopify Email Template Application</h3>
-						<span class="project-card__year">2022</span>
-					</div>
-					<p class="project-card__subtitle">Email Template Management System</p>
-					<div class="project-card__tags">
-						<span class="tag">Next.js</span>
-						<span class="tag">MongoDB</span>
-						<span class="tag">Shopify API</span>
-					</div>
-					<div class="project-card__showcase">
-						<img src="images/sh1.png" alt="Shopify Email Template screenshot 1" />
-						<img src="images/sh2.png" alt="Shopify Email Template screenshot 2" />
-					</div>
-					<ul class="project-card__details">
-						<li>Built an application authenticating with Shopify stores to send transactional emails based on reusable templates.</li>
-						<li>Implemented template management and persistence using MongoDB.</li>
-					</ul>
-					<div class="project-card__links">
-						<a target="_blank" href="https://github.com/jagritvats/supassisttask" class="project-card__link">
-							<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-							GitHub
-						</a>
-					</div>
+			<section class="section" id="tools" aria-labelledby="tools-title">
+				<div class="section__head">
+					<h2 class="section__title" id="tools-title">Tools</h2>
 				</div>
-			</div>
-		</section>
+				<dl class="tools">
+					<dt>At work</dt>
+					<dd>Java, Spring Boot, Kafka, Redis, MongoDB, REST APIs, multithreading and concurrency, Docker, Azure Pipelines, OpenAPI/Swagger</dd>
+					<dt>Side projects</dt>
+					<dd>TypeScript, Node.js (Express, Hono), React, Next.js, PostgreSQL and Supabase (row-level security, pg_cron), Python (FastAPI), SQLite</dd>
+					<dt>AI</dt>
+					<dd>Gemini, Grok and Claude APIs, local models through Ollama, Google ADK, Strands Agents, LangGraph, LangChain, MCP, embeddings and retrieval</dd>
+					<dt>Infrastructure</dt>
+					<dd>Docker Compose, Traefik, Cloudflare, GitHub Actions, Oracle Cloud ARM VMs, Google Cloud Run</dd>
+				</dl>
+			</section>
 
-		<section id="skills" class="section">
-			<h2 class="section__title">Skills</h2>
-
-			<div class="skills__grid">
-				<div class="skill-category">
-					<h3 class="skill-category__title">Backend & Distributed Systems</h3>
-					<div class="skill-category__tags">
-						<span class="skill-tag">Java</span>
-						<span class="skill-tag">Spring Boot</span>
-						<span class="skill-tag">Microservices</span>
-						<span class="skill-tag">Kafka</span>
-						<span class="skill-tag">REST APIs</span>
-						<span class="skill-tag">Multithreading</span>
-						<span class="skill-tag">Concurrency</span>
-					</div>
+			<section class="section" id="education" aria-labelledby="education-title">
+				<div class="section__head">
+					<h2 class="section__title" id="education-title">Education</h2>
 				</div>
-
-				<div class="skill-category">
-					<h3 class="skill-category__title">Application Layer</h3>
-					<div class="skill-category__tags">
-						<span class="skill-tag">TypeScript</span>
-						<span class="skill-tag">Node.js (Express)</span>
-					</div>
+				<div class="education">
+					<p>
+						<strong>Chitkara University</strong><br />
+						Bachelor of Engineering, Computer Science<br />
+						2020 to 2024
+					</p>
+					<p>
+						<strong>Microsoft certifications</strong><br />
+						<a href="https://www.credly.com/badges/1702378c-cf55-40ec-aa00-b3e1c7cbd701/public_url">Azure Fundamentals (AZ-900)</a>
+						and
+						<a href="https://www.credly.com/badges/1535c2b5-1727-4564-994e-013d0cfe43a1/public_url">Azure Data Fundamentals (DP-900)</a>
+					</p>
 				</div>
+			</section>
 
-				<div class="skill-category">
-					<h3 class="skill-category__title">Databases & Storage</h3>
-					<div class="skill-category__tags">
-						<span class="skill-tag">MongoDB</span>
-						<span class="skill-tag">Redis</span>
-					</div>
+			<section class="section contact" id="contact" aria-labelledby="contact-title">
+				<div class="section__head">
+					<h2 class="section__title" id="contact-title">Contact</h2>
 				</div>
+				<p class="contact__note">Email is the quickest way to reach me.</p>
+				<a class="contact__email" href="mailto:jagritvats6@gmail.com">jagritvats6@gmail.com</a>
+				<ul class="contact__links">
+					<li><a href="tel:+918901523579">+91&nbsp;89015&nbsp;23579</a></li>
+					<li><a href="https://github.com/jagritvats" rel="me">GitHub</a></li>
+					<li><a href="https://www.linkedin.com/in/jagritvats/" rel="me">LinkedIn</a></li>
+				</ul>
+			</section>
+		</main>
 
-				<div class="skill-category">
-					<h3 class="skill-category__title">DevOps & Cloud</h3>
-					<div class="skill-category__tags">
-						<span class="skill-tag">Docker</span>
-						<span class="skill-tag">CI/CD</span>
-						<span class="skill-tag">Azure Pipelines</span>
-						<span class="skill-tag">Containerized Deployments</span>
-					</div>
-				</div>
-
-				<div class="skill-category">
-					<h3 class="skill-category__title">Frontend</h3>
-					<div class="skill-category__tags">
-						<span class="skill-tag">React</span>
-					</div>
-				</div>
-
-				<div class="skill-category">
-					<h3 class="skill-category__title">AI & Systems</h3>
-					<div class="skill-category__tags">
-						<span class="skill-tag">Ollama (Local LLMs)</span>
-						<span class="skill-tag">Context Pipelines</span>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section id="education" class="section">
-			<h2 class="section__title">Education</h2>
-			<div class="education-card">
-				<div class="education-card__header">
-					<div>
-						<h3>Chitkara University</h3>
-						<p>Bachelor's of Engineering &mdash; Computer Science Engineering</p>
-					</div>
-					<span class="education-card__date">2020 &ndash; July 2024</span>
-				</div>
-			</div>
-		</section>
-
-		<footer class="footer">
-			<div class="footer__content">
-				<p class="footer__name">Jagrit Vats</p>
-				<div class="footer__links">
-					<a target="_blank" href="https://github.com/jagritvats" class="footer__link">
-						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-						GitHub
-					</a>
-					<a target="_blank" href="https://www.linkedin.com/in/jagrit-v-1ab521111/" class="footer__link">
-						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-						LinkedIn
-					</a>
-					<a href="mailto:jagritvats6@gmail.com" class="footer__link">
-						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-						Email
-					</a>
-					<a href="tel:+918901523579" class="footer__link">
-						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-						+91-8901523579
-					</a>
-				</div>
-				<p class="footer__copy">&copy; 2025 Jagrit Vats</p>
-			</div>
+		<footer class="site-footer">
+			<p>&copy; <span data-year>2026</span> Jagrit Vats</p>
+			<p><a href="#top">Back to top</a></p>
 		</footer>
 
 		<script src="script.js"></script>
