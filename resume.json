@@ -1,0 +1,151 @@
+{
+	"$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+	"basics": {
+		"name": "Jagrit Vats",
+		"label": "Backend engineer",
+		"email": "jagritvats6@gmail.com",
+		"phone": "+91 89015 23579",
+		"url": "https://jagritvats.netlify.app/",
+		"summary": "Backend engineer at Bajaj Finserv Health, working on event-driven Spring Boot services with Kafka. Builds AI and full-stack side projects in TypeScript and Python.",
+		"location": {
+			"city": "Bangalore",
+			"region": "Karnataka",
+			"countryCode": "IN"
+		},
+		"profiles": [
+			{
+				"network": "GitHub",
+				"username": "jagritvats",
+				"url": "https://github.com/jagritvats"
+			},
+			{
+				"network": "LinkedIn",
+				"username": "jagritvats",
+				"url": "https://www.linkedin.com/in/jagritvats/"
+			}
+		]
+	},
+	"work": [
+		{
+			"name": "Bajaj Finserv Health",
+			"url": "https://www.bajajfinservhealth.in/",
+			"position": "Software Development Engineer",
+			"startDate": "2023-07",
+			"summary": "Joined as a Software Development Engineer Intern in July 2023, became an Associate Software Development Engineer in July 2024, and is now a Software Development Engineer.",
+			"highlights": [
+				"Design and build asynchronous features on Kafka, with retries, dead-letter queues, Redis and in-memory caching, and multi-step business workflows.",
+				"Build and maintain Spring Boot microservices, and work on production debugging and distributed tracing.",
+				"Cut service startup time roughly in half.",
+				"Automated parts of the release process with Azure Pipelines, OpenAPI/Swagger contract generation and custom scripts.",
+				"Take part in architecture reviews for new backend modules.",
+				"As an intern, built backend modules with async flows, scheduled jobs and business logic."
+			]
+		},
+		{
+			"name": "Angrybaaz Services",
+			"position": "Frontend Development Intern",
+			"startDate": "2022-11",
+			"endDate": "2023-01",
+			"highlights": [
+				"Built UI components for a Figma plugin using React, TypeScript and the Figma API."
+			]
+		}
+	],
+	"education": [
+		{
+			"institution": "Chitkara University",
+			"url": "https://www.chitkara.edu.in/",
+			"area": "Computer Science",
+			"studyType": "Bachelor of Engineering",
+			"startDate": "2020",
+			"endDate": "2024"
+		}
+	],
+	"certificates": [
+		{
+			"name": "Microsoft Certified: Azure Fundamentals (AZ-900)",
+			"issuer": "Microsoft",
+			"url": "https://www.credly.com/badges/1702378c-cf55-40ec-aa00-b3e1c7cbd701/public_url"
+		},
+		{
+			"name": "Microsoft Certified: Azure Data Fundamentals (DP-900)",
+			"issuer": "Microsoft",
+			"url": "https://www.credly.com/badges/1535c2b5-1727-4564-994e-013d0cfe43a1/public_url"
+		}
+	],
+	"skills": [
+		{
+			"name": "Backend (at work)",
+			"keywords": ["Java", "Spring Boot", "Kafka", "Redis", "MongoDB", "REST APIs", "Multithreading and concurrency", "Docker", "Azure Pipelines", "OpenAPI/Swagger"]
+		},
+		{
+			"name": "Side projects",
+			"keywords": ["TypeScript", "Node.js", "Express", "Hono", "React", "Next.js", "PostgreSQL", "Supabase", "Python", "FastAPI", "SQLite"]
+		},
+		{
+			"name": "AI",
+			"keywords": ["Gemini API", "Grok API", "Claude API", "Ollama", "Google ADK", "Strands Agents", "LangGraph", "LangChain", "MCP", "Embeddings and retrieval"]
+		},
+		{
+			"name": "Infrastructure",
+			"keywords": ["Docker Compose", "Traefik", "Cloudflare", "GitHub Actions", "Oracle Cloud", "Google Cloud Run"]
+		}
+	],
+	"projects": [
+		{
+			"name": "TeamTakes",
+			"description": "Opinionated polls and play-money prediction games for engineering teams. Live.",
+			"url": "https://teamtakes.app",
+			"highlights": [
+				"Made the app multi-tenant while it was in use, with each team on its own subdomain.",
+				"Row-level security in Postgres limits every query to the user's own teams, and a leak test checks that one team can't read or change another team's data.",
+				"Most of the game logic, including market pricing and the points ledger, runs in Postgres functions, with pg_cron handling scheduled rounds."
+			],
+			"keywords": ["TanStack Start", "React", "Supabase", "PostgreSQL", "Docker Compose", "Traefik", "Cloudflare"]
+		},
+		{
+			"name": "ScenePilot",
+			"description": "An AI assistant director that reschedules film shoots when plans change. Built for Google Cloud's Agentic Cinema hackathon.",
+			"url": "https://github.com/jagritvats/scenepilot-public",
+			"highlights": [
+				"Gemini agents built with Google ADK research disruptions using Parallel's web APIs and suggest new schedules.",
+				"A deterministic rule checker rejects schedules that break a permit window, a noise curfew or the available daylight, and links the source for each rejection.",
+				"More than 600 tests."
+			],
+			"keywords": ["Python", "FastAPI", "Google ADK", "Gemini", "Next.js", "Cloud Run"]
+		},
+		{
+			"name": "Synpse",
+			"description": "An AI companion with long-term memory, on the web, Android and Telegram. The Android app has over 500 installs on Google Play.",
+			"url": "https://web.synpse.app",
+			"highlights": [
+				"Memories are ranked on six signals, and a background job consolidates them every four hours.",
+				"The model provider can be switched between Grok, Gemini, OpenAI and local models through Ollama."
+			],
+			"keywords": ["Next.js", "Express", "TypeScript", "MongoDB", "LangChain", "Expo"]
+		},
+		{
+			"name": "ResidentOps",
+			"description": "An agent that handles maintenance issues for a residents' association. Built for AWS's Agents for Humans hackathon.",
+			"url": "https://residentops.synpse.app",
+			"keywords": ["Python", "Strands Agents", "Amazon Bedrock"]
+		},
+		{
+			"name": "Parley",
+			"description": "Lets two AI agents from different vendors talk in a shared room, with cited claims and minutes built from the event log.",
+			"url": "https://parley.synpse.app",
+			"keywords": ["TypeScript", "Hono", "MCP", "React"]
+		},
+		{
+			"name": "SAMAY",
+			"description": "Helps people in India respond to online fraud and prepare a report to file on cybercrime.gov.in. Built for the Build What Moves India hackathon.",
+			"url": "https://samay.synpse.app",
+			"keywords": ["Next.js", "PostgreSQL"]
+		}
+	],
+	"meta": {
+		"canonical": "https://jagritvats.netlify.app/resume.json",
+		"version": "v1.0.0",
+		"lastModified": "2026-09-25"
+	}
+}
