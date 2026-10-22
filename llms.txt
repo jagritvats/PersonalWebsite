@@ -1,6 +1,6 @@
 # Jagrit Vats
 
-> Backend engineer at Bajaj Finserv Health, based in Bangalore, India. Works on event-driven Spring Boot services with Kafka, and builds AI and full-stack side projects in TypeScript and Python.
+> Backend engineer at Bajaj Finserv Health, based in Bangalore, India. Leads a team building a new product from scratch on Spring Boot, works on the Kafka integration layer that connects internal services to Salesforce and other external systems, and builds AI and full-stack side projects in TypeScript and Python.
 
 This file summarises https://jagritvats.netlify.app/ for language models and other tools. A structured résumé is at https://jagritvats.netlify.app/resume.json in JSON Resume format.
 
@@ -14,12 +14,14 @@ This file summarises https://jagritvats.netlify.app/ for language models and oth
 
 ## Experience
 
-- Bajaj Finserv Health, July 2023 to now. Software Development Engineer Intern from July 2023 to June 2024, Associate Software Development Engineer from July 2024, and now Software Development Engineer.
-  - Designs and builds asynchronous features on Kafka, with retries, dead-letter queues, Redis and in-memory caching, and multi-step business workflows.
-  - Builds and maintains Spring Boot microservices, and works on production debugging and distributed tracing.
-  - Cut service startup time roughly in half.
-  - Automated parts of the release process with Azure Pipelines, OpenAPI/Swagger contract generation and custom scripts.
-  - Takes part in architecture reviews for new backend modules.
+- Bajaj Finserv Health, July 2023 to now. Software Development Engineer since October 2025, Associate Software Development Engineer from July 2024 to October 2025, and Software Development Engineer Intern from July 2023 to June 2024.
+  - Leads a team setting up a new product from scratch on Spring Boot: VMs provisioned with Ansible, application architecture and domain entities, and deployment through Azure Pipelines to a multi-node Docker Swarm cluster.
+  - Works on the integration layer that connects internal services to Salesforce and other external systems through Kafka events, with retry topics and dead-letter queues so failed events are retried or parked for replay.
+  - Builds multi-step asynchronous workflows on Kafka, with Redis and in-memory caching.
+  - Cut latency on endpoints that call several downstream APIs by running those calls in parallel on Java virtual threads.
+  - Improved tracing across services with Spring Boot advice and custom interceptors that propagate trace IDs, and that also handle payload encryption and a standard response format.
+  - Cut service startup time roughly in half through application-initialization changes and Kubernetes liveness and readiness probe tuning. Other services adopted the same approach.
+  - Automated release steps with Azure Pipelines and OpenAPI/Swagger contract generation, and contributes to design and architecture reviews for new core modules.
 - Angrybaaz Services, frontend development intern, November 2022 to January 2023. Built UI components for a Figma plugin using React, TypeScript and the Figma API.
 
 ## Projects
@@ -34,12 +36,14 @@ This file summarises https://jagritvats.netlify.app/ for language models and oth
 
 ## Skills
 
-- At work: Java, Spring Boot, Kafka, Redis, MongoDB, REST APIs, multithreading and concurrency, Docker, Azure Pipelines, OpenAPI/Swagger
+- At work: Java, Spring Boot, JPA/Hibernate, microservices, REST APIs, Kafka (retries, dead-letter queues), concurrency and virtual threads, Redis, MongoDB, JUnit, Mockito, OpenAPI/Swagger
+- Deployment at work: Kubernetes (AKS), ArgoCD, Docker, Docker Swarm, Ansible, Azure Pipelines
+- Observability: distributed tracing, ELK stack, ClickStack (HyperDX)
 - Side projects: TypeScript, Node.js (Express, Hono), React, Next.js, PostgreSQL and Supabase (row-level security, pg_cron), Python (FastAPI), SQLite
 - AI: Gemini, Grok and Claude APIs, local models through Ollama, Google ADK, Strands Agents, LangGraph, LangChain, MCP, embeddings and retrieval
-- Infrastructure: Docker Compose, Traefik, Cloudflare, GitHub Actions, Oracle Cloud ARM VMs, Google Cloud Run
+- Self-hosting: Docker Compose, Traefik, Cloudflare, GitHub Actions, Oracle Cloud ARM VMs, Google Cloud Run
 
 ## Education
 
-- Chitkara University, Bachelor of Engineering in Computer Science, 2020 to 2024
-- Microsoft certifications: [Azure Fundamentals (AZ-900)](https://www.credly.com/badges/1702378c-cf55-40ec-aa00-b3e1c7cbd701/public_url) and [Azure Data Fundamentals (DP-900)](https://www.credly.com/badges/1535c2b5-1727-4564-994e-013d0cfe43a1/public_url)
+- Chitkara University, Bachelor of Engineering in Computer Science, 2020 to 2024, CGPA 9.88 out of 10
+- Microsoft certifications: [Azure Fundamentals (AZ-900)](https://www.credly.com/badges/1702378c-cf55-40ec-aa00-b3e1c7cbd701/public_url), [Azure Data Fundamentals (DP-900)](https://www.credly.com/badges/1535c2b5-1727-4564-994e-013d0cfe43a1/public_url) and Azure AI Fundamentals (AI-900)

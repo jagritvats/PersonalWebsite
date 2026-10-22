@@ -94,7 +94,7 @@
 						"familyName": "Vats",
 						"url": "https://jagritvats.netlify.app/",
 						"jobTitle": "Software Development Engineer",
-						"description": "Backend engineer at Bajaj Finserv Health, based in Bangalore. Works on event-driven Spring Boot services with Kafka and builds AI and full-stack side projects.",
+						"description": "Backend engineer at Bajaj Finserv Health, based in Bangalore. Leads a team building a new product from scratch on Spring Boot, works on the Kafka integration layer that connects internal services to Salesforce and other external systems, and builds AI and full-stack side projects.",
 						"email": "mailto:jagritvats6@gmail.com",
 						"telephone": "+91-8901523579",
 						"address": {
@@ -120,7 +120,7 @@
 								"@type": "City",
 								"name": "Bangalore"
 							},
-							"skills": "Java, Spring Boot, Apache Kafka, microservices, Redis, MongoDB, PostgreSQL, TypeScript, Node.js, Python, Docker, CI/CD"
+							"skills": "Java, Spring Boot, JPA/Hibernate, Apache Kafka, microservices, virtual threads, Redis, MongoDB, PostgreSQL, Kubernetes (AKS), ArgoCD, Docker, Docker Swarm, Ansible, ELK stack, TypeScript, Node.js, Python, CI/CD"
 						},
 						"knowsAbout": [
 							"Java",
@@ -139,6 +139,11 @@
 							"Python",
 							"FastAPI",
 							"Docker",
+							"Kubernetes",
+							"ArgoCD",
+							"Ansible",
+							"Salesforce integration",
+							"Distributed tracing",
 							"CI/CD",
 							"Azure Pipelines",
 							"AI agents",
@@ -167,6 +172,11 @@
 								"credentialCategory": "certification",
 								"name": "Microsoft Certified: Azure Data Fundamentals (DP-900)",
 								"url": "https://www.credly.com/badges/1535c2b5-1727-4564-994e-013d0cfe43a1/public_url"
+							},
+							{
+								"@type": "EducationalOccupationalCredential",
+								"credentialCategory": "certification",
+								"name": "Microsoft Certified: Azure AI Fundamentals (AI-900)"
 							}
 						],
 						"sameAs": [
@@ -294,8 +304,9 @@
 					<h1 class="hero__name" id="name"><span>Jagrit</span> <span>Vats</span></h1>
 					<p class="hero__lead">Backend engineer at Bajaj Finserv Health, based in Bangalore.</p>
 					<p class="hero__summary">
-						I joined Bajaj Finserv Health as an intern in 2023 and now work on event-driven Spring Boot
-						services that use Kafka. Outside work I build and host my own apps, including TeamTakes, a
+						I lead a team building a new product from scratch on Spring Boot, and work on the integration
+						layer that connects our services to Salesforce and other external systems over Kafka. Outside
+						work I build and host my own apps, including TeamTakes, a
 						polling app for engineering teams, and Synpse, an AI companion with over 500 installs on
 						Google Play.
 					</p>
@@ -385,20 +396,21 @@
 						</li>
 						<li>
 							<span class="ladder__role">Associate Software Development Engineer</span>
-							<span class="ladder__when">From Jul 2024</span>
+							<span class="ladder__when">Jul 2024 to Oct 2025</span>
 						</li>
 						<li aria-current="step">
 							<span class="ladder__role">Software Development Engineer</span>
-							<span class="ladder__when">Current role</span>
+							<span class="ladder__when">Oct 2025 to now</span>
 						</li>
 					</ol>
 					<ul class="points">
-						<li>Design and build asynchronous features on Kafka, with retries, dead-letter queues, Redis and in-memory caching, and multi-step business workflows.</li>
-						<li>Build and maintain Spring Boot microservices, and work on production debugging and distributed tracing.</li>
-						<li>Cut service startup time roughly in half.</li>
-						<li>Automated parts of the release process with Azure Pipelines, OpenAPI/Swagger contract generation and custom scripts.</li>
-						<li>Take part in architecture reviews for new backend modules.</li>
-						<li>As an intern, I built backend modules with async flows, scheduled jobs and business logic.</li>
+						<li>Lead a team setting up a new product from scratch on Spring Boot. That covers provisioning VMs with Ansible, the application architecture and domain entities, and deployment through Azure Pipelines to a multi-node Docker Swarm cluster.</li>
+						<li>Work on the integration layer that connects our services to Salesforce and other external systems through Kafka events. Retry topics and dead-letter queues mean a failed event is either tried again or parked for replay.</li>
+						<li>Build multi-step asynchronous workflows on Kafka, with Redis and in-memory caching.</li>
+						<li>Cut latency on endpoints that call several downstream APIs by running those calls in parallel on Java virtual threads.</li>
+						<li>Improved tracing across services with Spring Boot advice and custom interceptors that pass trace IDs along. The same interceptors handle payload encryption and a standard response format.</li>
+						<li>Cut service startup time roughly in half by changing how the application initializes and tuning Kubernetes liveness and readiness probes. Other services adopted the same approach.</li>
+						<li>Automated release steps with Azure Pipelines and OpenAPI/Swagger contract generation, and take part in design and architecture reviews for new core modules.</li>
 					</ul>
 				</article>
 
@@ -679,12 +691,16 @@
 				</div>
 				<dl class="tools">
 					<dt>At work</dt>
-					<dd>Java, Spring Boot, Kafka, Redis, MongoDB, REST APIs, multithreading and concurrency, Docker, Azure Pipelines, OpenAPI/Swagger</dd>
+					<dd>Java, Spring Boot, JPA/Hibernate, microservices, REST APIs, Kafka (retries, dead-letter queues), concurrency and virtual threads, Redis, MongoDB, JUnit, Mockito, OpenAPI/Swagger</dd>
+					<dt>Deployment</dt>
+					<dd>Kubernetes (AKS), ArgoCD, Docker, Docker Swarm, Ansible, Azure Pipelines</dd>
+					<dt>Observability</dt>
+					<dd>Distributed tracing, ELK stack, ClickStack (HyperDX)</dd>
 					<dt>Side projects</dt>
 					<dd>TypeScript, Node.js (Express, Hono), React, Next.js, PostgreSQL and Supabase (row-level security, pg_cron), Python (FastAPI), SQLite</dd>
 					<dt>AI</dt>
 					<dd>Gemini, Grok and Claude APIs, local models through Ollama, Google ADK, Strands Agents, LangGraph, LangChain, MCP, embeddings and retrieval</dd>
-					<dt>Infrastructure</dt>
+					<dt>Self-hosting</dt>
 					<dd>Docker Compose, Traefik, Cloudflare, GitHub Actions, Oracle Cloud ARM VMs, Google Cloud Run</dd>
 				</dl>
 			</section>
@@ -697,13 +713,13 @@
 					<p>
 						<strong>Chitkara University</strong><br />
 						Bachelor of Engineering, Computer Science<br />
-						2020 to 2024
+						2020 to 2024, CGPA 9.88 out of 10
 					</p>
 					<p>
 						<strong>Microsoft certifications</strong><br />
-						<a href="https://www.credly.com/badges/1702378c-cf55-40ec-aa00-b3e1c7cbd701/public_url">Azure Fundamentals (AZ-900)</a>
-						and
+						<a href="https://www.credly.com/badges/1702378c-cf55-40ec-aa00-b3e1c7cbd701/public_url">Azure Fundamentals (AZ-900)</a>,
 						<a href="https://www.credly.com/badges/1535c2b5-1727-4564-994e-013d0cfe43a1/public_url">Azure Data Fundamentals (DP-900)</a>
+						and Azure AI Fundamentals (AI-900)
 					</p>
 				</div>
 			</section>
