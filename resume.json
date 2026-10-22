@@ -6,7 +6,7 @@
 		"email": "jagritvats6@gmail.com",
 		"phone": "+91 89015 23579",
 		"url": "https://jagritvats.netlify.app/",
-		"summary": "Backend engineer at Bajaj Finserv Health, working on event-driven Spring Boot services with Kafka. Builds AI and full-stack side projects in TypeScript and Python.",
+		"summary": "Backend engineer at Bajaj Finserv Health, building Java and Spring Boot services. Leads a team setting up a new product from scratch, and works on the integration layer that connects internal services to Salesforce and other external systems over Kafka. Builds AI and full-stack side projects in TypeScript and Python.",
 		"location": {
 			"city": "Bangalore",
 			"region": "Karnataka",
@@ -31,14 +31,15 @@
 			"url": "https://www.bajajfinservhealth.in/",
 			"position": "Software Development Engineer",
 			"startDate": "2023-07",
-			"summary": "Joined as a Software Development Engineer Intern in July 2023, became an Associate Software Development Engineer in July 2024, and is now a Software Development Engineer.",
+			"summary": "Software Development Engineer since October 2025. Associate Software Development Engineer from July 2024 to October 2025, and Software Development Engineer Intern from July 2023 to June 2024.",
 			"highlights": [
-				"Design and build asynchronous features on Kafka, with retries, dead-letter queues, Redis and in-memory caching, and multi-step business workflows.",
-				"Build and maintain Spring Boot microservices, and work on production debugging and distributed tracing.",
-				"Cut service startup time roughly in half.",
-				"Automated parts of the release process with Azure Pipelines, OpenAPI/Swagger contract generation and custom scripts.",
-				"Take part in architecture reviews for new backend modules.",
-				"As an intern, built backend modules with async flows, scheduled jobs and business logic."
+				"Lead a team setting up a new product from scratch on Spring Boot: VMs provisioned with Ansible, application architecture and domain entities, and deployment through Azure Pipelines to a multi-node Docker Swarm cluster.",
+				"Work on the integration layer that connects our services to Salesforce and other external systems through Kafka events, with retry topics and dead-letter queues so failed events are retried or parked for replay.",
+				"Build multi-step asynchronous workflows on Kafka, with Redis and in-memory caching.",
+				"Cut latency on endpoints that call several downstream APIs by running those calls in parallel on Java virtual threads.",
+				"Improved tracing across services with Spring Boot advice and custom interceptors that propagate trace IDs, and that also handle payload encryption and a standard response format.",
+				"Cut service startup time roughly in half through application-initialization changes and Kubernetes liveness/readiness probe tuning; other services adopted the same approach.",
+				"Automated release steps with Azure Pipelines and OpenAPI/Swagger contract generation, and contribute to design and architecture reviews for new core modules."
 			]
 		},
 		{
@@ -58,7 +59,8 @@
 			"area": "Computer Science",
 			"studyType": "Bachelor of Engineering",
 			"startDate": "2020",
-			"endDate": "2024"
+			"endDate": "2024",
+			"score": "9.88/10 CGPA"
 		}
 	],
 	"certificates": [
@@ -71,12 +73,24 @@
 			"name": "Microsoft Certified: Azure Data Fundamentals (DP-900)",
 			"issuer": "Microsoft",
 			"url": "https://www.credly.com/badges/1535c2b5-1727-4564-994e-013d0cfe43a1/public_url"
+		},
+		{
+			"name": "Microsoft Certified: Azure AI Fundamentals (AI-900)",
+			"issuer": "Microsoft"
 		}
 	],
 	"skills": [
 		{
 			"name": "Backend (at work)",
-			"keywords": ["Java", "Spring Boot", "Kafka", "Redis", "MongoDB", "REST APIs", "Multithreading and concurrency", "Docker", "Azure Pipelines", "OpenAPI/Swagger"]
+			"keywords": ["Java", "Spring Boot", "JPA/Hibernate", "Microservices", "REST APIs", "Kafka (retries, dead-letter queues)", "Concurrency and virtual threads", "Redis", "MongoDB", "JUnit", "Mockito", "OpenAPI/Swagger"]
+		},
+		{
+			"name": "Deployment (at work)",
+			"keywords": ["Kubernetes (AKS)", "ArgoCD", "Docker", "Docker Swarm", "Ansible", "Azure Pipelines"]
+		},
+		{
+			"name": "Observability",
+			"keywords": ["Distributed tracing", "ELK stack", "ClickStack (HyperDX)"]
 		},
 		{
 			"name": "Side projects",
@@ -87,7 +101,7 @@
 			"keywords": ["Gemini API", "Grok API", "Claude API", "Ollama", "Google ADK", "Strands Agents", "LangGraph", "LangChain", "MCP", "Embeddings and retrieval"]
 		},
 		{
-			"name": "Infrastructure",
+			"name": "Self-hosting",
 			"keywords": ["Docker Compose", "Traefik", "Cloudflare", "GitHub Actions", "Oracle Cloud", "Google Cloud Run"]
 		}
 	],
@@ -146,6 +160,6 @@
 	"meta": {
 		"canonical": "https://jagritvats.netlify.app/resume.json",
 		"version": "v1.0.0",
-		"lastModified": "2026-09-25"
+		"lastModified": "2026-10-22"
 	}
 }
