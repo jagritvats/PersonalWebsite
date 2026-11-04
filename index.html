@@ -83,7 +83,7 @@
 						"mainEntity": {
 							"@id": "https://jagritvats.com/#person"
 						},
-						"dateModified": "2026-09-25",
+						"dateModified": "2026-11-04",
 						"inLanguage": "en"
 					},
 					{
@@ -235,9 +235,10 @@
 					},
 					{
 						"@type": "CreativeWork",
-						"name": "Parley",
-						"url": "https://parley.synpse.app",
-						"description": "Lets two AI agents from different vendors talk in a shared room, with cited claims and minutes built from the event log.",
+						"@id": "https://jagritvats.com/#crossroom",
+						"name": "Crossroom",
+						"url": "https://crossroom.dev",
+						"description": "Puts up to six AI agents from different vendors in one room, each working from its own files; excerpts carry their source paths and the recap is rendered from the event log.",
 						"creator": {
 							"@id": "https://jagritvats.com/#person"
 						}
@@ -492,6 +493,78 @@
 					</figure>
 				</article>
 
+				<article class="project" id="crossroom">
+					<div class="project__text">
+						<h3 class="project__name">Crossroom <span class="project__status">Live since 2026</span></h3>
+						<p class="project__summary">Puts up to six AI agents in one room, each working from its own files, and keeps the recap.</p>
+						<p>
+							The agents can come from different vendors and run on different machines, under their
+							owners' own sign-ins. You paste a room link into Claude Code or Codex, and any agent that
+							can run curl or speak MCP can join. A room can share knowledge, split a change
+							across repositories, hold a meeting or settle a question. When it ends, Crossroom writes the
+							outcomes, decisions, actions and open questions from the room's event log.
+						</p>
+						<ul class="points">
+							<li>Agents send each other excerpts of files and logs, and every excerpt carries its source path, so an agent can only cite what it can read itself.</li>
+							<li>Each room is encrypted at rest under its own key, wrapped by the owner and seat tokens. The server keeps only a hash of the owner token, and rooms can be end-to-end encrypted so the server can't read them at all.</li>
+							<li>Crossroom Code runs Claude Code, Codex, OpenCode and Grok as chats on your own computer and lets a browser on another device carry on with them through an encrypted relay.</li>
+						</ul>
+						<p class="project__stack">TypeScript, Hono, MCP SDK, SQLite (node:sqlite), Vite + React, TypeScript and Python SDKs, VS Code extension, Docker, Traefik, GitHub Actions</p>
+						<p class="project__links">
+							<a href="https://crossroom.dev">crossroom.dev</a>
+							<a href="https://app.crossroom.dev/example">A published run</a>
+						</p>
+					</div>
+					<figure class="diagram">
+						<svg class="dg" viewBox="0 0 360 290" role="img" aria-labelledby="cr-title cr-desc">
+							<title id="cr-title">How a Crossroom room works</title>
+							<desc id="cr-desc">
+								Agents such as Claude Code, Codex or any MCP client join a room through seat links. In the
+								room they exchange excerpts that carry their source paths. Every event is stored in SQLite
+								under a per-room key, and when the room ends the minutes are rendered from the event log.
+							</desc>
+							<path class="e" d="M62 52 V90" marker-end="url(#ah)" />
+							<path class="e" d="M180 52 V90" marker-end="url(#ah)" />
+							<path class="e" d="M298 52 V90" marker-end="url(#ah)" />
+							<text class="l" x="188" y="76">seat links</text>
+							<path class="e" d="M92 156 V196" marker-end="url(#ah)" />
+							<text class="l" x="100" y="180">every event</text>
+							<path class="e" d="M268 156 V196" marker-end="url(#ah)" />
+							<text class="l" x="276" y="180">on close</text>
+
+							<g class="node">
+								<rect x="12" y="12" width="100" height="40" rx="5" />
+								<text class="t" x="24" y="36">Claude Code</text>
+							</g>
+							<g class="node">
+								<rect x="130" y="12" width="100" height="40" rx="5" />
+								<text class="t" x="142" y="36">Codex</text>
+							</g>
+							<g class="node">
+								<rect x="248" y="12" width="100" height="40" rx="5" />
+								<text class="t" x="260" y="36">Any agent</text>
+							</g>
+							<g class="node">
+								<rect x="12" y="94" width="336" height="62" rx="5" />
+								<text class="t" x="24" y="114">Room (Hono + MCP server)</text>
+								<text class="s" x="24" y="131">agents trade excerpts of files and logs,</text>
+								<text class="s" x="24" y="146">each labelled with its source path</text>
+							</g>
+							<g class="node">
+								<rect x="12" y="200" width="160" height="46" rx="5" />
+								<text class="t" x="24" y="220">SQLite event log</text>
+								<text class="s" x="24" y="236">per-room key at rest</text>
+							</g>
+							<g class="node">
+								<rect x="188" y="200" width="160" height="46" rx="5" />
+								<text class="t" x="200" y="220">Minutes</text>
+								<text class="s" x="200" y="236">from the log, signed</text>
+							</g>
+							<text class="l" x="12" y="276">the owner watches and can interject from a browser</text>
+						</svg>
+					</figure>
+				</article>
+
 				<article class="project" id="scenepilot">
 					<div class="project__text">
 						<h3 class="project__name">ScenePilot <span class="project__status">Hackathon project, 2026</span></h3>
@@ -654,12 +727,6 @@
 								<a href="https://residentops.fiddletech.xyz">residentops.fiddletech.xyz</a>
 								<a href="https://github.com/jagritvats/residentops-pb">Code on GitHub</a>
 							</p>
-						</li>
-						<li class="more__item">
-							<h4 class="more__name">Parley</h4>
-							<p>Lets two AI agents from different vendors talk in a shared room. Their claims have to cite evidence, and the meeting minutes are put together from the event log.</p>
-							<p class="more__meta">TypeScript, Hono, MCP, React.</p>
-							<p class="more__links"><a href="https://parley.synpse.app">parley.synpse.app</a></p>
 						</li>
 						<li class="more__item">
 							<h4 class="more__name">SAMAY</h4>

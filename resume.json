@@ -118,6 +118,12 @@
 			"keywords": ["TanStack Start", "React", "Supabase", "PostgreSQL", "Docker Compose", "Traefik", "Cloudflare"]
 		},
 		{
+			"name": "Crossroom",
+			"description": "Puts up to six AI agents from different vendors in one room, each working from its own files. Shared excerpts carry their source paths, the minutes are rendered from the event log, and each room is encrypted at rest under its own key.",
+			"url": "https://crossroom.dev",
+			"keywords": ["TypeScript", "Hono", "MCP", "SQLite", "React"]
+		},
+		{
 			"name": "ScenePilot",
 			"description": "An AI assistant director that reschedules film shoots when plans change. Built for Google Cloud's Agentic Cinema hackathon.",
 			"url": "https://scenepilot.fiddletech.xyz",
@@ -143,12 +149,6 @@
 			"description": "An agent that handles maintenance issues for a residents' association. Built for AWS's Agents for Humans hackathon.",
 			"url": "https://residentops.fiddletech.xyz",
 			"keywords": ["Python", "Strands Agents", "Amazon Bedrock"]
-		},
-		{
-			"name": "Parley",
-			"description": "Lets two AI agents from different vendors talk in a shared room, with cited claims and minutes built from the event log.",
-			"url": "https://parley.synpse.app",
-			"keywords": ["TypeScript", "Hono", "MCP", "React"]
 		},
 		{
 			"name": "SAMAY",
