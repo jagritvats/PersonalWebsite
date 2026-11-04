@@ -120,7 +120,7 @@
 		{
 			"name": "ScenePilot",
 			"description": "An AI assistant director that reschedules film shoots when plans change. Built for Google Cloud's Agentic Cinema hackathon.",
-			"url": "https://scenepilot.synpse.app",
+			"url": "https://scenepilot.fiddletech.xyz",
 			"highlights": [
 				"Gemini agents built with Google ADK research disruptions using Parallel's web APIs and suggest new schedules.",
 				"A deterministic rule checker rejects schedules that break a permit window, a noise curfew or the available daylight, and links the source for each rejection.",
@@ -141,7 +141,7 @@
 		{
 			"name": "ResidentOps",
 			"description": "An agent that handles maintenance issues for a residents' association. Built for AWS's Agents for Humans hackathon.",
-			"url": "https://residentops.synpse.app",
+			"url": "https://residentops.fiddletech.xyz",
 			"keywords": ["Python", "Strands Agents", "Amazon Bedrock"]
 		},
 		{
