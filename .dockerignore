@@ -1,0 +1,17 @@
+# Whitelist: only the published site goes into the image.
+*
+!index.html
+!style.css
+!main.css
+!script.js
+!favicon.ico
+!favicon.svg
+!apple-touch-icon.png
+!robots.txt
+!sitemap.xml
+!llms.txt
+!resume.json
+!fonts/
+!images/
+!imagesv2/
+!deploy/nginx.conf

@@ -1,11 +1,13 @@
-# Jagrit Vats - [My Personal Website](https://jagritvats.netlify.app/)
+# Jagrit Vats - [My Personal Website](https://jagritvats.com/)
 
 My personal website: work, projects and contact details.
 
 It's a single static page with no build step: `index.html`, `style.css` and `script.js`.
 To preview it, run `python -m http.server` in this folder and open http://localhost:8000
 (opening the file directly works too, but the browser blocks the font preloads). Pushing to `main`
-deploys it to Netlify and to [GitHub Pages](https://jagritvats.github.io/PersonalWebsite/).
+builds an nginx image and deploys it to the VM at https://jagritvats.com/ — see
+[deploy/README.md](deploy/README.md). To run that image locally:
+`docker build -f deploy/Dockerfile -t site . && docker run --rm -p 8080:80 site`.
 
 - The project diagrams are inline SVG in `index.html`, styled from the colour tokens at the top of `style.css`.
 - `images/og.png` is the link-preview image (1200×630).
