@@ -1,0 +1,37 @@
+# jagritvats.com — static site behind the shared Traefik edge (Synpse repo).
+# Run through deploy/web.sh so the env file and health check are used.
+
+services:
+  site:
+    image: ${SITE_IMAGE:-ghcr.io/jagritvats/personalwebsite:main}
+    container_name: jagritvats-site
+    restart: unless-stopped
+    networks:
+      - edge
+    # No host ports: public traffic arrives only through Traefik, which
+    # terminates TLS with the jagritvats.com Cloudflare Origin Certificate.
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=${TRAEFIK_NETWORK:-synapse-edge}"
+      - "traefik.http.services.jagritvats.loadbalancer.server.port=80"
+
+      # Apex: serves the site.
+      - "traefik.http.routers.jagritvats.rule=${SITE_HOST_RULE:-Host(`jagritvats.com`)}"
+      - "traefik.http.routers.jagritvats.entrypoints=websecure"
+      - "traefik.http.routers.jagritvats.tls=true"
+      - "traefik.http.routers.jagritvats.service=jagritvats"
+
+      # www: permanent redirect to the apex so there is one canonical host.
+      - "traefik.http.routers.jagritvats-www.rule=${SITE_WWW_HOST_RULE:-Host(`www.jagritvats.com`)}"
+      - "traefik.http.routers.jagritvats-www.entrypoints=websecure"
+      - "traefik.http.routers.jagritvats-www.tls=true"
+      - "traefik.http.routers.jagritvats-www.service=jagritvats"
+      - "traefik.http.routers.jagritvats-www.middlewares=jagritvats-www-redirect"
+      - "traefik.http.middlewares.jagritvats-www-redirect.redirectregex.regex=^https?://www\\.jagritvats\\.com/(.*)"
+      - "traefik.http.middlewares.jagritvats-www-redirect.redirectregex.replacement=https://jagritvats.com/$${1}"
+      - "traefik.http.middlewares.jagritvats-www-redirect.redirectregex.permanent=true"
+
+networks:
+  edge:
+    external: true
+    name: ${TRAEFIK_NETWORK:-synapse-edge}

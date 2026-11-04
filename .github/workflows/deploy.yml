@@ -1,0 +1,138 @@
+name: Deploy site
+
+# The one deploy pipeline for jagritvats.com: build an arm64 nginx image,
+# push it to GHCR, then SSH to the Oracle VM and restart the container behind
+# the shared Traefik edge. Set repo variable DEPLOY_ENABLED to anything other
+# than 'true' to pause deploys without editing this file.
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "README.md"
+      - "deploy/README.md"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-site-main
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  REGISTRY: ghcr.io
+  DEPLOY_PATH: ${{ vars.DEPLOY_PATH || '/opt/jagritvats' }}
+  DEPLOY_PORT: ${{ secrets.DEPLOY_PORT || '22' }}
+  SITE_URL: https://jagritvats.com
+
+jobs:
+  build:
+    name: Build and publish
+    # The VM is arm64; build natively instead of under QEMU.
+    runs-on: ubuntu-24.04-arm
+    if: ${{ vars.DEPLOY_ENABLED == 'true' }}
+    outputs:
+      image_ref: ${{ steps.image.outputs.image_ref }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Resolve image name
+        id: image
+        shell: bash
+        run: |
+          image_repo="$(echo "${REGISTRY}/${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')"
+          echo "image_repo=${image_repo}" >> "$GITHUB_OUTPUT"
+          echo "image_ref=${image_repo}:${GITHUB_SHA}" >> "$GITHUB_OUTPUT"
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: deploy/Dockerfile
+          platforms: linux/arm64
+          push: true
+          tags: |
+            ${{ steps.image.outputs.image_ref }}
+            ${{ steps.image.outputs.image_repo }}:main
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  deploy:
+    name: Deploy to VM
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: production
+      url: ${{ env.SITE_URL }}
+    steps:
+      - name: Checkout deploy assets
+        uses: actions/checkout@v4
+
+      - name: Configure SSH
+        shell: bash
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "${{ secrets.DEPLOY_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+
+      - name: Copy deploy folder
+        shell: bash
+        run: |
+          ssh -i ~/.ssh/deploy_key -p "${DEPLOY_PORT}" \
+            "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}" \
+            "mkdir -p '${DEPLOY_PATH}'"
+          rsync -az \
+            -e "ssh -i ~/.ssh/deploy_key -p ${DEPLOY_PORT}" \
+            --exclude '.env.compose' \
+            deploy/ \
+            "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${DEPLOY_PATH}/deploy/"
+
+      - name: Pull and restart container
+        shell: bash
+        env:
+          IMAGE_REF: ${{ needs.build.outputs.image_ref }}
+          # The run's GITHUB_TOKEN can read this repo's own GHCR package.
+          GHCR_USERNAME: ${{ github.actor }}
+          GHCR_TOKEN_READ: ${{ secrets.GHCR_TOKEN_READ || secrets.GITHUB_TOKEN }}
+        run: |
+          {
+            printf 'export DEPLOY_PATH=%q\n' "$DEPLOY_PATH"
+            printf 'export IMAGE_REF=%q\n' "$IMAGE_REF"
+            printf 'export GHCR_USERNAME=%q\n' "$GHCR_USERNAME"
+            printf 'export GHCR_TOKEN_READ=%q\n' "$GHCR_TOKEN_READ"
+            cat <<'REMOTE'
+          set -euo pipefail
+          cd "$DEPLOY_PATH"
+          printf '%s' "$GHCR_TOKEN_READ" | docker login ghcr.io -u "$GHCR_USERNAME" --password-stdin
+          SITE_IMAGE="$IMAGE_REF" bash deploy/web.sh deploy
+          REMOTE
+          } | ssh -i ~/.ssh/deploy_key -p "${DEPLOY_PORT}" \
+            "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}" \
+            "bash -s"
+
+      - name: Smoke test public URL
+        shell: bash
+        run: |
+          for i in $(seq 1 10); do
+            code="$(curl -s -o /dev/null -w '%{http_code}' "${SITE_URL}/")" || code=000
+            if [[ "$code" == "200" ]]; then
+              echo "${SITE_URL} returned 200"
+              exit 0
+            fi
+            sleep 3
+          done
+          echo "::warning title=Smoke test::${SITE_URL} returned ${code} (check Cloudflare DNS / Traefik cert)"

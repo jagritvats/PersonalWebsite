@@ -2,7 +2,7 @@
 
 > Backend engineer at Bajaj Finserv Health, based in Bangalore, India. Leads a team building a new product from scratch on Spring Boot, works on the Kafka integration layer that connects internal services to Salesforce and other external systems, and builds AI and full-stack side projects in TypeScript and Python.
 
-This file summarises https://jagritvats.netlify.app/ for language models and other tools. A structured résumé is at https://jagritvats.netlify.app/resume.json in JSON Resume format.
+This file summarises https://jagritvats.com/ for language models and other tools. A structured résumé is at https://jagritvats.com/resume.json in JSON Resume format.
 
 ## Contact
 
@@ -10,7 +10,7 @@ This file summarises https://jagritvats.netlify.app/ for language models and oth
 - Phone: +91 89015 23579
 - [GitHub](https://github.com/jagritvats)
 - [LinkedIn](https://www.linkedin.com/in/jagritvats/)
-- [Website](https://jagritvats.netlify.app/)
+- [Website](https://jagritvats.com/)
 
 ## Experience
 

@@ -5,7 +5,7 @@
 		"label": "Backend engineer",
 		"email": "jagritvats6@gmail.com",
 		"phone": "+91 89015 23579",
-		"url": "https://jagritvats.netlify.app/",
+		"url": "https://jagritvats.com/",
 		"summary": "Backend engineer at Bajaj Finserv Health, building Java and Spring Boot services. Leads a team setting up a new product from scratch, and works on the integration layer that connects internal services to Salesforce and other external systems over Kafka. Builds AI and full-stack side projects in TypeScript and Python.",
 		"location": {
 			"city": "Bangalore",
@@ -158,7 +158,7 @@
 		}
 	],
 	"meta": {
-		"canonical": "https://jagritvats.netlify.app/resume.json",
+		"canonical": "https://jagritvats.com/resume.json",
 		"version": "v1.0.0",
 		"lastModified": "2026-11-04"
 	}
