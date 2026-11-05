@@ -1,0 +1,303 @@
+{
+	"$comment": "The one copy of the profile. Generates the homepage JSON-LD, its Work, Tools, Education and Contact sections, llms.txt, resume.json and the sitemap. Where the outputs word something differently today, the value is an object: \"text\" is the shared wording and \"page\", \"llms\" or \"resume\" override it for that output. Bump \"updated\" when you change anything here.",
+	"updated": "2026-11-04",
+
+	"name": "Jagrit Vats",
+	"givenName": "Jagrit",
+	"familyName": "Vats",
+	"label": "Backend engineer",
+	"url": "https://jagritvats.com/",
+	"email": "jagritvats6@gmail.com",
+	"phone": {
+		"countryCode": "+91",
+		"number": "89015 23579"
+	},
+	"location": {
+		"city": "Bangalore",
+		"region": "Karnataka",
+		"countryCode": "IN"
+	},
+	"profiles": [
+		{
+			"network": "GitHub",
+			"username": "jagritvats",
+			"url": "https://github.com/jagritvats"
+		},
+		{
+			"network": "LinkedIn",
+			"username": "jagritvats",
+			"url": "https://www.linkedin.com/in/jagritvats/"
+		}
+	],
+
+	"summary": {
+		"llms": "Backend engineer at Bajaj Finserv Health, based in Bangalore, India. Leads a team building a new product from scratch on Spring Boot, works on the Kafka integration layer that connects internal services to Salesforce and other external systems, and builds AI and full-stack side projects in TypeScript and Python.",
+		"resume": "Backend engineer at Bajaj Finserv Health, building Java and Spring Boot services. Leads a team setting up a new product from scratch, and works on the integration layer that connects internal services to Salesforce and other external systems over Kafka. Builds AI and full-stack side projects in TypeScript and Python.",
+		"jsonld": "Backend engineer at Bajaj Finserv Health, based in Bangalore. Leads a team building a new product from scratch on Spring Boot, works on the Kafka integration layer that connects internal services to Salesforce and other external systems, and builds AI and full-stack side projects."
+	},
+
+	"jobs": [
+		{
+			"company": "Bajaj Finserv Health",
+			"url": "https://www.bajajfinservhealth.in/",
+			"roles": [
+				{ "title": "Software Development Engineer Intern", "start": "2023-07", "end": "2024-06" },
+				{ "title": "Associate Software Development Engineer", "start": "2024-07", "end": "2025-10" },
+				{ "title": "Software Development Engineer", "start": "2025-10" }
+			],
+			"highlights": [
+				{
+					"page": "Lead a team setting up a new product from scratch on Spring Boot. That covers provisioning VMs with Ansible, the application architecture and domain entities, and deployment through Azure Pipelines to a multi-node Docker Swarm cluster.",
+					"resume": "Lead a team setting up a new product from scratch on Spring Boot: VMs provisioned with Ansible, application architecture and domain entities, and deployment through Azure Pipelines to a multi-node Docker Swarm cluster.",
+					"llms": "Leads a team setting up a new product from scratch on Spring Boot: VMs provisioned with Ansible, application architecture and domain entities, and deployment through Azure Pipelines to a multi-node Docker Swarm cluster."
+				},
+				{
+					"page": "Work on the integration layer that connects our services to Salesforce and other external systems through Kafka events. Retry topics and dead-letter queues mean a failed event is either tried again or parked for replay.",
+					"resume": "Work on the integration layer that connects our services to Salesforce and other external systems through Kafka events, with retry topics and dead-letter queues so failed events are retried or parked for replay.",
+					"llms": "Works on the integration layer that connects internal services to Salesforce and other external systems through Kafka events, with retry topics and dead-letter queues so failed events are retried or parked for replay."
+				},
+				{
+					"text": "Build multi-step asynchronous workflows on Kafka, with Redis and in-memory caching.",
+					"llms": "Builds multi-step asynchronous workflows on Kafka, with Redis and in-memory caching."
+				},
+				"Cut latency on endpoints that call several downstream APIs by running those calls in parallel on Java virtual threads.",
+				{
+					"text": "Improved tracing across services with Spring Boot advice and custom interceptors that propagate trace IDs, and that also handle payload encryption and a standard response format.",
+					"page": "Improved tracing across services with Spring Boot advice and custom interceptors that pass trace IDs along. The same interceptors handle payload encryption and a standard response format."
+				},
+				{
+					"page": "Cut service startup time roughly in half by changing how the application initializes and tuning Kubernetes liveness and readiness probes. Other services adopted the same approach.",
+					"resume": "Cut service startup time roughly in half through application-initialization changes and Kubernetes liveness/readiness probe tuning; other services adopted the same approach.",
+					"llms": "Cut service startup time roughly in half through application-initialization changes and Kubernetes liveness and readiness probe tuning. Other services adopted the same approach."
+				},
+				{
+					"page": "Automated release steps with Azure Pipelines and OpenAPI/Swagger contract generation, and take part in design and architecture reviews for new core modules.",
+					"resume": "Automated release steps with Azure Pipelines and OpenAPI/Swagger contract generation, and contribute to design and architecture reviews for new core modules.",
+					"llms": "Automated release steps with Azure Pipelines and OpenAPI/Swagger contract generation, and contributes to design and architecture reviews for new core modules."
+				}
+			]
+		},
+		{
+			"company": "Angrybaaz Services",
+			"roles": [
+				{ "title": "Frontend Development Intern", "start": "2022-11", "end": "2023-01" }
+			],
+			"highlights": [
+				{
+					"text": "Built UI components for a Figma plugin using React, TypeScript and the Figma API.",
+					"page": "Built UI components for a Figma plugin, using React, TypeScript and the Figma API."
+				}
+			]
+		}
+	],
+
+	"projects": [
+		{
+			"id": "teamtakes",
+			"name": "TeamTakes",
+			"url": "https://teamtakes.app",
+			"llms": "Opinionated polls and play-money prediction games for engineering teams. Live. Each team gets its own subdomain, and row-level security in Postgres (self-hosted Supabase) limits every query to the user's own teams. A leak test checks that one team can't read or change another team's data. Built with TanStack Start (React 19), Docker Compose, Traefik and Cloudflare.",
+			"resume": {
+				"description": "Opinionated polls and play-money prediction games for engineering teams. Live.",
+				"highlights": [
+					"Made the app multi-tenant while it was in use, with each team on its own subdomain.",
+					"Row-level security in Postgres limits every query to the user's own teams, and a leak test checks that one team can't read or change another team's data.",
+					"Most of the game logic, including market pricing and the points ledger, runs in Postgres functions, with pg_cron handling scheduled rounds."
+				],
+				"keywords": ["TanStack Start", "React", "Supabase", "PostgreSQL", "Docker Compose", "Traefik", "Cloudflare"]
+			},
+			"jsonld": {
+				"@type": "CreativeWork",
+				"description": "Opinionated polls and play-money prediction games for engineering teams, with a private space for each team."
+			}
+		},
+		{
+			"id": "crossroom",
+			"name": "Crossroom",
+			"url": "https://crossroom.dev",
+			"llms": "Puts up to six AI agents in one room, each working from its own files, and keeps the recap. Live since 2026 (formerly called Parley). Agents from different vendors join through seat links or MCP; excerpts they share carry their source paths, and the minutes are rendered from the event log. Each room is encrypted at rest under its own key, with optional end-to-end encryption. Crossroom Code runs Claude Code, Codex, OpenCode and Grok as chats on your own computer and lets another device carry on with them. TypeScript, Hono, MCP SDK, SQLite, React.",
+			"resume": {
+				"description": "Puts up to six AI agents from different vendors in one room, each working from its own files. Shared excerpts carry their source paths, the minutes are rendered from the event log, and each room is encrypted at rest under its own key.",
+				"keywords": ["TypeScript", "Hono", "MCP", "SQLite", "React"]
+			},
+			"jsonld": {
+				"@type": "CreativeWork",
+				"description": "Puts up to six AI agents from different vendors in one room, each working from its own files; excerpts carry their source paths and the recap is rendered from the event log."
+			}
+		},
+		{
+			"id": "scenepilot",
+			"name": "ScenePilot",
+			"url": "https://scenepilot.fiddletech.xyz",
+			"repo": "https://github.com/jagritvats/scenepilot-public",
+			"llms": "An AI assistant director that reschedules film shoots when plans change, built for Google Cloud's Agentic Cinema hackathon in 2026. Gemini agents built with Google ADK research a disruption using Parallel's web APIs and suggest new schedules. A deterministic rule checker rejects schedules that break a permit window, a noise curfew or the available daylight. Python, FastAPI, Next.js 16, more than 600 tests. Self-hosted with Docker Compose on an ARM VM behind Traefik and Cloudflare.",
+			"resume": {
+				"description": "An AI assistant director that reschedules film shoots when plans change. Built for Google Cloud's Agentic Cinema hackathon.",
+				"highlights": [
+					"Gemini agents built with Google ADK research disruptions using Parallel's web APIs and suggest new schedules.",
+					"A deterministic rule checker rejects schedules that break a permit window, a noise curfew or the available daylight, and links the source for each rejection.",
+					"More than 600 tests."
+				],
+				"keywords": ["Python", "FastAPI", "Google ADK", "Gemini", "Next.js", "Docker Compose", "Traefik", "Cloudflare"]
+			},
+			"jsonld": {
+				"@type": "SoftwareSourceCode",
+				"programmingLanguage": ["Python", "TypeScript"],
+				"description": "An AI assistant director that reschedules film shoots when plans change. Built for Google Cloud's Agentic Cinema hackathon."
+			}
+		},
+		{
+			"id": "synpse",
+			"name": "Synpse",
+			"url": "https://web.synpse.app",
+			"llms": "An AI companion with long-term memory, on the web, Android and Telegram. The Android app has over 500 installs on [Google Play](https://play.google.com/store/apps/details?id=com.synapy.app). Memories are ranked on six signals, and a background job consolidates them every four hours. Next.js, Express, TypeScript, MongoDB, LangChain, Expo.",
+			"resume": {
+				"description": "An AI companion with long-term memory, on the web, Android and Telegram. The Android app has over 500 installs on Google Play.",
+				"highlights": [
+					"Memories are ranked on six signals, and a background job consolidates them every four hours.",
+					"The model provider can be switched between Grok, Gemini, OpenAI and local models through Ollama."
+				],
+				"keywords": ["Next.js", "Express", "TypeScript", "MongoDB", "LangChain", "Expo"]
+			},
+			"jsonld": {
+				"@type": "CreativeWork",
+				"sameAs": ["https://play.google.com/store/apps/details?id=com.synapy.app"],
+				"description": "An AI companion with long-term memory, on the web, Android and Telegram."
+			}
+		},
+		{
+			"id": "residentops",
+			"name": "ResidentOps",
+			"url": "https://residentops.fiddletech.xyz",
+			"repo": "https://github.com/jagritvats/residentops-pb",
+			"llms": "An agent that handles maintenance issues for a residents' association, built for AWS's Agents for Humans hackathon. Python, Strands Agents, Amazon Bedrock.",
+			"resume": {
+				"description": "An agent that handles maintenance issues for a residents' association. Built for AWS's Agents for Humans hackathon.",
+				"keywords": ["Python", "Strands Agents", "Amazon Bedrock"]
+			},
+			"jsonld": {
+				"@type": "SoftwareSourceCode",
+				"programmingLanguage": "Python",
+				"description": "An agent that handles maintenance issues for a residents' association. Built for AWS's Agents for Humans hackathon."
+			}
+		},
+		{
+			"id": "samay",
+			"name": "SAMAY",
+			"url": "https://samay.synpse.app",
+			"llms": "Helps people in India respond to online fraud and prepares a report to file on cybercrime.gov.in. Built for the Build What Moves India hackathon. Next.js, Postgres.",
+			"resume": {
+				"description": "Helps people in India respond to online fraud and prepare a report to file on cybercrime.gov.in. Built for the Build What Moves India hackathon.",
+				"keywords": ["Next.js", "PostgreSQL"]
+			},
+			"jsonld": {
+				"@type": "CreativeWork",
+				"description": "Helps people in India respond to online fraud and prepare a report to file on cybercrime.gov.in."
+			}
+		},
+		{
+			"id": "presentic",
+			"name": "Presentic",
+			"llms": "A command-line tool and MCP server that makes narrated demo videos from a JSON plan, using Playwright and Remotion. Private repository."
+		}
+	],
+
+	"skills": [
+		{
+			"name": { "text": "At work", "resume": "Backend (at work)" },
+			"list": "Java, Spring Boot, JPA/Hibernate, microservices, REST APIs, Kafka (retries, dead-letter queues), concurrency and virtual threads, Redis, MongoDB, JUnit, Mockito, OpenAPI/Swagger",
+			"keywords": ["Java", "Spring Boot", "JPA/Hibernate", "Microservices", "REST APIs", "Kafka (retries, dead-letter queues)", "Concurrency and virtual threads", "Redis", "MongoDB", "JUnit", "Mockito", "OpenAPI/Swagger"]
+		},
+		{
+			"name": { "text": "Deployment", "llms": "Deployment at work", "resume": "Deployment (at work)" },
+			"list": "Kubernetes (AKS), ArgoCD, Docker, Docker Swarm, Ansible, Azure Pipelines",
+			"keywords": ["Kubernetes (AKS)", "ArgoCD", "Docker", "Docker Swarm", "Ansible", "Azure Pipelines"]
+		},
+		{
+			"name": "Observability",
+			"list": { "text": "Distributed tracing, ELK stack, ClickStack (HyperDX)", "llms": "distributed tracing, ELK stack, ClickStack (HyperDX)" },
+			"keywords": ["Distributed tracing", "ELK stack", "ClickStack (HyperDX)"]
+		},
+		{
+			"name": "Side projects",
+			"list": "TypeScript, Node.js (Express, Hono), React, Next.js, PostgreSQL and Supabase (row-level security, pg_cron), Python (FastAPI), SQLite",
+			"keywords": ["TypeScript", "Node.js", "Express", "Hono", "React", "Next.js", "PostgreSQL", "Supabase", "Python", "FastAPI", "SQLite"]
+		},
+		{
+			"name": "AI",
+			"list": "Gemini, Grok and Claude APIs, local models through Ollama, Google ADK, Strands Agents, LangGraph, LangChain, MCP, embeddings and retrieval",
+			"keywords": ["Gemini API", "Grok API", "Claude API", "Ollama", "Google ADK", "Strands Agents", "LangGraph", "LangChain", "MCP", "Embeddings and retrieval"]
+		},
+		{
+			"name": "Self-hosting",
+			"list": "Docker Compose, Traefik, Cloudflare, GitHub Actions, Oracle Cloud ARM VMs, Google Cloud Run",
+			"keywords": ["Docker Compose", "Traefik", "Cloudflare", "GitHub Actions", "Oracle Cloud", "Google Cloud Run"]
+		}
+	],
+
+	"education": [
+		{
+			"institution": "Chitkara University",
+			"url": "https://www.chitkara.edu.in/",
+			"studyType": "Bachelor of Engineering",
+			"area": "Computer Science",
+			"startDate": "2020",
+			"endDate": "2024",
+			"gpa": "9.88",
+			"gpaScale": "10"
+		}
+	],
+
+	"certificates": {
+		"issuer": "Microsoft",
+		"namePrefix": "Microsoft Certified: ",
+		"items": [
+			{
+				"name": "Azure Fundamentals (AZ-900)",
+				"url": "https://www.credly.com/badges/1702378c-cf55-40ec-aa00-b3e1c7cbd701/public_url"
+			},
+			{
+				"name": "Azure Data Fundamentals (DP-900)",
+				"url": "https://www.credly.com/badges/1535c2b5-1727-4564-994e-013d0cfe43a1/public_url"
+			},
+			{
+				"name": "Azure AI Fundamentals (AI-900)"
+			}
+		]
+	},
+
+	"jsonld": {
+		"$comment": "Only used in the homepage JSON-LD (schema.org).",
+		"occupation": "Backend software engineer",
+		"skills": "Java, Spring Boot, JPA/Hibernate, Apache Kafka, microservices, virtual threads, Redis, MongoDB, PostgreSQL, Kubernetes (AKS), ArgoCD, Docker, Docker Swarm, Ansible, ELK stack, TypeScript, Node.js, Python, CI/CD",
+		"knowsAbout": [
+			"Java",
+			"Spring Boot",
+			"Apache Kafka",
+			"Event-driven architecture",
+			"Microservices",
+			"Redis",
+			"MongoDB",
+			"PostgreSQL",
+			"Supabase",
+			"TypeScript",
+			"Node.js",
+			"React",
+			"Next.js",
+			"Python",
+			"FastAPI",
+			"Docker",
+			"Kubernetes",
+			"ArgoCD",
+			"Ansible",
+			"Salesforce integration",
+			"Distributed tracing",
+			"CI/CD",
+			"Azure Pipelines",
+			"AI agents",
+			"Large language models",
+			"Google ADK",
+			"Model Context Protocol"
+		]
+	}
+}

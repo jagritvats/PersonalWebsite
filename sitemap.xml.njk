@@ -1,0 +1,27 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+eleventyImport:
+  collections: ["posts"]
+---
+{#- lastmod: the homepage changes when the profile or the post list does; a post when it's published or updated. -#}
+{%- set postDates = collections.posts | postDates -%}
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	<url>
+		<loc>{{ site.url }}/</loc>
+		<lastmod>{{ [profile.updated].concat(postDates) | latestDate }}</lastmod>
+	</url>
+{%- if collections.posts.length %}
+	<url>
+		<loc>{{ site.url }}/writing/</loc>
+		<lastmod>{{ postDates | latestDate }}</lastmod>
+	</url>
+{%- for post in collections.posts %}
+	<url>
+		<loc>{{ site.url }}{{ post.url }}</loc>
+		<lastmod>{{ [post.data.updated, post.date] | latestDate }}</lastmod>
+	</url>
+{%- endfor %}
+{%- endif %}
+</urlset>

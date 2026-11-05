@@ -1,0 +1,21 @@
+		<meta name="theme-color" content="#f1f4ef" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#10251f" media="(prefers-color-scheme: dark)" />
+		<link rel="icon" href="/favicon.ico" sizes="32x32" />
+		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+		<script>
+			// Apply a saved theme before first paint so the page doesn't flash.
+			(function () {
+				try {
+					var saved = localStorage.getItem('theme');
+					if (saved === 'light' || saved === 'dark') {
+						document.documentElement.setAttribute('data-theme', saved);
+					}
+				} catch (e) {}
+			})();
+		</script>
+
+		<link rel="preload" href="/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/fonts/newsreader-regular.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="stylesheet" href="/style.css" />
