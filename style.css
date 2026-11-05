@@ -956,3 +956,25 @@ a:hover {
         color: #000;
     }
 }
+
+/* ================================ */
+/* == Writing                    == */
+/* ================================ */
+/* Added with /writing. The writing pages' own styles are in writing.css; this
+   is only what the homepage needs. With the Writing link the nav has four
+   items, which don't fit beside the name on a phone, so they get their own row. */
+@media (max-width: 520px) {
+    .site-header--long .site-header__inner {
+        flex-wrap: wrap;
+        row-gap: 0.35rem;
+    }
+
+    .site-header--long .site-nav {
+        order: 3;
+        width: 100%;
+    }
+
+    html:has(.site-header--long) {
+        scroll-padding-top: 6.25rem;
+    }
+}

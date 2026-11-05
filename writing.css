@@ -1,0 +1,412 @@
+/* ================================ */
+/* == Writing pages              == */
+/* ================================ */
+/* Loaded after style.css on /writing/ and on each post. It reuses the design
+   tokens from style.css and only adds what long-form pages need. */
+
+/* == Code colours == */
+:root {
+    --code-bg: var(--paper-raised);
+    --code-ink: var(--ink);
+    --code-comment: #52665d;
+    --code-punct: #3e564d;
+    --code-keyword: #8a5a00;
+    --code-string: #2a7049;
+    --code-number: #b23a22;
+    --code-function: #245a7a;
+    --code-mono: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --code-comment: #8fa89c;
+        --code-punct: #b5c8be;
+        --code-keyword: #f2c14e;
+        --code-string: #7bd389;
+        --code-number: #ff8a73;
+        --code-function: #8cc8f0;
+    }
+}
+
+:root[data-theme="dark"] {
+    --code-comment: #8fa89c;
+    --code-punct: #b5c8be;
+    --code-keyword: #f2c14e;
+    --code-string: #7bd389;
+    --code-number: #ff8a73;
+    --code-function: #8cc8f0;
+}
+
+.site-nav a[aria-current] {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--link-line);
+}
+
+/* == Page frame == */
+.writing-index,
+.post {
+    max-width: var(--page);
+    margin: 0 auto;
+    padding: clamp(3rem, 8vw, 5.5rem) var(--gutter) 0;
+}
+
+/* == Writing index == */
+.writing-index__head {
+    max-width: var(--measure);
+}
+
+.writing-index__title {
+    font-size: clamp(2.75rem, 1.8rem + 4vw, 4.5rem);
+    font-weight: 800;
+    font-stretch: 125%;
+    line-height: 0.97;
+    letter-spacing: -0.035em;
+}
+
+.writing-index__lead {
+    margin-top: 1rem;
+    color: var(--ink-soft);
+}
+
+.writing-index__feed,
+.writing-index__empty {
+    margin-top: 1rem;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.writing-index__empty {
+    margin-top: clamp(2rem, 5vw, 3rem);
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--rule);
+    max-width: 44rem;
+    font-weight: 400;
+    color: var(--ink-faint);
+}
+
+.post-list {
+    max-width: 44rem;
+    margin-top: clamp(2rem, 5vw, 3rem);
+    padding: 0;
+    list-style: none;
+}
+
+.post-list__item {
+    padding: 1.25rem 0 1.5rem;
+    border-top: 1px solid var(--rule);
+}
+
+.post-list__title {
+    font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+    font-weight: 700;
+    font-stretch: 106%;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+}
+
+.post-list__meta {
+    margin-top: 0.35rem;
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+}
+
+.post-list__summary {
+    margin-top: 0.5rem;
+    color: var(--ink-soft);
+}
+
+/* == Post header == */
+.post__head {
+    max-width: var(--measure);
+    padding-bottom: clamp(1.5rem, 4vw, 2.25rem);
+    border-bottom: 1px solid var(--rule);
+}
+
+.post__kicker {
+    font-family: var(--font-display);
+    font-size: 0.9375rem;
+    font-weight: 600;
+}
+
+.post__title {
+    margin-top: 0.75rem;
+    font-size: clamp(2.25rem, 1.5rem + 3vw, 3.5rem);
+    font-weight: 800;
+    font-stretch: 112%;
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+}
+
+.post__meta {
+    margin-top: 1rem;
+    font-family: var(--font-display);
+    font-size: 0.9375rem;
+    color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+}
+
+.post__draft {
+    display: inline-block;
+    margin-top: 0.85rem;
+    padding: 0.2rem 0.6rem;
+    font-family: var(--font-display);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #13302a;
+    background-color: var(--signal);
+    border-radius: 4px;
+}
+
+/* == Post body: long-form typography == */
+.post__body {
+    max-width: var(--measure);
+    margin-top: clamp(1.75rem, 4vw, 2.5rem);
+    font-size: clamp(1.125rem, 1.08rem + 0.2vw, 1.1875rem);
+    line-height: 1.7;
+    overflow-wrap: break-word;
+}
+
+.post__body > * + * {
+    margin-top: 1.25em;
+}
+
+.post__body h2 {
+    margin-top: 2.25em;
+    font-size: clamp(1.4375rem, 1.25rem + 0.7vw, 1.75rem);
+    font-weight: 700;
+    font-stretch: 106%;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+}
+
+.post__body h3 {
+    margin-top: 1.9em;
+    font-size: 1.1875rem;
+    font-weight: 700;
+    font-stretch: 104%;
+}
+
+.post__body h4 {
+    margin-top: 1.6em;
+    font-size: 1.0625rem;
+    font-weight: 700;
+}
+
+.post__body h2 + *,
+.post__body h3 + *,
+.post__body h4 + * {
+    margin-top: 0.6em;
+}
+
+.post__body ul,
+.post__body ol {
+    padding-left: 1.4em;
+}
+
+.post__body li + li {
+    margin-top: 0.35em;
+}
+
+.post__body li::marker {
+    color: var(--ink-faint);
+}
+
+.post__body ol li::marker {
+    font-family: var(--font-display);
+    font-size: 0.9em;
+    font-variant-numeric: tabular-nums;
+}
+
+.post__body blockquote {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0.1em 0 0.1em 1.25rem;
+    border-left: 3px solid var(--signal);
+    font-style: italic;
+    color: var(--ink-soft);
+}
+
+.post__body blockquote > * + * {
+    margin-top: 0.8em;
+}
+
+.post__body hr {
+    margin: 2.5em 0;
+    border: 0;
+    border-top: 1px solid var(--rule);
+}
+
+.post__body img,
+.post__body video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+}
+
+.post__body table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375em;
+}
+
+.post__body th,
+.post__body td {
+    padding: 0.45em 0.75em 0.45em 0;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--rule);
+}
+
+.post__body th {
+    font-family: var(--font-display);
+    font-size: 0.9375em;
+    font-weight: 700;
+}
+
+/* Diagrams use the .dg classes from style.css; in a post they can take the full measure. */
+.post__body .diagram {
+    max-width: 100%;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.post__body .diagram + * {
+    margin-top: 0;
+}
+
+/* == Code == */
+.post__body code,
+.post__body kbd,
+.post__body pre {
+    font-family: var(--code-mono);
+    font-optical-sizing: none;
+    /* Show code exactly as typed: no "<=" turning into "≤" in fonts with ligatures. */
+    font-variant-ligatures: none;
+}
+
+.post__body :not(pre) > code,
+.post__body kbd {
+    padding: 0.1em 0.35em;
+    font-size: 0.84em;
+    background-color: var(--code-bg);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+}
+
+.post__body pre {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    padding: 1rem 1.25rem;
+    overflow-x: auto;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--code-ink);
+    background-color: var(--code-bg);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    tab-size: 4;
+    -moz-tab-size: 4;
+    hyphens: none;
+}
+
+.post__body pre + * {
+    margin-top: 0;
+}
+
+.post__body pre code {
+    font-size: inherit;
+    white-space: pre;
+}
+
+/* Prism token classes, added at build time by @11ty/eleventy-plugin-syntaxhighlight. */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: var(--code-comment);
+    font-style: italic;
+}
+
+.token.punctuation,
+.token.operator {
+    color: var(--code-punct);
+}
+
+.token.keyword,
+.token.atrule,
+.token.important,
+.token.selector,
+.token.tag {
+    color: var(--code-keyword);
+}
+
+.token.string,
+.token.char,
+.token.attr-value,
+.token.regex,
+.token.inserted,
+.token.url {
+    color: var(--code-string);
+}
+
+.token.number,
+.token.boolean,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: var(--code-number);
+}
+
+.token.function,
+.token.class-name,
+.token.builtin,
+.token.attr-name,
+.token.property {
+    color: var(--code-function);
+}
+
+.token.variable,
+.token.entity {
+    color: var(--code-ink);
+}
+
+.token.important,
+.token.bold {
+    font-weight: 700;
+}
+
+.token.italic {
+    font-style: italic;
+}
+
+/* == Post footer == */
+.post__foot {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    max-width: var(--measure);
+    margin-top: clamp(2.5rem, 6vw, 3.5rem);
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--rule);
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+@media print {
+    .post__foot,
+    .writing-index__feed {
+        display: none;
+    }
+
+    .post__body pre {
+        white-space: pre-wrap;
+        border-color: #999;
+    }
+}
