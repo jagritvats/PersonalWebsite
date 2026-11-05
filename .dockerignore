@@ -1,17 +1,13 @@
-# Whitelist: only the published site goes into the image.
-*
-!index.html
-!style.css
-!main.css
-!script.js
-!favicon.ico
-!favicon.svg
-!apple-touch-icon.png
-!robots.txt
-!sitemap.xml
-!llms.txt
-!resume.json
-!fonts/
-!images/
-!imagesv2/
+# Only _site from the build stage reaches the final image (see deploy/Dockerfile),
+# and eleventy.config.js decides what goes into _site. This file just keeps the
+# build context small and stops local builds leaking in.
+.git
+.github
+.vscode
+.claude
+node_modules
+_site
+*.log
+README.md
+deploy/*
 !deploy/nginx.conf
