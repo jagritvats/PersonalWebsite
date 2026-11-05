@@ -956,3 +956,68 @@ a:hover {
         color: #000;
     }
 }
+
+/* ================================ */
+/* == TeamTakes diagram          == */
+/* ================================ */
+/* Animated by animateDiagram() in script.js. The static SVG already shows the end state. */
+.diagram--tt .replay {
+    margin-top: 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.dg .tt-l--fail {
+    fill: var(--fail);
+}
+
+.dg .tt-x {
+    transition: opacity 0.25s ease;
+}
+
+.dg .tt-x path {
+    fill: none;
+    stroke-linecap: round;
+}
+
+.dg .tt-x__halo {
+    stroke: var(--paper);
+    stroke-width: 6;
+}
+
+.dg .tt-x__mark {
+    stroke: var(--fail);
+    stroke-width: 2;
+}
+
+.dg .tt-tok {
+    transition: opacity 0.3s ease;
+}
+
+@keyframes tt-guard {
+    0%, 100% {
+        stroke-width: 1.5;
+        fill: var(--paper-raised);
+    }
+    35% {
+        stroke-width: 3;
+        fill: color-mix(in srgb, var(--ok) 14%, var(--paper-raised));
+    }
+}
+
+.dg .node.is-pulse rect {
+    animation: tt-guard 1s ease-in-out;
+}
+
+@keyframes tt-guard-edge {
+    0%, 100% {
+        stroke: var(--edge);
+    }
+    35% {
+        stroke: var(--ok);
+    }
+}
+
+.dg .e.is-pulse {
+    animation: tt-guard-edge 1s ease-in-out;
+}

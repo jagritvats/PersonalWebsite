@@ -445,22 +445,31 @@
 						<p class="project__stack">TanStack Start (React 19), self-hosted Supabase (Postgres, Auth, Realtime), Docker Compose, Traefik, Cloudflare, GitHub Actions</p>
 						<p class="project__links"><a href="https://teamtakes.app">teamtakes.app</a></p>
 					</div>
-					<figure class="diagram">
-						<svg class="dg" viewBox="0 0 360 306" role="img" aria-labelledby="tt-title tt-desc">
+					<figure class="diagram diagram--tt">
+						<svg class="dg" viewBox="0 0 360 326" role="img" aria-labelledby="tt-title tt-desc">
 							<title id="tt-title">How TeamTakes keeps teams apart</title>
 							<desc id="tt-desc">
-								Requests from team A and team B reach the same Postgres database, each tagged with
-								its active team. Row-level security on every table only returns rows from that team. A
-								leak test probes the database, and a migration check confirms every table has a policy.
+								Requests from team A and team B reach the same Postgres database, each tagged with its
+								active team in a header. Row-level security on every table only returns rows from teams the
+								user belongs to, so a team A request comes back with team A's rows, while a team A user who
+								tags a request with team B is blocked and gets nothing back. A leak test probes the database
+								for exactly that, and a migration check confirms every table has a policy.
 							</desc>
-							<path class="e" d="M92 58 V116" marker-end="url(#ah)" />
-							<text class="l" x="100" y="92">x-team-id: A</text>
-							<path class="e" d="M268 58 V116" marker-end="url(#ah)" />
-							<text class="l" x="276" y="92">x-team-id: B</text>
-							<path class="e e--guard" d="M92 232 V178" marker-end="url(#ah)" />
-							<text class="l" x="100" y="210">probes</text>
-							<path class="e e--guard" d="M268 232 V178" marker-end="url(#ah)" />
-							<text class="l" x="276" y="210">checks</text>
+							<path class="e" d="M52 58 V136" marker-end="url(#ah)" />
+							<text class="l" x="60" y="84">x-team-id: A</text>
+							<path class="e e--fail e--guard" d="M140 58 V136" marker-end="url(#ah-fail)" />
+							<text class="l tt-l--fail" x="148" y="84">x-team-id: B</text>
+							<text class="s" x="148" y="99">not a member</text>
+							<path class="e" d="M268 58 V136" marker-end="url(#ah)" />
+							<text class="l" x="276" y="84">x-team-id: B</text>
+							<path class="e e--guard" data-guard="leak" d="M92 252 V198" marker-end="url(#ah)" />
+							<text class="l" x="100" y="230">probes</text>
+							<path class="e e--guard" data-guard="migration" d="M268 252 V198" marker-end="url(#ah)" />
+							<text class="l" x="276" y="230">checks</text>
+
+							<!-- Tokens are drawn under the nodes, so a node "absorbs" a request while it handles it -->
+							<circle class="tok" data-token="a" cx="52" cy="35" r="5.5" opacity="0" />
+							<circle class="tok tt-tok" data-token="x" cx="140" cy="35" r="5.5" opacity="0" />
 
 							<g class="node">
 								<rect x="12" y="12" width="160" height="46" rx="5" />
@@ -473,23 +482,30 @@
 								<text class="s" x="200" y="48">team-b.teamtakes.app</text>
 							</g>
 							<g class="node">
-								<rect x="12" y="120" width="336" height="54" rx="5" />
-								<text class="t" x="24" y="142">Postgres (self-hosted Supabase)</text>
-								<text class="s" x="24" y="160">restrictive row-level security on every table</text>
+								<rect x="12" y="140" width="336" height="54" rx="5" />
+								<text class="t" x="24" y="162">Postgres (self-hosted Supabase)</text>
+								<text class="s" x="24" y="180">restrictive row-level security on every table</text>
 							</g>
-							<g class="node node--ok">
-								<rect x="12" y="232" width="160" height="62" rx="5" />
-								<text class="t" x="24" y="252">Leak test</text>
-								<text class="s" x="24" y="269">signs in as team A,</text>
-								<text class="s" x="24" y="284">gets no rows from B</text>
+							<g class="node node--ok" data-guard="leak">
+								<rect x="12" y="252" width="160" height="62" rx="5" />
+								<text class="t" x="24" y="272">Leak test</text>
+								<text class="s" x="24" y="289">signs in as team A,</text>
+								<text class="s" x="24" y="304">gets no rows from B</text>
 							</g>
-							<g class="node node--ok">
-								<rect x="188" y="232" width="160" height="62" rx="5" />
-								<text class="t" x="200" y="252">Migration check</text>
-								<text class="s" x="200" y="269">deploy stops if any</text>
-								<text class="s" x="200" y="284">table lacks its policy</text>
+							<g class="node node--ok" data-guard="migration">
+								<rect x="188" y="252" width="160" height="62" rx="5" />
+								<text class="t" x="200" y="272">Migration check</text>
+								<text class="s" x="200" y="289">deploy stops if any</text>
+								<text class="s" x="200" y="304">table lacks its policy</text>
+							</g>
+
+							<circle class="dot dot--ok" cx="158" cy="35" r="4.5" />
+							<g class="tt-x">
+								<path class="tt-x__halo" d="M135.5 111.5 l9 9 m0 -9 l-9 9" />
+								<path class="tt-x__mark" d="M135.5 111.5 l9 9 m0 -9 l-9 9" />
 							</g>
 						</svg>
+						<button class="replay" id="ttReplayBtn" type="button" aria-describedby="tt-title" hidden>Replay</button>
 					</figure>
 				</article>
 
