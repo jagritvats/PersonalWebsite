@@ -1,0 +1,16 @@
+{
+	"name": "Jagrit Vats",
+	"short_name": "Jagrit Vats",
+	"description": "Backend engineer at Bajaj Finserv Health, based in Bangalore. Java, Spring Boot, Kafka, and AI side projects.",
+	"start_url": "/",
+	"scope": "/",
+	"display": "browser",
+	"background_color": "#f1f4ef",
+	"theme_color": "#13302a",
+	"icons": [
+		{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+		{ "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+		{ "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+		{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+	]
+}

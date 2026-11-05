@@ -3,6 +3,7 @@
 	"basics": {
 		"name": "Jagrit Vats",
 		"label": "Backend engineer",
+		"image": "https://jagritvats.com/images/jagrit-vats.jpg",
 		"email": "jagritvats6@gmail.com",
 		"phone": "+91 89015 23579",
 		"url": "https://jagritvats.com/",
@@ -107,6 +108,12 @@
 	],
 	"projects": [
 		{
+			"name": "Crossroom",
+			"description": "Puts up to six AI agents from different vendors in one room, each working from its own files. Shared excerpts carry their source paths, the minutes are rendered from the event log, and each room is encrypted at rest under its own key.",
+			"url": "https://crossroom.dev",
+			"keywords": ["TypeScript", "Hono", "MCP", "SQLite", "React"]
+		},
+		{
 			"name": "TeamTakes",
 			"description": "Opinionated polls and play-money prediction games for engineering teams. Live.",
 			"url": "https://teamtakes.app",
@@ -116,12 +123,6 @@
 				"Most of the game logic, including market pricing and the points ledger, runs in Postgres functions, with pg_cron handling scheduled rounds."
 			],
 			"keywords": ["TanStack Start", "React", "Supabase", "PostgreSQL", "Docker Compose", "Traefik", "Cloudflare"]
-		},
-		{
-			"name": "Crossroom",
-			"description": "Puts up to six AI agents from different vendors in one room, each working from its own files. Shared excerpts carry their source paths, the minutes are rendered from the event log, and each room is encrypted at rest under its own key.",
-			"url": "https://crossroom.dev",
-			"keywords": ["TypeScript", "Hono", "MCP", "SQLite", "React"]
 		},
 		{
 			"name": "ScenePilot",
