@@ -6,7 +6,7 @@
 		<title>Jagrit Vats, backend engineer (Java, Spring Boot, Kafka)</title>
 		<meta
 			name="description"
-			content="Jagrit Vats is a backend engineer at Bajaj Finserv Health, based in Bangalore, working with Java, Spring Boot and Kafka. His side projects include TeamTakes, Crossroom, ScenePilot and Synpse."
+			content="Jagrit Vats is a backend engineer at Bajaj Finserv Health, based in Bangalore, working with Java, Spring Boot and Kafka. His side projects include Crossroom, TeamTakes, ScenePilot and Synpse."
 		/>
 		<meta name="author" content="Jagrit Vats" />
 		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
@@ -23,7 +23,7 @@
 		<meta property="og:title" content="Jagrit Vats, backend engineer" />
 		<meta
 			property="og:description"
-			content="Backend engineer at Bajaj Finserv Health, based in Bangalore. Side projects include TeamTakes, Crossroom, ScenePilot and Synpse."
+			content="Backend engineer at Bajaj Finserv Health, based in Bangalore. Side projects include Crossroom, TeamTakes, ScenePilot and Synpse."
 		/>
 		<meta property="og:url" content="https://jagritvats.com/" />
 		<meta property="og:image" content="https://jagritvats.com/images/og.png" />
@@ -36,7 +36,7 @@
 		<meta property="profile:username" content="jagritvats" />
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content="Jagrit Vats, backend engineer" />
-		<meta name="twitter:description" content="Backend engineer at Bajaj Finserv Health, based in Bangalore. Side projects include TeamTakes, Crossroom, ScenePilot and Synpse." />
+		<meta name="twitter:description" content="Backend engineer at Bajaj Finserv Health, based in Bangalore. Side projects include Crossroom, TeamTakes, ScenePilot and Synpse." />
 		<meta name="twitter:image" content="https://jagritvats.com/images/og.png" />
 		<meta name="twitter:image:alt" content="Jagrit Vats, backend engineer at Bajaj Finserv Health, next to a diagram of a Kafka retry and dead-letter queue flow." />
 
@@ -212,6 +212,16 @@
 					},
 					{
 						"@type": "CreativeWork",
+						"@id": "https://jagritvats.com/#crossroom",
+						"name": "Crossroom",
+						"url": "https://crossroom.dev",
+						"description": "Puts up to six AI agents from different vendors in one room, each working from its own files; excerpts carry their source paths and the recap is rendered from the event log.",
+						"creator": {
+							"@id": "https://jagritvats.com/#person"
+						}
+					},
+					{
+						"@type": "CreativeWork",
 						"@id": "https://jagritvats.com/#teamtakes",
 						"name": "TeamTakes",
 						"url": "https://teamtakes.app",
@@ -255,16 +265,6 @@
 						"codeRepository": "https://github.com/jagritvats/residentops-pb",
 						"programmingLanguage": "Python",
 						"description": "An agent that handles maintenance issues for a residents' association. Built for AWS's Agents for Humans hackathon.",
-						"creator": {
-							"@id": "https://jagritvats.com/#person"
-						}
-					},
-					{
-						"@type": "CreativeWork",
-						"@id": "https://jagritvats.com/#crossroom",
-						"name": "Crossroom",
-						"url": "https://crossroom.dev",
-						"description": "Puts up to six AI agents from different vendors in one room, each working from its own files; excerpts carry their source paths and the recap is rendered from the event log.",
 						"creator": {
 							"@id": "https://jagritvats.com/#person"
 						}
@@ -333,9 +333,9 @@
 					<p class="hero__summary">
 						I lead a team building a new product from scratch on Spring Boot, and work on the integration
 						layer that connects our services to Salesforce and other external systems over Kafka. Outside
-						work I build and host my own apps, including TeamTakes, a
-						polling app for engineering teams, and Synpse, an AI companion with over 500 installs on
-						Google Play.
+						work I build and host my own apps, including Crossroom, where AI agents from
+						different vendors work in one room, TeamTakes, a polling app for engineering teams, and
+						Synpse, an AI companion with over 500 installs on Google Play.
 					</p>
 					<div class="actions">
 						<a class="button" href="mailto:jagritvats6@gmail.com">Email me</a>
@@ -454,71 +454,6 @@
 				<div class="section__head">
 					<h2 class="section__title" id="projects-title">Projects</h2>
 				</div>
-				<article class="project" id="teamtakes">
-					<div class="project__text">
-						<h3 class="project__name">TeamTakes <span class="project__status">Live</span></h3>
-						<p class="project__summary">Opinionated polls and play-money prediction games for engineering teams.</p>
-						<p>
-							Each team gets its own subdomain with polls, prediction markets and 1v1 duels. There's
-							also a league that runs across teams. I first built it for one team and made it
-							multi-tenant later, while people were already using it.
-						</p>
-						<ul class="points">
-							<li>Row-level security limits every query to teams the user belongs to. The app sends the active team in a request header, and the database ignores it unless the user is a member of that team.</li>
-							<li>A leak test signs in as one team and tries to read and change another team's data through the normal API. A check in the migrations stops the deploy if a table is missing its policy.</li>
-							<li>Most of the game logic, including market pricing and the points ledger, runs in Postgres functions, with pg_cron handling scheduled rounds.</li>
-						</ul>
-						<p class="project__stack">TanStack Start (React 19), self-hosted Supabase (Postgres, Auth, Realtime), Docker Compose, Traefik, Cloudflare, GitHub Actions</p>
-						<p class="project__links"><a href="https://teamtakes.app">teamtakes.app</a></p>
-					</div>
-					<figure class="diagram">
-						<svg class="dg" viewBox="0 0 360 306" role="img" aria-labelledby="tt-title tt-desc">
-							<title id="tt-title">How TeamTakes keeps teams apart</title>
-							<desc id="tt-desc">
-								Requests from team A and team B reach the same Postgres database, each tagged with
-								its active team. Row-level security on every table only returns rows from that team. A
-								leak test probes the database, and a migration check confirms every table has a policy.
-							</desc>
-							<path class="e" d="M92 58 V116" marker-end="url(#ah)" />
-							<text class="l" x="100" y="92">x-team-id: A</text>
-							<path class="e" d="M268 58 V116" marker-end="url(#ah)" />
-							<text class="l" x="276" y="92">x-team-id: B</text>
-							<path class="e e--guard" d="M92 232 V178" marker-end="url(#ah)" />
-							<text class="l" x="100" y="210">probes</text>
-							<path class="e e--guard" d="M268 232 V178" marker-end="url(#ah)" />
-							<text class="l" x="276" y="210">checks</text>
-
-							<g class="node">
-								<rect x="12" y="12" width="160" height="46" rx="5" />
-								<text class="t" x="24" y="32">Team A</text>
-								<text class="s" x="24" y="48">team-a.teamtakes.app</text>
-							</g>
-							<g class="node">
-								<rect x="188" y="12" width="160" height="46" rx="5" />
-								<text class="t" x="200" y="32">Team B</text>
-								<text class="s" x="200" y="48">team-b.teamtakes.app</text>
-							</g>
-							<g class="node">
-								<rect x="12" y="120" width="336" height="54" rx="5" />
-								<text class="t" x="24" y="142">Postgres (self-hosted Supabase)</text>
-								<text class="s" x="24" y="160">restrictive row-level security on every table</text>
-							</g>
-							<g class="node node--ok">
-								<rect x="12" y="232" width="160" height="62" rx="5" />
-								<text class="t" x="24" y="252">Leak test</text>
-								<text class="s" x="24" y="269">signs in as team A,</text>
-								<text class="s" x="24" y="284">gets no rows from B</text>
-							</g>
-							<g class="node node--ok">
-								<rect x="188" y="232" width="160" height="62" rx="5" />
-								<text class="t" x="200" y="252">Migration check</text>
-								<text class="s" x="200" y="269">deploy stops if any</text>
-								<text class="s" x="200" y="284">table lacks its policy</text>
-							</g>
-						</svg>
-					</figure>
-				</article>
-
 				<article class="project" id="crossroom">
 					<div class="project__text">
 						<h3 class="project__name">Crossroom <span class="project__status">Live since 2026</span></h3>
@@ -587,6 +522,71 @@
 								<text class="s" x="200" y="236">from the log, signed</text>
 							</g>
 							<text class="l" x="12" y="276">the owner watches and can interject from a browser</text>
+						</svg>
+					</figure>
+				</article>
+
+				<article class="project" id="teamtakes">
+					<div class="project__text">
+						<h3 class="project__name">TeamTakes <span class="project__status">Live</span></h3>
+						<p class="project__summary">Opinionated polls and play-money prediction games for engineering teams.</p>
+						<p>
+							Each team gets its own subdomain with polls, prediction markets and 1v1 duels. There's
+							also a league that runs across teams. I first built it for one team and made it
+							multi-tenant later, while people were already using it.
+						</p>
+						<ul class="points">
+							<li>Row-level security limits every query to teams the user belongs to. The app sends the active team in a request header, and the database ignores it unless the user is a member of that team.</li>
+							<li>A leak test signs in as one team and tries to read and change another team's data through the normal API. A check in the migrations stops the deploy if a table is missing its policy.</li>
+							<li>Most of the game logic, including market pricing and the points ledger, runs in Postgres functions, with pg_cron handling scheduled rounds.</li>
+						</ul>
+						<p class="project__stack">TanStack Start (React 19), self-hosted Supabase (Postgres, Auth, Realtime), Docker Compose, Traefik, Cloudflare, GitHub Actions</p>
+						<p class="project__links"><a href="https://teamtakes.app">teamtakes.app</a></p>
+					</div>
+					<figure class="diagram">
+						<svg class="dg" viewBox="0 0 360 306" role="img" aria-labelledby="tt-title tt-desc">
+							<title id="tt-title">How TeamTakes keeps teams apart</title>
+							<desc id="tt-desc">
+								Requests from team A and team B reach the same Postgres database, each tagged with
+								its active team. Row-level security on every table only returns rows from that team. A
+								leak test probes the database, and a migration check confirms every table has a policy.
+							</desc>
+							<path class="e" d="M92 58 V116" marker-end="url(#ah)" />
+							<text class="l" x="100" y="92">x-team-id: A</text>
+							<path class="e" d="M268 58 V116" marker-end="url(#ah)" />
+							<text class="l" x="276" y="92">x-team-id: B</text>
+							<path class="e e--guard" d="M92 232 V178" marker-end="url(#ah)" />
+							<text class="l" x="100" y="210">probes</text>
+							<path class="e e--guard" d="M268 232 V178" marker-end="url(#ah)" />
+							<text class="l" x="276" y="210">checks</text>
+
+							<g class="node">
+								<rect x="12" y="12" width="160" height="46" rx="5" />
+								<text class="t" x="24" y="32">Team A</text>
+								<text class="s" x="24" y="48">team-a.teamtakes.app</text>
+							</g>
+							<g class="node">
+								<rect x="188" y="12" width="160" height="46" rx="5" />
+								<text class="t" x="200" y="32">Team B</text>
+								<text class="s" x="200" y="48">team-b.teamtakes.app</text>
+							</g>
+							<g class="node">
+								<rect x="12" y="120" width="336" height="54" rx="5" />
+								<text class="t" x="24" y="142">Postgres (self-hosted Supabase)</text>
+								<text class="s" x="24" y="160">restrictive row-level security on every table</text>
+							</g>
+							<g class="node node--ok">
+								<rect x="12" y="232" width="160" height="62" rx="5" />
+								<text class="t" x="24" y="252">Leak test</text>
+								<text class="s" x="24" y="269">signs in as team A,</text>
+								<text class="s" x="24" y="284">gets no rows from B</text>
+							</g>
+							<g class="node node--ok">
+								<rect x="188" y="232" width="160" height="62" rx="5" />
+								<text class="t" x="200" y="252">Migration check</text>
+								<text class="s" x="200" y="269">deploy stops if any</text>
+								<text class="s" x="200" y="284">table lacks its policy</text>
+							</g>
 						</svg>
 					</figure>
 				</article>
