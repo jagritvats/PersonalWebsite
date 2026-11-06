@@ -17,6 +17,7 @@ RUN npm run build
 FROM nginx:1.27-alpine
 
 COPY deploy/nginx.conf /etc/nginx/conf.d/default.conf
+COPY deploy/security-headers.conf /etc/nginx/snippets/security-headers.conf
 COPY --from=build /src/_site/ /usr/share/nginx/html/
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \

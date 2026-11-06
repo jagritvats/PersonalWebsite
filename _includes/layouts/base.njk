@@ -3,7 +3,7 @@
 {%- set pageDescription = description or site.writing.description -%}
 {%- set image = site.url + (ogImage or site.ogImage) -%}
 {%- set isPost = pageType == "post" -%}
-{%- set hideFromSearch = draft or (noindexWhenEmpty and not collections.posts.length) -%}
+{%- set hideFromSearch = draft or noindex or (noindexWhenEmpty and not collections.posts.length) -%}
 <!DOCTYPE html>
 <html lang="{{ site.lang }}">
 	<head>
@@ -41,7 +41,7 @@
 		<meta name="twitter:image:alt" content="{{ ogImageAlt or site.ogImageAlt }}" />
 
 {% include "partials/head-assets.njk" %}
-		<link rel="stylesheet" href="/writing.css" />
+		<link rel="stylesheet" href="{{ '/writing.css' | versioned }}" />
 		{%- if isPost %}
 
 		<script type="application/ld+json">
@@ -60,6 +60,6 @@
 
 {% include "partials/site-footer.njk" %}
 
-		<script src="/script.js" defer></script>
+		<script src="{{ '/script.js' | versioned }}" defer></script>
 	</body>
 </html>

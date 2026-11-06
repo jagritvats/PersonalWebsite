@@ -11,3 +11,4 @@ _site
 README.md
 deploy/*
 !deploy/nginx.conf
+!deploy/security-headers.conf

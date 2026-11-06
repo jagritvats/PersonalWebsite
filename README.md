@@ -31,7 +31,8 @@ the VM at https://jagritvats.com/ — see [deploy/README.md](deploy/README.md). 
 | `llms.txt.11ty.js`, `resume.json.11ty.js`, `sitemap.xml.njk`, `feed.xml.njk` | Generated files. |
 
 - The project diagrams are inline SVG in `index.html`, styled from the colour tokens at the top of `style.css`.
-- `images/og.png` is the link-preview image (1200×630).
+- `images/og.png` is the link-preview image (1200×630), a render of the hero in the dark palette.
+  Re-render it if the name, role, domain or palette changes.
 - `fonts/` holds self-hosted copies of Archivo and Newsreader (SIL Open Font License, licence
   files included), so the page doesn't wait on Google Fonts. Archivo is Google Fonts' own Latin
   file. Newsreader is the Latin subset of the variable font with weight fixed at 400 and optical
@@ -40,6 +41,18 @@ the VM at https://jagritvats.com/ — see [deploy/README.md](deploy/README.md). 
   from the full fonts on Google Fonts.
 - Files served as they are (CSS, JS, fonts, images, favicons, `robots.txt`) are listed in
   `eleventy.config.js`. Add new top-level static files there, or they won't be published.
+  Markdown at the top level (like this README) is never published; posts go in `writing/`.
+- CSS and JS are linked as `/style.css?v=<content hash>` (the `versioned` filter), so nginx can
+  cache them for a year. Link any new CSS or JS file the same way.
+- `404.njk` is the page nginx serves for any missing path.
+- Security headers, including the Content-Security-Policy, are in
+  `deploy/security-headers.conf`. The CSP allows the inline theme script in
+  `_includes/partials/head-assets.njk` by hash. If you change that script, `npm run build`
+  fails and prints the new hash to paste into the CSP.
+- The email links are wrapped in `<!--email_off-->`, so Cloudflare's email obfuscation
+  leaves the address readable.
+- Pull requests run `.github/workflows/check.yml`: it builds the site and the image, runs the
+  image and checks status codes, headers, the 404 page and Markdown negotiation.
 
 ## Updating the profile
 
