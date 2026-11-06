@@ -1,7 +1,9 @@
 /* ================================ */
 /* == Fonts                      == */
 /* ================================ */
-/* Self-hosted and trimmed to Latin and the axes this page uses. Licences are in fonts/. */
+/* Self-hosted and trimmed to Latin and the axes this page uses. Licences are in fonts/.
+   The Newsreader italic is declared in writing.css: the homepage doesn't use it, so it
+   doesn't download it. */
 @font-face {
     font-family: "Archivo";
     src: url("fonts/archivo-var.woff2") format("woff2");
@@ -19,13 +21,6 @@
     font-display: swap;
 }
 
-@font-face {
-    font-family: "Newsreader";
-    src: url("fonts/newsreader-italic.woff2") format("woff2");
-    font-weight: 400;
-    font-style: italic;
-    font-display: swap;
-}
 
 /* ================================ */
 /* == Tokens                     == */
@@ -415,7 +410,6 @@ a:hover {
 .dg .l {
     font-family: var(--font-text);
     font-size: 12.5px;
-    font-style: italic;
     fill: var(--ink-soft);
 }
 
@@ -945,6 +939,27 @@ a:hover {
 }
 
 @media print {
+    /* Always print with the light palette, whatever theme is on screen. */
+    :root,
+    :root[data-theme="dark"],
+    :root:not([data-theme="light"]) {
+        color-scheme: light;
+        --paper: #fff;
+        --paper-raised: #f3f5f2;
+        --ink: #000;
+        --ink-soft: #2b3d36;
+        --ink-faint: #3e564d;
+        --rule: #b9c4bb;
+        --node-line: #13302a;
+        --edge: #3e564d;
+        --signal-ink: #8a5a00;
+        --ok: #2a7049;
+        --fail: #b23a22;
+        --link-line: #d19a14;
+        --button-bg: #13302a;
+        --button-fg: #fff;
+    }
+
     .site-header,
     .skip-link,
     .replay {
@@ -954,6 +969,24 @@ a:hover {
     body {
         background: #fff;
         color: #000;
+    }
+
+    /* Show diagrams in their finished state, never mid-animation. */
+    .dg .tok {
+        display: none;
+    }
+
+    .dg .dot,
+    .dg .tt-x {
+        opacity: 1 !important;
+        transition: none;
+    }
+
+    /* Paper has no hover: print where each outside link goes. */
+    main a[href^="http"]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        word-break: break-all;
     }
 }
 
@@ -1041,4 +1074,30 @@ a:hover {
 
 .dg .e.is-pulse {
     animation: tt-guard-edge 1s ease-in-out;
+}
+
+/* ================================ */
+/* == Touch targets              == */
+/* ================================ */
+/* On touch screens, give the small text links and buttons a hit area of about
+   44px without changing how they look. */
+@media (pointer: coarse) {
+    .site-nav a,
+    .project__links a,
+    .more__links a,
+    .contact__links a {
+        display: inline-block;
+        padding-block: 0.6rem;
+        margin-block: -0.6rem;
+    }
+
+    .theme-toggle {
+        width: 2.75rem;
+        height: 2.75rem;
+    }
+
+    .replay {
+        padding-block: 0.6rem;
+        margin-block: -0.2rem -0.6rem;
+    }
 }

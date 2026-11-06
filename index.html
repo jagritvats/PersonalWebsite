@@ -85,7 +85,7 @@
 						Synpse, an AI companion with over 500 installs on Google Play.
 					</p>
 					<div class="actions">
-						<a class="button" href="mailto:jagritvats6@gmail.com">Email me</a>
+						<!--email_off--><a class="button" href="mailto:{{ profile.email }}">Email me</a><!--/email_off-->
 						<a href="https://github.com/jagritvats" rel="me">GitHub</a>
 						<a href="https://www.linkedin.com/in/jagritvats/" rel="me">LinkedIn</a>
 					</div>
@@ -148,7 +148,7 @@
 						A simplified version of the Kafka flows I work on. When a consumer can't process an
 						event, the event goes to a retry topic and is tried again. After a few failed attempts
 						it moves to a dead-letter queue, where it can be checked and replayed.
-						<button class="replay" id="replayBtn" type="button" hidden>Replay</button>
+						<button class="replay" id="replayBtn" type="button" aria-describedby="flow-title" hidden>Replay</button>
 					</figcaption>
 				</figure>
 			</section>
@@ -210,7 +210,7 @@
 							outcomes, decisions, actions and open questions from the room's event log.
 						</p>
 						<ul class="points">
-							<li>Agents send each other excerpts of files and logs, and every excerpt carries its source path, so an agent can only cite what it can read itself.</li>
+							<li>Agents send each other excerpts of files and logs, and every excerpt carries its source path. An agent can't cite an excerpt it was never shown, and when Crossroom runs the agent itself, an excerpt that doesn't match the file gets flagged.</li>
 							<li>Each room is encrypted at rest under its own key, wrapped by the owner and seat tokens. The server keeps only a hash of the owner token, and rooms can be end-to-end encrypted so the server can't read them at all.</li>
 							<li>Crossroom Code runs Claude Code, Codex, OpenCode and Grok as chats on your own computer and lets a browser on another device carry on with them through an encrypted relay.</li>
 						</ul>
@@ -363,7 +363,7 @@
 							source for each rejection. The producer has to approve a change before it's applied.
 						</p>
 						<ul class="points">
-							<li>Facts from the web are graded by how well they're sourced. Only a cited, high-confidence fact can reject a schedule. Weaker facts add cost or get flagged for a person to check.</li>
+							<li>Facts from the web are graded by how well they're sourced. Only a cited, high-confidence fact that the producer has accepted can reject a schedule. Weaker facts are shown for a person to check.</li>
 							<li>The same checker handles recovery options, the multi-day schedule and manual edits.</li>
 							<li>It uses six of Parallel's web APIs, calculates sun position and union labour rules in code, and has more than 600 tests.</li>
 						</ul>
@@ -596,9 +596,12 @@
 					<h2 class="section__title" id="contact-title">Contact</h2>
 				</div>
 				<p class="contact__note">Email is the quickest way to reach me.</p>
-				<a class="contact__email" href="mailto:{{ profile.email }}">{{ profile.email }}</a>
+				<!-- email_off stops Cloudflare replacing the address with "[email protected]" -->
+				<!--email_off--><a class="contact__email" href="mailto:{{ profile.email }}">{{ profile.email }}</a><!--/email_off-->
 				<ul class="contact__links">
+					{%- if profile.phone %}
 					<li><a href="tel:{{ profile.phone | phoneTel }}">{{ profile.phone | phoneDisplay | replace(" ", "&nbsp;") | safe }}</a></li>
+					{%- endif %}
 					{%- for link in profile.profiles %}
 					<li><a href="{{ link.url }}" rel="me">{{ link.network }}</a></li>
 					{%- endfor %}
@@ -608,6 +611,6 @@
 
 {% include "partials/site-footer.njk" %}
 
-		<script src="script.js" defer></script>
+		<script src="{{ '/script.js' | versioned }}" defer></script>
 	</body>
 </html>

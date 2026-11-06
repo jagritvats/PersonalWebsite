@@ -1,0 +1,60 @@
+name: Check pull request
+
+# Builds the site and the production image for every pull request, then runs
+# the image and checks the responses that matter, so a broken build, nginx
+# config or header shows up before it reaches main (which deploys).
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      # Also runs the CSP check on inline scripts (see eleventy.config.js).
+      - name: Build the site
+        run: |
+          npm ci --no-audit --no-fund
+          npm run build
+
+      - name: Build the image
+        run: docker build -f deploy/Dockerfile -t site:check .
+
+      - name: Run the image and check responses
+        run: |
+          docker run -d --name site -p 8080:80 site:check
+          for i in $(seq 1 20); do curl -fs http://localhost:8080/healthz >/dev/null && break; sleep 1; done
+
+          fail() { echo "::error::$1"; exit 1; }
+          status() { curl -s -o /dev/null -w '%{http_code}' "http://localhost:8080$1"; }
+          header() { curl -sI "http://localhost:8080$1" | tr -d '\r' | grep -i "^$2:" ; }
+
+          for path in / /writing/ /llms.txt /resume.json /sitemap.xml /site.webmanifest /images/og.png; do
+            [ "$(status "$path")" = 200 ] || fail "$path did not return 200"
+          done
+          [ "$(status /no-such-page)" = 404 ] || fail "missing page did not return 404"
+          curl -s http://localhost:8080/no-such-page | grep -q 'dead-lettered' || fail "404 page is not the site's own"
+          [ "$(status /404.html)" = 404 ] || fail "/404.html should not be reachable directly"
+
+          header / content-security-policy | grep -q "frame-ancestors 'none'" || fail "CSP missing on /"
+          header /style.css content-security-policy >/dev/null || fail "CSP missing on a location with its own headers"
+          header / strict-transport-security >/dev/null || fail "HSTS missing"
+          header / cache-control | grep -q no-cache || fail "HTML should be no-cache"
+          header /style.css cache-control | grep -q immutable || fail "CSS should be immutable"
+          header / link | grep -q llms.txt || fail "Link header missing on /"
+          curl -s -H 'Accept: text/markdown' http://localhost:8080/ | head -1 | grep -q '^# ' || fail "Markdown negotiation broken"
+          grep -q 'email_off' _site/index.html || fail "email_off markers missing"
+          echo "All checks passed"
+
+      - name: Logs on failure
+        if: failure()
+        run: docker logs site || true

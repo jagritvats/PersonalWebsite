@@ -1,0 +1,59 @@
+---
+layout: layouts/base.njk
+permalink: /404.html
+title: Page not found
+description: There's no page at this address.
+noindex: true
+eleventyExcludeFromCollections: true
+---
+{#- Served by nginx for any missing path (error_page 404 in deploy/nginx.conf). -#}
+			<div class="not-found">
+				<p class="not-found__code">404</p>
+				<h1 class="not-found__title">This request was dead-lettered</h1>
+				<p class="not-found__lead">
+					Nothing here could handle it, so it was parked instead of being dropped. It's
+					safe to replay from somewhere that exists.
+				</p>
+				<figure class="diagram not-found__diagram">
+					<svg class="dg" viewBox="0 0 360 214" role="img" aria-labelledby="nf-title nf-desc">
+						<title id="nf-title">A request that couldn't be handled</title>
+						<desc id="nf-desc">
+							The request reaches the router, no page matches it, and it moves to the dead-letter
+							queue with status 404.
+						</desc>
+						<defs>
+							<marker id="nf-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+								<path class="ah" d="M0 1 L9 5 L0 9 Z" />
+							</marker>
+							<marker id="nf-ah-fail" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+								<path class="ah ah--fail" d="M0 1 L9 5 L0 9 Z" />
+							</marker>
+						</defs>
+						<path class="e" d="M92 58 V112" marker-end="url(#nf-ah)" />
+						<text class="l" x="100" y="90">route</text>
+						<path class="e e--fail" d="M172 143 H242" marker-end="url(#nf-ah-fail)" />
+						<text class="l" x="181" y="133">no match</text>
+
+						<g class="node">
+							<rect x="12" y="12" width="160" height="46" rx="5" />
+							<text class="t" x="24" y="32">Your request</text>
+							<text class="s" x="24" y="48">GET this page</text>
+						</g>
+						<g class="node">
+							<rect x="12" y="116" width="160" height="54" rx="5" />
+							<text class="t" x="24" y="138">Router</text>
+							<text class="s" x="24" y="156">no page at this path</text>
+						</g>
+						<g class="node node--fail">
+							<rect x="246" y="116" width="102" height="54" rx="5" />
+							<text class="t" x="258" y="138">Dead-letter</text>
+							<text class="s" x="258" y="156">status 404</text>
+						</g>
+						<text class="l" x="12" y="204">parked for replay</text>
+					</svg>
+				</figure>
+				<p class="not-found__links">
+					<a class="button" href="/">Replay from the homepage</a>
+					<a href="/writing/">Writing</a>
+				</p>
+			</div>

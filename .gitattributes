@@ -1,0 +1,5 @@
+# The CSP allows the inline theme script by hash, so template line endings must
+# be the same on every machine (CRLF on a Windows checkout changes the hash).
+*.njk text eol=lf
+*.html text eol=lf
+*.md text eol=lf

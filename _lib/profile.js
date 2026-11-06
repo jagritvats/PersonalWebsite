@@ -110,7 +110,7 @@ export function homeJsonLd(p, site) {
 		...(job && { jobTitle: currentRole(job).title }),
 		description: p.summary.jsonld,
 		email: `mailto:${p.email}`,
-		telephone: phoneJsonLd(p.phone),
+		...(p.phone && { telephone: phoneJsonLd(p.phone) }),
 		address: {
 			"@type": "PostalAddress",
 			addressLocality: p.location.city,
@@ -243,7 +243,7 @@ export function resume(p, site) {
 			label: p.label,
 			...(p.photo && { image: p.photo.url }),
 			email: p.email,
-			phone: phoneDisplay(p.phone),
+			...(p.phone && { phone: phoneDisplay(p.phone) }),
 			url: p.url,
 			summary: p.summary.resume,
 			location: {
@@ -320,7 +320,8 @@ export function llms(p, site, posts = []) {
 	);
 
 	add("## Contact", "");
-	add(`- Email: ${p.email}`, `- Phone: ${phoneDisplay(p.phone)}`);
+	add(`- Email: ${p.email}`);
+	if (p.phone) add(`- Phone: ${phoneDisplay(p.phone)}`);
 	for (const profile of p.profiles) add(`- [${profile.network}](${profile.url})`);
 	add(`- [Website](${p.url})`);
 	if (p.photo) add(`- [Photo](${p.photo.url})`);

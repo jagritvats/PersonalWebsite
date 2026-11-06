@@ -4,6 +4,14 @@
 /* Loaded after style.css on /writing/ and on each post. It reuses the design
    tokens from style.css and only adds what long-form pages need. */
 
+@font-face {
+    font-family: "Newsreader";
+    src: url("fonts/newsreader-italic.woff2") format("woff2");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
 /* == Code colours == */
 :root {
     --code-bg: var(--paper-raised);
@@ -293,6 +301,8 @@
 .post__body :not(pre) > code,
 .post__body kbd {
     padding: 0.1em 0.35em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
     font-size: 0.84em;
     background-color: var(--code-bg);
     border: 1px solid var(--rule);
@@ -417,4 +427,49 @@
         padding: 0.875rem 1rem;
         font-size: 0.78rem;
     }
+}
+
+/* == 404 == */
+.not-found {
+    max-width: var(--page);
+    margin: 0 auto;
+    padding: clamp(3rem, 8vw, 5.5rem) var(--gutter) 2rem;
+}
+
+.not-found__code {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--fail);
+}
+
+.not-found__title {
+    max-width: 16ch;
+    margin-top: 0.5rem;
+    font-size: clamp(2.25rem, 1.5rem + 3vw, 3.5rem);
+    font-weight: 800;
+    font-stretch: 125%;
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.not-found__lead {
+    max-width: var(--measure);
+    margin-top: 1rem;
+    color: var(--ink-soft);
+}
+
+.not-found__diagram {
+    max-width: 26rem;
+    margin-top: 2.5rem;
+}
+
+.not-found__links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+    font-family: var(--font-display);
+    font-weight: 600;
 }
