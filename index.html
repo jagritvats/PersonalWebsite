@@ -16,6 +16,9 @@
 		<!-- The same profile as plain text and JSON, for AI assistants and other tools -->
 		<link rel="alternate" type="text/markdown" href="/llms.txt" title="Profile summary for language models" />
 		<link rel="alternate" type="application/json" href="/resume.json" title="Résumé in JSON Resume format" />
+{%- if collections.posts.length %}
+		<link rel="alternate" type="application/atom+xml" href="/feed.xml" title="{{ site.writing.title }} by {{ profile.name }}" />
+{%- endif %}
 
 		<meta property="og:type" content="profile" />
 		<meta property="og:site_name" content="Jagrit Vats" />
@@ -40,246 +43,10 @@
 		<meta name="twitter:image" content="https://jagritvats.com/images/og.png" />
 		<meta name="twitter:image:alt" content="Jagrit Vats, backend engineer at Bajaj Finserv Health, next to a diagram of a Kafka retry and dead-letter queue flow." />
 
-		<meta name="theme-color" content="#f1f4ef" media="(prefers-color-scheme: light)" />
-		<meta name="theme-color" content="#10251f" media="(prefers-color-scheme: dark)" />
-		<!-- Google Search shows the favicon only if it can find one at least 48x48 (a multiple of 48 is best). -->
-		<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48 64x64" />
-		<link rel="icon" href="/favicon-48x48.png" type="image/png" sizes="48x48" />
-		<link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96" />
-		<link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
-		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-		<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
-		<link rel="manifest" href="/site.webmanifest" />
+{% include "partials/head-assets.njk" %}
 
-		<script>
-			// Apply a saved theme before first paint so the page doesn't flash.
-			(function () {
-				try {
-					var saved = localStorage.getItem('theme');
-					if (saved === 'light' || saved === 'dark') {
-						document.documentElement.setAttribute('data-theme', saved);
-					}
-				} catch (e) {}
-			})();
-		</script>
-
-		<link rel="preload" href="fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin />
-		<link rel="preload" href="fonts/newsreader-regular.woff2" as="font" type="font/woff2" crossorigin />
-		<link rel="stylesheet" href="style.css" />
-
-		<script type="application/ld+json">
-			{
-				"@context": "https://schema.org",
-				"@graph": [
-					{
-						"@type": "WebSite",
-						"@id": "https://jagritvats.com/#website",
-						"url": "https://jagritvats.com/",
-						"name": "Jagrit Vats",
-						"alternateName": "jagritvats",
-						"description": "Personal site of Jagrit Vats, a backend engineer in Bangalore.",
-						"inLanguage": "en",
-						"publisher": {
-							"@id": "https://jagritvats.com/#person"
-						},
-						"author": {
-							"@id": "https://jagritvats.com/#person"
-						}
-					},
-					{
-						"@type": "ProfilePage",
-						"@id": "https://jagritvats.com/#profile",
-						"url": "https://jagritvats.com/",
-						"name": "Jagrit Vats, backend engineer",
-						"isPartOf": {
-							"@id": "https://jagritvats.com/#website"
-						},
-						"mainEntity": {
-							"@id": "https://jagritvats.com/#person"
-						},
-						"primaryImageOfPage": {
-							"@id": "https://jagritvats.com/#photo"
-						},
-						"dateModified": "2026-11-05",
-						"inLanguage": "en"
-					},
-					{
-						"@type": "Person",
-						"@id": "https://jagritvats.com/#person",
-						"name": "Jagrit Vats",
-						"givenName": "Jagrit",
-						"familyName": "Vats",
-						"url": "https://jagritvats.com/",
-						"image": {
-							"@type": "ImageObject",
-							"@id": "https://jagritvats.com/#photo",
-							"url": "https://jagritvats.com/images/jagrit-vats.jpg",
-							"contentUrl": "https://jagritvats.com/images/jagrit-vats.jpg",
-							"width": 800,
-							"height": 800,
-							"caption": "Jagrit Vats"
-						},
-						"jobTitle": "Software Development Engineer",
-						"description": "Backend engineer at Bajaj Finserv Health, based in Bangalore. Leads a team building a new product from scratch on Spring Boot, works on the Kafka integration layer that connects internal services to Salesforce and other external systems, and builds AI and full-stack side projects.",
-						"email": "mailto:jagritvats6@gmail.com",
-						"telephone": "+91-8901523579",
-						"address": {
-							"@type": "PostalAddress",
-							"addressLocality": "Bangalore",
-							"addressRegion": "Karnataka",
-							"addressCountry": "IN"
-						},
-						"worksFor": {
-							"@type": "Organization",
-							"name": "Bajaj Finserv Health",
-							"url": "https://www.bajajfinservhealth.in/"
-						},
-						"alumniOf": {
-							"@type": "CollegeOrUniversity",
-							"name": "Chitkara University",
-							"url": "https://www.chitkara.edu.in/"
-						},
-						"hasOccupation": {
-							"@type": "Occupation",
-							"name": "Backend software engineer",
-							"occupationLocation": {
-								"@type": "City",
-								"name": "Bangalore"
-							},
-							"skills": "Java, Spring Boot, JPA/Hibernate, Apache Kafka, microservices, virtual threads, Redis, MongoDB, PostgreSQL, Kubernetes (AKS), ArgoCD, Docker, Docker Swarm, Ansible, ELK stack, TypeScript, Node.js, Python, CI/CD"
-						},
-						"knowsAbout": [
-							"Java",
-							"Spring Boot",
-							"Apache Kafka",
-							"Event-driven architecture",
-							"Microservices",
-							"Redis",
-							"MongoDB",
-							"PostgreSQL",
-							"Supabase",
-							"TypeScript",
-							"Node.js",
-							"React",
-							"Next.js",
-							"Python",
-							"FastAPI",
-							"Docker",
-							"Kubernetes",
-							"ArgoCD",
-							"Ansible",
-							"Salesforce integration",
-							"Distributed tracing",
-							"CI/CD",
-							"Azure Pipelines",
-							"AI agents",
-							"Large language models",
-							"Google ADK",
-							"Model Context Protocol"
-						],
-						"hasCredential": [
-							{
-								"@type": "EducationalOccupationalCredential",
-								"credentialCategory": "degree",
-								"name": "Bachelor of Engineering, Computer Science",
-								"recognizedBy": {
-									"@type": "CollegeOrUniversity",
-									"name": "Chitkara University"
-								}
-							},
-							{
-								"@type": "EducationalOccupationalCredential",
-								"credentialCategory": "certification",
-								"name": "Microsoft Certified: Azure Fundamentals (AZ-900)",
-								"url": "https://www.credly.com/badges/1702378c-cf55-40ec-aa00-b3e1c7cbd701/public_url"
-							},
-							{
-								"@type": "EducationalOccupationalCredential",
-								"credentialCategory": "certification",
-								"name": "Microsoft Certified: Azure Data Fundamentals (DP-900)",
-								"url": "https://www.credly.com/badges/1535c2b5-1727-4564-994e-013d0cfe43a1/public_url"
-							},
-							{
-								"@type": "EducationalOccupationalCredential",
-								"credentialCategory": "certification",
-								"name": "Microsoft Certified: Azure AI Fundamentals (AI-900)"
-							}
-						],
-						"sameAs": [
-							"https://github.com/jagritvats",
-							"https://www.linkedin.com/in/jagritvats/"
-						]
-					},
-					{
-						"@type": "CreativeWork",
-						"@id": "https://jagritvats.com/#crossroom",
-						"name": "Crossroom",
-						"url": "https://crossroom.dev",
-						"description": "Puts up to six AI agents from different vendors in one room, each working from its own files; excerpts carry their source paths and the recap is rendered from the event log.",
-						"creator": {
-							"@id": "https://jagritvats.com/#person"
-						}
-					},
-					{
-						"@type": "CreativeWork",
-						"@id": "https://jagritvats.com/#teamtakes",
-						"name": "TeamTakes",
-						"url": "https://teamtakes.app",
-						"description": "Opinionated polls and play-money prediction games for engineering teams, with a private space for each team.",
-						"creator": {
-							"@id": "https://jagritvats.com/#person"
-						}
-					},
-					{
-						"@type": "SoftwareSourceCode",
-						"@id": "https://jagritvats.com/#scenepilot",
-						"name": "ScenePilot",
-						"url": "https://scenepilot.fiddletech.xyz",
-						"codeRepository": "https://github.com/jagritvats/scenepilot-public",
-						"programmingLanguage": [
-							"Python",
-							"TypeScript"
-						],
-						"description": "An AI assistant director that reschedules film shoots when plans change. Built for Google Cloud's Agentic Cinema hackathon.",
-						"creator": {
-							"@id": "https://jagritvats.com/#person"
-						}
-					},
-					{
-						"@type": "CreativeWork",
-						"@id": "https://jagritvats.com/#synpse",
-						"name": "Synpse",
-						"url": "https://web.synpse.app",
-						"sameAs": [
-							"https://play.google.com/store/apps/details?id=com.synapy.app"
-						],
-						"description": "An AI companion with long-term memory, on the web, Android and Telegram.",
-						"creator": {
-							"@id": "https://jagritvats.com/#person"
-						}
-					},
-					{
-						"@type": "SoftwareSourceCode",
-						"name": "ResidentOps",
-						"url": "https://residentops.fiddletech.xyz",
-						"codeRepository": "https://github.com/jagritvats/residentops-pb",
-						"programmingLanguage": "Python",
-						"description": "An agent that handles maintenance issues for a residents' association. Built for AWS's Agents for Humans hackathon.",
-						"creator": {
-							"@id": "https://jagritvats.com/#person"
-						}
-					},
-					{
-						"@type": "CreativeWork",
-						"name": "SAMAY",
-						"url": "https://samay.synpse.app",
-						"description": "Helps people in India respond to online fraud and prepare a report to file on cybercrime.gov.in.",
-						"creator": {
-							"@id": "https://jagritvats.com/#person"
-						}
-					}
-				]
-			}
+		<script type="application/ld+json">{# Generated from _data/profile.json #}
+{{ profile | homeJsonLd(site) | safe }}
 		</script>
 	</head>
 	<body>
@@ -303,27 +70,7 @@
 			</defs>
 		</svg>
 
-		<header class="site-header">
-			<div class="site-header__inner">
-				<a href="#top" class="site-header__name">Jagrit Vats</a>
-				<nav class="site-nav" aria-label="Sections">
-					<ul>
-						<li><a href="#work">Work</a></li>
-						<li><a href="#projects">Projects</a></li>
-						<li><a href="#contact">Contact</a></li>
-					</ul>
-				</nav>
-				<button id="themeBtn" class="theme-toggle" type="button" aria-label="Switch theme">
-					<svg class="theme-toggle__moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-						<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
-					</svg>
-					<svg class="theme-toggle__sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-						<circle cx="12" cy="12" r="4.5" />
-						<path d="M12 1.5v2.5M12 20v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M1.5 12H4M20 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8" />
-					</svg>
-				</button>
-			</div>
-		</header>
+{% include "partials/site-header.njk" %}
 
 		<main id="main">
 			<section class="hero" id="top" aria-labelledby="name">
@@ -411,43 +158,40 @@
 					<h2 class="section__title" id="work-title">Work</h2>
 				</div>
 
-				<article class="job">
-					<header class="job__head">
-						<h3 class="job__company">Bajaj Finserv Health</h3>
-						<p class="job__meta">July 2023 to now</p>
-					</header>
-					<ol class="ladder">
-						<li>
-							<span class="ladder__role">Software Development Engineer Intern</span>
-							<span class="ladder__when">Jul 2023 to Jun 2024</span>
-						</li>
-						<li>
-							<span class="ladder__role">Associate Software Development Engineer</span>
-							<span class="ladder__when">Jul 2024 to Oct 2025</span>
-						</li>
-						<li aria-current="step">
-							<span class="ladder__role">Software Development Engineer</span>
-							<span class="ladder__when">Oct 2025 to now</span>
-						</li>
-					</ol>
-					<ul class="points">
-						<li>Lead a team setting up a new product from scratch on Spring Boot. That covers provisioning VMs with Ansible, the application architecture and domain entities, and deployment through Azure Pipelines to a multi-node Docker Swarm cluster.</li>
-						<li>Work on the integration layer that connects our services to Salesforce and other external systems through Kafka events. Retry topics and dead-letter queues mean a failed event is either tried again or parked for replay.</li>
-						<li>Build multi-step asynchronous workflows on Kafka, with Redis and in-memory caching.</li>
-						<li>Cut latency on endpoints that call several downstream APIs by running those calls in parallel on Java virtual threads.</li>
-						<li>Improved tracing across services with Spring Boot advice and custom interceptors that pass trace IDs along. The same interceptors handle payload encryption and a standard response format.</li>
-						<li>Cut service startup time roughly in half by changing how the application initializes and tuning Kubernetes liveness and readiness probes. Other services adopted the same approach.</li>
-						<li>Automated release steps with Azure Pipelines and OpenAPI/Swagger contract generation, and take part in design and architecture reviews for new core modules.</li>
-					</ul>
-				</article>
+				{#- Work, Tools, Education and Contact are generated from _data/profile.json. -#}
+				{%- for job in profile.jobs %}
+				{%- set role = job | currentRole %}
 
-				<article class="job job--past">
+				<article class="job{% if role.end %} job--past{% endif %}">
 					<header class="job__head">
-						<h3 class="job__company">Angrybaaz Services</h3>
-						<p class="job__meta">Frontend development intern, Nov 2022 to Jan 2023</p>
+						<h3 class="job__company">{{ job.company }}</h3>
+						{%- if job.roles.length > 1 %}
+						<p class="job__meta">{{ job | jobPeriod }}</p>
+						{%- else %}
+						<p class="job__meta">{{ role.title | sentenceCase }}, {{ job | jobPeriod("short") }}</p>
+						{%- endif %}
 					</header>
-					<p>Built UI components for a Figma plugin, using React, TypeScript and the Figma API.</p>
+					{%- if job.roles.length > 1 %}
+					<ol class="ladder">
+						{%- for r in job.roles %}
+						<li{% if not r.end %} aria-current="step"{% endif %}>
+							<span class="ladder__role">{{ r.title }}</span>
+							<span class="ladder__when">{{ r | rolePeriod("short") }}</span>
+						</li>
+						{%- endfor %}
+					</ol>
+					{%- endif %}
+					{%- if job.highlights.length > 1 %}
+					<ul class="points">
+						{%- for h in job.highlights %}
+						<li>{{ h | pick("page") }}</li>
+						{%- endfor %}
+					</ul>
+					{%- else %}
+					<p>{{ job.highlights[0] | pick("page") }}</p>
+					{%- endif %}
 				</article>
+				{%- endfor %}
 			</section>
 
 			<section class="section" id="projects" aria-labelledby="projects-title">
@@ -777,24 +521,36 @@
 					</p>
 				</div>
 			</section>
+{%- if collections.posts.length %}
+
+			<section class="section" id="writing" aria-labelledby="writing-title">
+				<div class="section__head">
+					<h2 class="section__title" id="writing-title">Writing</h2>
+				</div>
+				<ul class="more__list">
+					{%- for post in collections.posts.slice(0, 4) %}
+					<li class="more__item">
+						<h3 class="more__name"><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+						{%- if post.data.description %}
+						<p>{{ post.data.description }}</p>
+						{%- endif %}
+						<p class="more__meta"><time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time></p>
+					</li>
+					{%- endfor %}
+				</ul>
+				<p class="earlier"><a href="/writing/">All writing</a> or follow the <a href="/feed.xml">Atom feed</a>.</p>
+			</section>
+{%- endif %}
 
 			<section class="section" id="tools" aria-labelledby="tools-title">
 				<div class="section__head">
 					<h2 class="section__title" id="tools-title">Tools</h2>
 				</div>
 				<dl class="tools">
-					<dt>At work</dt>
-					<dd>Java, Spring Boot, JPA/Hibernate, microservices, REST APIs, Kafka (retries, dead-letter queues), concurrency and virtual threads, Redis, MongoDB, JUnit, Mockito, OpenAPI/Swagger</dd>
-					<dt>Deployment</dt>
-					<dd>Kubernetes (AKS), ArgoCD, Docker, Docker Swarm, Ansible, Azure Pipelines</dd>
-					<dt>Observability</dt>
-					<dd>Distributed tracing, ELK stack, ClickStack (HyperDX)</dd>
-					<dt>Side projects</dt>
-					<dd>TypeScript, Node.js (Express, Hono), React, Next.js, PostgreSQL and Supabase (row-level security, pg_cron), Python (FastAPI), SQLite</dd>
-					<dt>AI</dt>
-					<dd>Gemini, Grok and Claude APIs, local models through Ollama, Google ADK, Strands Agents, LangGraph, LangChain, MCP, embeddings and retrieval</dd>
-					<dt>Self-hosting</dt>
-					<dd>Docker Compose, Traefik, Cloudflare, GitHub Actions, Oracle Cloud ARM VMs, Google Cloud Run</dd>
+					{%- for skill in profile.skills %}
+					<dt>{{ skill.name | pick("page") }}</dt>
+					<dd>{{ skill.list | pick("page") }}</dd>
+					{%- endfor %}
 				</dl>
 			</section>
 
@@ -803,16 +559,18 @@
 					<h2 class="section__title" id="education-title">Education</h2>
 				</div>
 				<div class="education">
+					{%- for e in profile.education %}
 					<p>
-						<strong>Chitkara University</strong><br />
-						Bachelor of Engineering, Computer Science<br />
-						2020 to 2024, CGPA 9.88 out of 10
+						<strong>{{ e.institution }}</strong><br />
+						{{ e | degreeName }}<br />
+						{{ e | degreeSummary }}
 					</p>
+					{%- endfor %}
 					<p>
-						<strong>Microsoft certifications</strong><br />
-						<a href="https://www.credly.com/badges/1702378c-cf55-40ec-aa00-b3e1c7cbd701/public_url">Azure Fundamentals (AZ-900)</a>,
-						<a href="https://www.credly.com/badges/1535c2b5-1727-4564-994e-013d0cfe43a1/public_url">Azure Data Fundamentals (DP-900)</a>
-						and Azure AI Fundamentals (AI-900)
+						<strong>{{ profile.certificates.issuer }} certifications</strong><br />
+						{%- for c in profile.certificates.items %}
+						{% if loop.last and not loop.first %}and {% endif %}{% if c.url %}<a href="{{ c.url }}">{{ c.name }}</a>{% else %}{{ c.name }}{% endif %}{% if loop.revindex > 2 %},{% endif %}
+						{%- endfor %}
 					</p>
 				</div>
 			</section>
@@ -822,20 +580,17 @@
 					<h2 class="section__title" id="contact-title">Contact</h2>
 				</div>
 				<p class="contact__note">Email is the quickest way to reach me.</p>
-				<a class="contact__email" href="mailto:jagritvats6@gmail.com">jagritvats6@gmail.com</a>
+				<a class="contact__email" href="mailto:{{ profile.email }}">{{ profile.email }}</a>
 				<ul class="contact__links">
-					<li><a href="tel:+918901523579">+91&nbsp;89015&nbsp;23579</a></li>
-					<li><a href="https://github.com/jagritvats" rel="me">GitHub</a></li>
-					<li><a href="https://www.linkedin.com/in/jagritvats/" rel="me">LinkedIn</a></li>
+					<li><a href="tel:{{ profile.phone | phoneTel }}">{{ profile.phone | phoneDisplay | replace(" ", "&nbsp;") | safe }}</a></li>
+					{%- for link in profile.profiles %}
+					<li><a href="{{ link.url }}" rel="me">{{ link.network }}</a></li>
+					{%- endfor %}
 				</ul>
 			</section>
 		</main>
 
-		<footer class="site-footer">
-			<p>&copy; <span data-year>2026</span> Jagrit Vats</p>
-			<p>For AI assistants: <a href="llms.txt">llms.txt</a> and <a href="resume.json">resume.json</a></p>
-			<p><a href="#top">Back to top</a></p>
-		</footer>
+{% include "partials/site-footer.njk" %}
 
 		<script src="script.js" defer></script>
 	</body>

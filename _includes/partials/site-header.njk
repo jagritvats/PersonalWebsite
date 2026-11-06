@@ -1,0 +1,30 @@
+		<header class="site-header{% if collections.posts.length or page.url.startsWith('/writing/') %} site-header--long{% endif %}">
+			{#- Shared by the homepage and the writing pages. On the homepage the links are in-page anchors.
+			    The Writing link (and the --long header that makes room for it) only appears once a post is published. #}
+			{%- set isHome = page.url == "/" %}
+			{%- set home = "" if isHome else "/" %}
+			{%- set inWriting = page.url.startsWith("/writing/") %}
+			{%- set showWriting = collections.posts.length or inWriting %}
+			<div class="site-header__inner">
+				<a href="{{ '#top' if isHome else '/' }}" class="site-header__name">{{ profile.name }}</a>
+				<nav class="site-nav" aria-label="{{ 'Sections' if isHome else 'Site' }}">
+					<ul>
+						<li><a href="{{ home }}#work">Work</a></li>
+						<li><a href="{{ home }}#projects">Projects</a></li>
+						{%- if showWriting %}
+						<li><a href="{{ '#writing' if isHome else '/writing/' }}"{% if inWriting %} aria-current="{{ 'page' if page.url == '/writing/' else 'true' }}"{% endif %}>Writing</a></li>
+						{%- endif %}
+						<li><a href="{{ home }}#contact">Contact</a></li>
+					</ul>
+				</nav>
+				<button id="themeBtn" class="theme-toggle" type="button" aria-label="Switch theme">
+					<svg class="theme-toggle__moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+						<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+					</svg>
+					<svg class="theme-toggle__sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+						<circle cx="12" cy="12" r="4.5" />
+						<path d="M12 1.5v2.5M12 20v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M1.5 12H4M20 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8" />
+					</svg>
+				</button>
+			</div>
+		</header>

@@ -1,0 +1,26 @@
+		<meta name="theme-color" content="#f1f4ef" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#10251f" media="(prefers-color-scheme: dark)" />
+		<!-- Google Search shows the favicon only if it can find one at least 48x48 (a multiple of 48 is best). -->
+		<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48 64x64" />
+		<link rel="icon" href="/favicon-48x48.png" type="image/png" sizes="48x48" />
+		<link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96" />
+		<link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
+		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+		<link rel="manifest" href="/site.webmanifest" />
+
+		<script>
+			// Apply a saved theme before first paint so the page doesn't flash.
+			(function () {
+				try {
+					var saved = localStorage.getItem('theme');
+					if (saved === 'light' || saved === 'dark') {
+						document.documentElement.setAttribute('data-theme', saved);
+					}
+				} catch (e) {}
+			})();
+		</script>
+
+		<link rel="preload" href="/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/fonts/newsreader-regular.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="stylesheet" href="/style.css" />
