@@ -547,10 +547,10 @@
 					{%- for post in collections.posts.slice(0, 4) %}
 					<li class="more__item">
 						<h3 class="more__name"><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+						<p class="more__meta"><time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time></p>
 						{%- if post.data.description %}
 						<p>{{ post.data.description }}</p>
 						{%- endif %}
-						<p class="more__meta"><time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time></p>
 					</li>
 					{%- endfor %}
 				</ul>

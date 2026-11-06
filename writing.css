@@ -8,19 +8,19 @@
 :root {
     --code-bg: var(--paper-raised);
     --code-ink: var(--ink);
-    --code-comment: #52665d;
-    --code-punct: #3e564d;
-    --code-keyword: #8a5a00;
-    --code-string: #2a7049;
-    --code-number: #b23a22;
-    --code-function: #245a7a;
+    --code-comment: #586b61;
+    --code-punct: #55695f;
+    --code-keyword: #a34d00;
+    --code-string: #1b7040;
+    --code-number: #b8321a;
+    --code-function: #1f64a3;
     --code-mono: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, "Liberation Mono", monospace;
 }
 
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-        --code-comment: #8fa89c;
-        --code-punct: #b5c8be;
+        --code-comment: #84928a;
+        --code-punct: #adb9b2;
         --code-keyword: #f2c14e;
         --code-string: #7bd389;
         --code-number: #ff8a73;
@@ -29,8 +29,8 @@
 }
 
 :root[data-theme="dark"] {
-    --code-comment: #8fa89c;
-    --code-punct: #b5c8be;
+    --code-comment: #84928a;
+    --code-punct: #adb9b2;
     --code-keyword: #f2c14e;
     --code-string: #7bd389;
     --code-number: #ff8a73;
@@ -408,5 +408,13 @@
     .post__body pre {
         white-space: pre-wrap;
         border-color: #999;
+    }
+}
+
+/* Phones: a little smaller, so typical lines fit without scrolling sideways. */
+@media (max-width: 640px) {
+    .post__body pre {
+        padding: 0.875rem 1rem;
+        font-size: 0.78rem;
     }
 }
