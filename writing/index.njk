@@ -1,0 +1,30 @@
+---
+layout: layouts/base.njk
+title: Writing
+noindexWhenEmpty: true
+eleventyExcludeFromCollections: true
+eleventyImport:
+  collections: ["posts"]
+---
+			<div class="writing-index">
+				<header class="writing-index__head" id="top">
+					<h1 class="writing-index__title">{{ site.writing.title }}</h1>
+					<p class="writing-index__lead">{{ site.writing.description }}</p>
+					<p class="writing-index__feed"><a href="/feed.xml">Atom feed</a></p>
+				</header>
+				{%- if collections.posts.length %}
+				<ul class="post-list">
+					{%- for post in collections.posts %}
+					<li class="post-list__item">
+						<h2 class="post-list__title"><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+						<p class="post-list__meta"><time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>{% if post.data.draft %} · Draft{% endif %}</p>
+						{%- if post.data.description %}
+						<p class="post-list__summary">{{ post.data.description }}</p>
+						{%- endif %}
+					</li>
+					{%- endfor %}
+				</ul>
+				{%- else %}
+				<p class="writing-index__empty">Nothing published yet.</p>
+				{%- endif %}
+			</div>

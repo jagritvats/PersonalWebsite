@@ -62,20 +62,20 @@
     :root:not([data-theme="light"]) {
         color-scheme: dark;
 
-        --paper: #10251f;
-        --paper-raised: #173229;
-        --ink: #e4eee7;
-        --ink-soft: #b5c8be;
-        --ink-faint: #8fa89c;
-        --rule: #2a4a40;
-        --node-line: #8fa89c;
-        --edge: #8fa89c;
+        --paper: #0d1311;
+        --paper-raised: #151c19;
+        --ink: #e5ece7;
+        --ink-soft: #adb9b2;
+        --ink-faint: #84928a;
+        --rule: #25302b;
+        --node-line: #84928a;
+        --edge: #84928a;
         --signal-ink: #f2c14e;
         --ok: #7bd389;
         --fail: #ff8a73;
         --link-line: #f2c14e;
         --button-bg: #f2c14e;
-        --button-fg: #10251f;
+        --button-fg: #0d1311;
         --focus: #f2c14e;
     }
 }
@@ -83,20 +83,20 @@
 :root[data-theme="dark"] {
     color-scheme: dark;
 
-    --paper: #10251f;
-    --paper-raised: #173229;
-    --ink: #e4eee7;
-    --ink-soft: #b5c8be;
-    --ink-faint: #8fa89c;
-    --rule: #2a4a40;
-    --node-line: #8fa89c;
-    --edge: #8fa89c;
+    --paper: #0d1311;
+    --paper-raised: #151c19;
+    --ink: #e5ece7;
+    --ink-soft: #adb9b2;
+    --ink-faint: #84928a;
+    --rule: #25302b;
+    --node-line: #84928a;
+    --edge: #84928a;
     --signal-ink: #f2c14e;
     --ok: #7bd389;
     --fail: #ff8a73;
     --link-line: #f2c14e;
     --button-bg: #f2c14e;
-    --button-fg: #10251f;
+    --button-fg: #0d1311;
     --focus: #f2c14e;
 }
 
@@ -955,4 +955,90 @@ a:hover {
         background: #fff;
         color: #000;
     }
+}
+
+/* ================================ */
+/* == Writing                    == */
+/* ================================ */
+/* Added with /writing. The writing pages' own styles are in writing.css; this
+   is only what the homepage needs. With the Writing link the nav has four
+   items, which don't fit beside the name on a phone, so they get their own row. */
+@media (max-width: 520px) {
+    .site-header--long .site-header__inner {
+        flex-wrap: wrap;
+        row-gap: 0.35rem;
+    }
+
+    .site-header--long .site-nav {
+        order: 3;
+        width: 100%;
+    }
+
+    html:has(.site-header--long) {
+        scroll-padding-top: 6.25rem;
+    }
+}
+
+/* == TeamTakes diagram          == */
+/* ================================ */
+/* Animated by animateDiagram() in script.js. The static SVG already shows the end state. */
+.diagram--tt .replay {
+    margin-top: 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.dg .tt-l--fail {
+    fill: var(--fail);
+}
+
+.dg .tt-x {
+    transition: opacity 0.25s ease;
+}
+
+.dg .tt-x path {
+    fill: none;
+    stroke-linecap: round;
+}
+
+.dg .tt-x__halo {
+    stroke: var(--paper);
+    stroke-width: 6;
+}
+
+.dg .tt-x__mark {
+    stroke: var(--fail);
+    stroke-width: 2;
+}
+
+.dg .tt-tok {
+    transition: opacity 0.3s ease;
+}
+
+@keyframes tt-guard {
+    0%, 100% {
+        stroke-width: 1.5;
+        fill: var(--paper-raised);
+    }
+    35% {
+        stroke-width: 3;
+        fill: color-mix(in srgb, var(--ok) 14%, var(--paper-raised));
+    }
+}
+
+.dg .node.is-pulse rect {
+    animation: tt-guard 1s ease-in-out;
+}
+
+@keyframes tt-guard-edge {
+    0%, 100% {
+        stroke: var(--edge);
+    }
+    35% {
+        stroke: var(--ok);
+    }
+}
+
+.dg .e.is-pulse {
+    animation: tt-guard-edge 1s ease-in-out;
 }

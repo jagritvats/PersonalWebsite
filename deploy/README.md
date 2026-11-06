@@ -9,6 +9,8 @@ shared Traefik edge owned by the Synpse stack. Same shape as TeamTakes.
   `main` (or "Run workflow") it builds `deploy/Dockerfile` on a native arm64
   runner, pushes `ghcr.io/jagritvats/personalwebsite:<sha>` and `:main`, then
   SSHes to the VM, rsyncs `deploy/`, and runs `bash deploy/web.sh deploy`.
+- `deploy/Dockerfile` is two stages: `node:22-alpine` runs `npm ci && npm run build`
+  (Eleventy), then `nginx:1.27-alpine` serves only the resulting `_site/`.
 - It only runs when the repo variable `DEPLOY_ENABLED` is `true` (kill switch).
 - `deploy/docker-compose.yml` runs one service, `site`, with no host ports. It
   joins the `synapse-edge` network and Traefik routes `jagritvats.com` to it;

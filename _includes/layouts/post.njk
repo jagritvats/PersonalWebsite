@@ -1,0 +1,26 @@
+---
+layout: layouts/base.njk
+pageType: post
+---
+			<article class="post" aria-labelledby="post-title">
+				<header class="post__head" id="top">
+					<p class="post__kicker"><a href="/writing/">Writing</a></p>
+					<h1 class="post__title" id="post-title">{{ title }}</h1>
+					<p class="post__meta">
+						<time datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time>
+						{%- if updated %}, updated <time datetime="{{ updated | isoDate }}">{{ updated | readableDate }}</time>{% endif %}
+					</p>
+					{%- if draft %}
+					<p class="post__draft">Draft. Left out of production builds.</p>
+					{%- endif %}
+				</header>
+
+				<div class="post__body">
+{{ content | safe }}
+				</div>
+
+				<footer class="post__foot">
+					<a href="/writing/">All writing</a>
+					<a href="/feed.xml">Atom feed</a>
+				</footer>
+			</article>
