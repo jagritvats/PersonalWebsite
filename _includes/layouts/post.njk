@@ -19,6 +19,25 @@ pageType: post
 {{ content | safe }}
 				</div>
 
+				{%- set postUrl = site.url + page.url %}
+				<aside class="share" aria-labelledby="share-title" data-share-url="{{ postUrl }}" data-share-title="{{ title }}">
+					<h2 class="share__title" id="share-title">Share this post</h2>
+					<ul class="share__list">
+						{#- The two buttons need JS (script.js shows them); the links work without it. #}
+						<li><button class="share__button" type="button" data-share-native hidden>Share…</button></li>
+						<li><button class="share__button" type="button" data-share-copy hidden>Copy link</button></li>
+						<li><a href="https://www.linkedin.com/sharing/share-offsite/?url={{ postUrl | urlencode }}" target="_blank" rel="noopener">LinkedIn</a></li>
+						<li><a href="https://x.com/intent/post?url={{ postUrl | urlencode }}&amp;text={{ title | urlencode }}" target="_blank" rel="noopener">X</a></li>
+						<li><a href="https://news.ycombinator.com/submitlink?u={{ postUrl | urlencode }}&amp;t={{ title | urlencode }}" target="_blank" rel="noopener">Hacker News</a></li>
+						<li><a href="mailto:?subject={{ title | urlencode }}&amp;body={{ postUrl | urlencode }}">Email</a></li>
+					</ul>
+					<p class="share__status" role="status" aria-live="polite"></p>
+					<p class="share__reply">
+						Spotted a mistake or have a question?
+						<!--email_off--><a href="mailto:{{ profile.email }}?subject={{ ('Re: ' + title) | urlencode }}">Email me</a><!--/email_off-->.
+					</p>
+				</aside>
+
 				<footer class="post__foot">
 					<a href="/writing/">All writing</a>
 					<a href="/feed.xml">Atom feed</a>

@@ -47,7 +47,7 @@ def add_proposed_option(project, day, disruption, existing, order_numbers, defer
 
 If the model names a scene that doesn't exist, the proposal is dropped. If it proposes something already on the list, the existing option gets marked as Gemini's too.
 
-One detail is deliberate. The screen shows at most three feasible and two rejected options, but Gemini's proposals are always shown, whether they pass or not. The point of the design is that you can see the model being overruled. Hiding the rejected ones would hide exactly that.
+The screen shows at most three feasible and two rejected options, but Gemini's proposals are always shown, whether they pass or not. I wanted the producer to see when the model gets overruled, and hiding its rejected options would hide that.
 
 The model does get the last word on the explanation. It writes the trade-offs in plain English. If that call fails, there's a fallback rationale built from the checker's own scores, so the producer still gets a reason. Then the run ends at "awaiting approval". Nothing changes on the schedule until a person says yes.
 
@@ -73,7 +73,7 @@ def _binding(basis):
 
 Only a high-confidence fact with a citation can be HARD. Everything below that is shown for someone to check, but it never reaches the scheduler.
 
-There are two more gates after that. Only two shapes of fact can be checked mechanically: a ban on working at a location during a time window, like a noise curfew, and a ban on an activity there, like drones or pyrotechnics. A high-confidence fact in any other shape gets downgraded to SOFT. I didn't want to pretend to parse prose into rules. And even a HARD fact does nothing until the producer accepts it. The model and the web can suggest that a rule exists. A person decides that it applies.
+There are two more gates after that. Only two shapes of fact can be checked mechanically: a ban on working at a location during a time window, like a noise curfew, and a ban on an activity there, like drones or pyrotechnics. A high-confidence fact in any other shape gets downgraded to SOFT. I didn't want to pretend to parse prose into rules. And even a HARD fact does nothing until the producer accepts it.
 
 ## The model overwrote the record
 
@@ -93,13 +93,13 @@ In the last week before the deadline, a pre-submission audit found the worst one
 
 Moving the scene an hour later got it past the one rule the whole demo was built around. The fix tiles the window at plus and minus 24 hours, so each banned period is one continuous interval.
 
-Same audit, different bug. Two tests checked that a 19:00 slot gives up part of golden hour. But dusk moves. It was 19:02 on 8 September and would be 19:00 by the 10th, so those tests would have started failing on 10 September. That was the day after the deadline, during judging, on a test suite the README told judges to run. Pinning the clock to different dates confirmed it.
+The same audit found another one. Two tests checked that a 19:00 slot gives up part of golden hour. But dusk moves. It was 19:02 on 8 September and would be 19:00 by the 10th, so those tests would have started failing on 10 September. That was the day after the deadline, during judging, on a test suite the README told judges to run. Pinning the clock to different dates confirmed it.
 
-And one more, which is less about rules and more about state. Two buttons, each correct on its own, could put the same scene on two shoot days if a producer pressed them in a natural order. Now both refuse, and the refusal names the day to undo first. I went with refusing over auto-fixing on purpose. Un-committing another day's schedule is a second decision, and it's the producer's to make, not the function's.
+There was one more bug, about state rather than rules. Two buttons, each correct on its own, could put the same scene on two shoot days if a producer pressed them in a natural order. Now both refuse, and the refusal names the day to undo first. I went with refusing over auto-fixing on purpose. Un-committing another day's schedule is a second decision, and it's the producer's to make, not the function's.
 
 ## Where the model actually helps
 
-The model still does a lot of the work. It plans the research for a scene and grades the search results that come back. It can propose schedules the enumeration wouldn't produce, like deferring a scene the disruption didn't touch. And it writes explanations a producer can actually read. Those are the things LLMs are good at.
+The model still does a lot of the work. It plans the research for a scene and grades the search results that come back. It can propose schedules the enumeration wouldn't produce, like deferring a scene the disruption didn't touch. And it writes explanations a producer can actually read.
 
 What I didn't want was the model's confidence standing in for a check. When it's wrong, it sounds just as sure as when it's right. A rule checker is boring, but when it rejects a plan it can tell you which rule and which source.
 
