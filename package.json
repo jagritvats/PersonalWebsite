@@ -6,7 +6,8 @@
 	"type": "module",
 	"scripts": {
 		"build": "eleventy",
-		"start": "eleventy --serve"
+		"start": "eleventy --serve",
+		"og": "node scripts/og-images.mjs"
 	},
 	"engines": {
 		"node": ">=20"
@@ -14,6 +15,7 @@
 	"devDependencies": {
 		"@11ty/eleventy": "3.1.7",
 		"@11ty/eleventy-plugin-rss": "3.1.0",
-		"@11ty/eleventy-plugin-syntaxhighlight": "5.0.2"
+		"@11ty/eleventy-plugin-syntaxhighlight": "5.0.2",
+		"playwright-core": "1.49.1"
 	}
 }

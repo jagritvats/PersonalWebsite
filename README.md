@@ -91,7 +91,11 @@ draft: true           # optional: shown by npm start, left out of npm run build
 ```
 
 - Each post gets a canonical URL, Open Graph and Twitter tags, and `BlogPosting` JSON-LD.
-  Set `ogImage: /images/<name>.png` (1200×630) and `ogImageAlt` to use a preview image other than `images/og.png`.
+- Link-preview cards: after adding a post or changing its title or description, run `npm run og`
+  (or `npm run og -- --all` to redraw every card). It renders `images/og/<file name>.png` with the
+  site's fonts in an installed Chrome or Edge (set `CHROME_PATH` to use another browser), and the
+  post picks it up automatically. A post without a card falls back to `images/og.png`, and the
+  build prints a warning. Set `ogImage` and `ogImageAlt` in front matter to use a different image.
 - Published posts are listed at `/writing/`, in the Atom feed at `/feed.xml`, in `llms.txt` and in the sitemap.
 - The Writing link in the header and the Writing section on the homepage only appear once at least
   one post is published. Until then `/writing/` says "Nothing published yet" and asks search engines
@@ -99,9 +103,7 @@ draft: true           # optional: shown by npm start, left out of npm run build
 - Fenced code blocks are highlighted at build time (Prism, via
   `@11ty/eleventy-plugin-syntaxhighlight`); the colours are in `writing.css` and follow the theme.
 - Markdown isn't run through Nunjucks, so `{{ }}` in code samples prints as written.
-- Diagrams can be inline SVG using the same `.dg` classes as the homepage; see
-  `writing/placeholder.md`. Keep blank lines out of the `<figure>`, or Markdown ends the HTML block early.
+- Diagrams can be inline SVG using the same `.dg` classes as the homepage. Keep blank lines out
+  of the `<figure>`, or Markdown ends the HTML block early.
 - To check drafts in a production-style build: `DRAFTS=1 npm run build` (PowerShell:
   `$env:DRAFTS=1; npm run build`).
-
-`writing/placeholder.md` is a draft that shows every kind of block. Delete it when the first real post goes in.
