@@ -212,4 +212,37 @@
 			replay: teamsReplay,
 		});
 	}
+	// ---- Share buttons on posts ----
+	// The share links work without JS. These two buttons only appear when the browser can do them.
+	document.querySelectorAll('[data-share-url]').forEach(box => {
+		const url = box.dataset.shareUrl;
+		const title = box.dataset.shareTitle;
+		const status = box.querySelector('.share__status');
+		const nativeBtn = box.querySelector('[data-share-native]');
+		const copyBtn = box.querySelector('[data-share-copy]');
+		let clearStatus;
+
+		function say(message) {
+			status.textContent = message;
+			clearTimeout(clearStatus);
+			clearStatus = setTimeout(() => (status.textContent = ''), 4000);
+		}
+
+		if (nativeBtn && navigator.share) {
+			nativeBtn.hidden = false;
+			nativeBtn.addEventListener('click', () => {
+				navigator.share({ title, url }).catch(() => {}); // closing the share sheet rejects; that's fine
+			});
+		}
+
+		if (copyBtn && navigator.clipboard && window.isSecureContext) {
+			copyBtn.hidden = false;
+			copyBtn.addEventListener('click', () => {
+				navigator.clipboard.writeText(url).then(
+					() => say('Link copied.'),
+					() => say("Couldn't copy the link. It's " + url),
+				);
+			});
+		}
+	});
 })();

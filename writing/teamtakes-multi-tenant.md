@@ -47,11 +47,11 @@ The app already had around 150 permissive RLS policies for the in-team rules: wh
 
 So isolation went in as a separate layer. Postgres has `AS RESTRICTIVE` policies, which are ANDed with the permissive ones, so a row has to pass the existing rules *and* the team check. There's one restrictive policy each for select, update and delete on 42 tables, and the existing logic stayed untouched. Inserts were left to a trigger that stamps the right team on new rows.
 
-Two details are worth calling out.
+Two details mattered.
 
 First, a missing `team_id` means invisible. `is_team_member(NULL)` is false, so a row that never got stamped can't show up for anyone. Failing closed is the right default here.
 
-Second, the migration checks itself. If any table that should have the restrictive policy doesn't, the migration raises an error instead of finishing. A check like that only proves things on the day it runs, and that comes back later.
+Second, the migration checks itself. If any table that should have the restrictive policy doesn't, the migration raises an error instead of finishing. But that check only proves things on the day the migration runs. That comes back later.
 
 On the way I also found a latent "infinite recursion detected in policy" bug. The policy on `team_members` read from `team_members`, which triggered the same policy again. The fix was to route every membership check through a `SECURITY DEFINER` function, which became the one predicate everything else uses.
 
@@ -61,7 +61,7 @@ I didn't want the first run of 18 migrations against real data to be the product
 
 It found three bugs, and none of them would have shown up on an empty database:
 
-- One of my migrations shared a version number with a migration already applied on production. The runner would have skipped mine. Silently.
+- One of my migrations shared a version number with a migration already applied on production. The runner would have skipped mine without any error.
 - Backfilling `team_id` on vote responses tripped an existing trigger that refuses changes once a poll is closed or about to close. An empty database has no closed polls. Production does.
 - I used `max(team_id)` on a uuid column. Postgres doesn't have `max(uuid)`.
 
@@ -102,9 +102,9 @@ END LOOP;
 
 But it ran once. Tables created later, like the ones behind Daily Docket, got the isolation policy and not the active-team one. So a person in two teams could see the other team's dockets in this team's feed. The same drift hit every tenant table added after the sweep.
 
-This never showed data to someone outside the team. Membership isolation still held, so what leaked was always the union of that person's own teams. It was still wrong, though, and the same drift on a different policy could have been a real leak. The fix re-ran the sweep. I also added a check to the tenancy verifier, a script that reads the migration files without needing a database. It fails if any migration that creates an isolation policy runs after the last sweep. Honestly, nothing in the deploy pipeline runs that script yet. It runs when I run it, and inside the rehearsal script.
+This never showed data to someone outside the team. Membership isolation still held, so what leaked was always the union of that person's own teams. It was still wrong, though, and the same drift on a different policy could have been a real leak. The fix re-ran the sweep. I also added a check to the tenancy verifier, a script that reads the migration files without needing a database. It fails if any migration that creates an isolation policy runs after the last sweep. Nothing in the deploy pipeline runs that script yet, though. It only runs when I run it, or as part of the rehearsal.
 
-The second leak was sneakier. On someone's first visit to a newly joined team's subdomain, a cached profile let the app render before the active team was known. So the first queries went out with no header, the narrowing policy did nothing, and the union of all their teams got cached under this team's keys. It looked fine after a refresh, which is the worst kind of bug. The fix makes the app wait for the team on a subdomain, skips prefetching until the team is known, and drops the cache if the team changes under it.
+The second leak was sneakier. On someone's first visit to a newly joined team's subdomain, a cached profile let the app render before the active team was known. So the first queries went out with no header, the narrowing policy did nothing, and the union of all their teams got cached under this team's keys. After a refresh everything looked right, so it was easy to miss. The fix makes the app wait for the team on a subdomain, skips prefetching until the team is known, and drops the cache if the team changes under it.
 
 Both leaks come from the same choice: no header means no-op. That kept everything else working during the migration. In hindsight, it's also the one place in the design that doesn't fail closed.
 
@@ -112,7 +112,7 @@ Both leaks come from the same choice: no header means no-op. That kept everythin
 
 Later I split the single-row `app_settings` table into one row per team. The old table was renamed, and a view took its name. Chat and DM sends started failing for multi-team users with "more than one row returned by a subquery used as an expression".
 
-Turns out RLS policies point at tables by OID, not by name. When the table was renamed, three policies followed it, so they were now reading a table with a row per team. Function bodies are stored as text, so they kept pointing at the name, which was now the view. Same rename, two different behaviours. The fix scoped each lookup to the row's own team, and a smoke test checks that no policy still uses the old pattern.
+Turns out RLS policies point at tables by OID, not by name. When the table was renamed, three policies followed it, so they were now reading a table with a row per team. Function bodies are stored as text, so they kept pointing at the name, which was now the view. The fix scoped each lookup to the row's own team, and a smoke test checks that no policy still uses the old pattern.
 
 ## What I'd do differently
 
@@ -122,4 +122,4 @@ I'd treat any "apply this to every table" migration as a rule that has to keep h
 
 And I'd think harder about the "missing context" case. Failing closed on unstamped rows was right. Doing nothing when the header was missing was convenient, and that's where both later leaks came from.
 
-Claude Code wrote most of the commits behind this post, and the history says so.
+Most of the code in this post was written with Claude Code.
