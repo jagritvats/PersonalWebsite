@@ -2,12 +2,12 @@
 // Prices are the launch prices in D:/dev/projects/_webfolio/PRICING.md (2026-11-23).
 
 // ---- Live addresses: the only place a piece's URL is set ----
-// null shows "Deploying" and no link. Each is moving to <piece>.jagritvats.com.
+// null shows "Deploying" and no link.
 const live = {
-	rescue: null, // planned: https://rescue.jagritvats.com/
-	restyle: "https://restyle-site.jagritvats6.workers.dev/", // planned: https://restyle.jagritvats.com/
+	rescue: "https://rescue.jagritvats.com/",
+	restyle: "https://restyle.jagritvats.com/",
 	deskbell: "https://deskbell.jagritvats.com/",
-	shopify: "https://webfolio-shopify.jagritvats6.workers.dev/", // planned: https://shopify.jagritvats.com/
+	shopify: "https://shopify.jagritvats.com/",
 	estate: "https://estate.jagritvats.com/",
 };
 
