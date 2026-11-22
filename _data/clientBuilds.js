@@ -90,8 +90,8 @@ const pieces = [
 		email: "shopify@jagritvats.com",
 		subject: "Shopify: [your store URL]",
 		image: {
-			src: "/builds/img/shopify.webp",
-			alt: "The two concept stores’ home pages: Oftly, skincare refills in butter yellow and oxblood, and Ostrel, jeans you can size by the numbers.",
+			src: "/builds/img/shopify-v2.webp",
+			alt: "Shopify poster: 22 custom sections, each editable in the theme editor, with the Oftly routine builder beside its theme-editor settings and both concept stores, Lighthouse mobile 99 to 100.",
 		},
 	},
 	{
