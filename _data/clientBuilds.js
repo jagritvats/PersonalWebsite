@@ -32,7 +32,7 @@ const pieces = [
 		subject: "Rescue audit: [your app URL]",
 		image: {
 			src: "/builds/img/rescue.webp",
-			alt: "The hardened Folioport dashboard for a demo agency: outstanding, overdue and paid totals above a list of recent invoices and active projects.",
+			alt: "Folioport case-study poster: 18 critical leaks before, 0 after, with one finding where the public key read every agency's invoices (200 OK before, 401 after).",
 		},
 	},
 	{
@@ -51,7 +51,7 @@ const pieces = [
 		subject: "Restyle: [your site URL]",
 		image: {
 			src: "/builds/img/restyle.webp",
-			alt: "The restyle home page: an AI-generated dental landing page with numbered findings such as cream-palette and italic-serif-display pinned to its elements.",
+			alt: "restyle poster: 28 of 30 AI-built landing pages came back cream against 1 of 26 human-built ones, beside a grid of the 30 pages and one tell pinned to its element.",
 		},
 	},
 	{
@@ -71,7 +71,7 @@ const pieces = [
 		subject: "Booking assistant for [your business]",
 		image: {
 			src: "/builds/img/deskbell.webp",
-			alt: "Ninth & Perry Dental’s home page with prices and open times, next to the Deskbell chat sending a swollen-face message straight to 911.",
+			alt: "Deskbell poster: Ninth & Perry Dental's home page with prices and open times, the chat sending a swollen-face message to 911, and 1 of 25 simultaneous bookings succeeding.",
 		},
 	},
 	{
@@ -111,7 +111,7 @@ const pieces = [
 		subject: "Real-estate site / template",
 		image: {
 			src: "/builds/img/estate.webp",
-			alt: "Gangway’s search page filtered to homes under $900K with three or more beds, beside a listing for a two-flat in Logan Square.",
+			alt: "Gangway poster: listings that tell you when the boiler was replaced, a building file for a Logan Square two-flat, and Chicago greystones.",
 		},
 	},
 ];
