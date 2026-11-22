@@ -352,6 +352,12 @@ export function llms(p, site, posts = []) {
 	}
 	add("");
 
+	add("## Client builds", "");
+	add(
+		`Five self-initiated builds that show the freelance work ${p.name} takes on (an app rescue, a redesign audit tool, a clinic booking assistant, Shopify themes and a real-estate site), with launch prices and contact addresses: ${site.url}/builds/`,
+		"",
+	);
+
 	if (posts.length) {
 		add("## Writing", "");
 		add(`Posts are listed at ${site.url}/writing/ and in the Atom feed at ${site.url}/feed.xml.`, "");

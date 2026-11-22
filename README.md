@@ -25,6 +25,8 @@ the VM at https://jagritvats.com/ — see [deploy/README.md](deploy/README.md). 
 | `_includes/partials/` | The `<head>` assets, header and footer shared by every page. |
 | `_includes/layouts/` | Layouts for the writing pages (`base.njk`) and posts (`post.njk`). |
 | `writing/` | Posts, one Markdown file each, plus the `/writing/` index. |
+| `builds/`, `builds.css` | `/builds/`, the client-work page (linked from the footer, not the nav). Posters are WebP in `builds/img/`. |
+| `_data/clientBuilds.js` | The pieces on `/builds/`: copy, prices, contact addresses, and the `live` block with each piece's URL (`null` shows "Deploying"). |
 | `style.css` | The site's styles and colour tokens. |
 | `writing.css` | Extra styles for the writing pages: long-form type, code blocks. |
 | `script.js` | Theme toggle, footer year and the hero diagram animation. |

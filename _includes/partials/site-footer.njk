@@ -1,5 +1,8 @@
 		<footer class="site-footer">
 			<p>&copy; <span data-year>{{ site.buildDate.getFullYear() }}</span> {{ profile.name }}</p>
 			<p>For AI assistants: <a href="/llms.txt">llms.txt</a> and <a href="/resume.json">resume.json</a></p>
+			{%- if page.url != "/builds/" %}
+			<p><a href="/builds/">Client builds</a></p>
+			{%- endif %}
 			<p><a href="#top">Back to top</a></p>
 		</footer>

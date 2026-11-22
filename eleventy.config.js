@@ -29,6 +29,8 @@ export default function (eleventyConfig) {
 	for (const path of [
 		"style.css",
 		"writing.css",
+		"builds.css",
+		"builds/img",
 		"script.js",
 		"favicon.ico",
 		"favicon.svg",

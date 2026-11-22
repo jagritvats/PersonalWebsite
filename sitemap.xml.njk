@@ -12,6 +12,10 @@ eleventyImport:
 		<loc>{{ site.url }}/</loc>
 		<lastmod>{{ [profile.updated].concat(postDates) | latestDate }}</lastmod>
 	</url>
+	<url>
+		<loc>{{ site.url }}/builds/</loc>
+		<lastmod>{{ clientBuilds.updated }}</lastmod>
+	</url>
 {%- if collections.posts.length %}
 	<url>
 		<loc>{{ site.url }}/writing/</loc>

@@ -1,0 +1,157 @@
+---
+eleventyExcludeFromCollections: true
+---
+{#- /builds/: client work. The pieces, their live URLs and prices are in _data/clientBuilds.js. -#}
+{%- set pageTitle = "Client builds: app rescues, redesigns, Shopify themes and sites" -%}
+{%- set pageDescription = "Five builds I made to show the freelance work I take on: a Supabase app rescue, a redesign audit tool, a clinic booking assistant, two Shopify themes and a real-estate site. Launch prices and how to hire me." -%}
+{%- set ogImage = site.url + "/images/og/builds.png" -%}
+{%- set ogImageAlt = "Gangway, a concept Chicago brokerage site and one of the client builds: a home search with map price pins and the building file for a two-flat." -%}
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{{ pageTitle }} | {{ profile.name }}</title>
+		<meta name="description" content="{{ pageDescription }}" />
+		<meta name="author" content="{{ profile.name }}" />
+		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+		<link rel="canonical" href="{{ site.url }}/builds/" />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="{{ site.name }}" />
+		<meta property="og:locale" content="{{ site.locale }}" />
+		<meta property="og:title" content="Client builds by {{ profile.name }}" />
+		<meta property="og:description" content="{{ pageDescription }}" />
+		<meta property="og:url" content="{{ site.url }}/builds/" />
+		<meta property="og:image" content="{{ ogImage }}" />
+		<meta property="og:image:alt" content="{{ ogImageAlt }}" />
+		<meta property="og:image:type" content="image/png" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Client builds by {{ profile.name }}" />
+		<meta name="twitter:description" content="{{ pageDescription }}" />
+		<meta name="twitter:image" content="{{ ogImage }}" />
+		<meta name="twitter:image:alt" content="{{ ogImageAlt }}" />
+
+{% include "partials/head-assets.njk" %}
+		<link rel="stylesheet" href="{{ '/builds.css' | versioned }}" />
+	</head>
+	<body>
+		<a class="skip-link" href="#main">Skip to content</a>
+
+{% include "partials/site-header.njk" %}
+
+		<main id="main">
+			<header class="builds-head" id="top">
+				<h1 class="builds-head__title">Client builds</h1>
+				<p class="hero__lead">Sites, Shopify themes and app fixes I build for small businesses, at fixed prices.</p>
+				<p class="hero__summary">
+					I made these five to show that work. Nobody commissioned them: I picked jobs that come up
+					again and again on freelance boards and built each one the way I would for a client, with
+					tests and measured results. The businesses in them (Folioport, Ninth &amp; Perry Dental,
+					Oftly, Ostrel and Gangway) are fictional concepts. The code and the numbers are real.
+				</p>
+				<div class="actions">
+					<!--email_off--><a class="button" href="mailto:hello@jagritvats.com?subject={{ 'Project: [your site or app]' | urlencode }}">Email me about your project</a><!--/email_off-->
+					<a href="#costs">How I work and what it costs</a>
+				</div>
+			</header>
+
+			<section class="section" id="pieces" aria-labelledby="pieces-title">
+				<div class="section__head">
+					<h2 class="section__title" id="pieces-title">Five builds</h2>
+				</div>
+				{%- for piece in clientBuilds.pieces %}
+
+				<article class="project build" id="{{ piece.id }}" aria-labelledby="{{ piece.id }}-name">
+					<div class="project__text">
+						<h3 class="project__name" id="{{ piece.id }}-name">{{ piece.name }} <span class="project__status">{{ "Live" if piece.url else "Deploying" }}</span></h3>
+						<p class="project__summary">{{ piece.summary }}</p>
+						<p>{{ piece.built }}</p>
+						<p class="build__result"><span class="build__figure">{{ piece.result.figure }}</span> {{ piece.result.text }}</p>
+						<p class="project__stack">{{ piece.stack }}</p>
+						<p class="build__price"><strong>Launch price.</strong> {{ piece.price }}</p>
+						<p class="project__links">
+							{#- Pieces without a URL say "Deploying" in the heading and get no link. #}
+							{%- if piece.url %}
+							<a href="{{ piece.url }}">{{ piece.host }}</a>
+							{%- endif %}
+							<!--email_off--><a href="{{ piece.mailto }}">{{ piece.email }}</a><!--/email_off-->
+						</p>
+						{%- if piece.concept %}
+						<p class="build__concept">{{ piece.concept }}, made up for this build.</p>
+						{%- endif %}
+					</div>
+					<figure class="build__shot">
+						<img
+							src="{{ piece.image.src }}"
+							srcset="{{ piece.image.src | replace('.webp', '-640.webp') }} 640w, {{ piece.image.src }} 1200w"
+							sizes="(max-width: 900px) calc(100vw - 2rem), 30rem"
+							width="1200"
+							height="900"
+							alt="{{ piece.image.alt }}"
+							decoding="async"
+							{%- if not loop.first %} loading="lazy"{% endif %}
+						/>
+					</figure>
+				</article>
+				{%- endfor %}
+			</section>
+
+			<section class="section" id="costs" aria-labelledby="costs-title">
+				<div class="section__head">
+					<h2 class="section__title" id="costs-title">How I work and what it costs</h2>
+				</div>
+				<ol class="ladder steps">
+					<li>
+						<span class="ladder__role">Free check</span>
+						<span class="ladder__when">$0</span>
+						<p>Send me the URL. I run a leak test, an AI-look score or a speed check, or you try the demo.</p>
+					</li>
+					<li>
+						<span class="ladder__role">Written audit</span>
+						<span class="ladder__when">$79 to $99</span>
+						<p>What I found, ranked, with a quote to fix it. A Rescue Audit is credited to the fix.</p>
+					</li>
+					<li>
+						<span class="ladder__role">The build or fix</span>
+						<span class="ladder__when">from $90</span>
+						<p>Scope and price agreed before I start: a Shopify section from $90, a site from $500, a theme from $1,200.</p>
+					</li>
+					<li>
+						<span class="ladder__role">Care, if you want it</span>
+						<span class="ladder__when">$19 to $149 a month</span>
+						<p>Hosting, updates and checks after launch, priced per build: $19 for the booking assistant, $149 for a Shopify store or rescued app.</p>
+					</li>
+				</ol>
+				<p class="steps__note">
+					These are launch prices for my first few reviewed jobs, and they will go up after that.
+					Anything that doesn’t fit a package is $30 an hour. All prices are in US dollars.
+				</p>
+			</section>
+
+			<section class="section contact" id="hire" aria-labelledby="hire-title">
+				<div class="section__head">
+					<h2 class="section__title" id="hire-title">Hire me</h2>
+				</div>
+				<p class="contact__note">
+					Tell me the site or app, what’s wrong with it and when you need it fixed. Each build above
+					has its own address, and every one reaches me.
+				</p>
+				<!-- email_off stops Cloudflare replacing the address with "[email protected]" -->
+				<!--email_off--><a class="contact__email" href="mailto:hello@jagritvats.com">hello@jagritvats.com</a><!--/email_off-->
+				<ul class="contact__links">
+					<li><a href="/">About me</a></li>
+					{%- for link in profile.profiles %}
+					<li><a href="{{ link.url }}" rel="me">{{ link.network }}</a></li>
+					{%- endfor %}
+				</ul>
+			</section>
+		</main>
+
+{% include "partials/site-footer.njk" %}
+
+		<script src="{{ '/script.js' | versioned }}" defer></script>
+	</body>
+</html>
