@@ -70,8 +70,8 @@ const pieces = [
 		email: "deskbell@jagritvats.com",
 		subject: "Booking assistant for [your business]",
 		image: {
-			src: "/builds/img/deskbell-v2.webp",
-			alt: "Deskbell poster: Ninth & Perry Dental's home page with prices and open times, the chat sending a swollen-face message to 911, and 1 of 25 simultaneous bookings succeeding.",
+			src: "/builds/img/deskbell-v3.webp",
+			alt: "Deskbell poster: an assistant that books real appointments, with the Ninth & Perry booking form held for 4:57 above a pinned Confirm button, a dog groomer version answering a price question, and 25 simultaneous requests for one slot with exactly one booked.",
 		},
 	},
 	{
