@@ -100,13 +100,13 @@ const pieces = [
 		name: "Gangway",
 		concept: "Gangway is a fictional brokerage",
 		summary: "Brokerage sites bury what buyers ask about first.",
-		built: "Gangway is a Chicago brokerage site with map search, a building file on every listing (age, heating, the nearest train) and mortgage maths to the cent. The same code is sold as an Astro template, with a free Lite version; a Framer version is planned.",
+		built: "Gangway is a Chicago brokerage site with map search, a building file on every listing (age, heating, the nearest train) and mortgage maths to the cent. The same site is sold as an Astro template (with a free Lite version) and as a Framer template, live at gangway.framer.website.",
 		result: {
 			figure: "100",
 			text: "Lighthouse mobile score on the deployed home page for performance, accessibility, best practices and SEO, with 99 performance on search and listing pages.",
 		},
 		stack: "Astro, MapLibre GL, plain CSS with design tokens, Cloudflare Workers, Vitest",
-		price: "Template $29. Setup from $199, listings (IDX) integration from $400. Hosting and care $29/mo.",
+		price: "Astro template $29, Framer template $39. Setup from $199, listings (IDX) integration from $400. Hosting and care $29/mo.",
 		email: "estate@jagritvats.com",
 		subject: "Real-estate site / template",
 		image: {
