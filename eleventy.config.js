@@ -81,6 +81,34 @@ export default function (eleventyConfig) {
 		}
 	});
 
+	// ---- External links: open in a new tab by default ----
+	// Adds target="_blank", rel="noopener" (preserving existing rel values like "me"),
+	// and a screen-reader hint to every external http(s) link across HTML and Markdown pages.
+	eleventyConfig.addTransform("externalLinks", (content, outputPath) => {
+		if (!outputPath?.endsWith(".html")) return content;
+		return content.replace(
+			/<a\b([^>]*\bhref="https?:\/\/[^"]+"[^>]*)>([\s\S]*?)<\/a>/gi,
+			(match, attrs, inner) => {
+				if (/\btarget=/i.test(attrs)) return match;
+				if (/\bhref="https?:\/\/jagritvats\.com(?:\/|"|#|\?)/i.test(attrs)) return match;
+				let nextAttrs = `${attrs} target="_blank"`;
+				if (/\brel="([^"]*)"/i.test(nextAttrs)) {
+					nextAttrs = nextAttrs.replace(/\brel="([^"]*)"/i, (_, rel) => {
+						const tokens = new Set(rel.split(/\s+/).filter(Boolean));
+						tokens.add("noopener");
+						return `rel="${[...tokens].join(" ")}"`;
+					});
+				} else {
+					nextAttrs += ' rel="noopener"';
+				}
+				const sr = /opens in a new tab/i.test(inner)
+					? ""
+					: '<span class="sr-only"> (opens in a new tab)</span>';
+				return `<a${nextAttrs}>${inner}${sr}</a>`;
+			},
+		);
+	});
+
 	// ---- Plugins ----
 	eleventyConfig.addPlugin(syntaxHighlight, {
 		// Highlighting happens at build time; pages ship no highlighting JS.
