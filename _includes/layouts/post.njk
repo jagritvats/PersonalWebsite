@@ -26,9 +26,9 @@ pageType: post
 						{#- The two buttons need JS (script.js shows them); the links work without it. #}
 						<li><button class="share__button" type="button" data-share-native hidden>Share…</button></li>
 						<li><button class="share__button" type="button" data-share-copy hidden>Copy link</button></li>
-						<li><a href="https://www.linkedin.com/sharing/share-offsite/?url={{ postUrl | urlencode }}" target="_blank" rel="noopener">LinkedIn</a></li>
-						<li><a href="https://x.com/intent/post?url={{ postUrl | urlencode }}&amp;text={{ title | urlencode }}" target="_blank" rel="noopener">X</a></li>
-						<li><a href="https://news.ycombinator.com/submitlink?u={{ postUrl | urlencode }}&amp;t={{ title | urlencode }}" target="_blank" rel="noopener">Hacker News</a></li>
+						<li><a href="https://www.linkedin.com/sharing/share-offsite/?url={{ postUrl | urlencode }}" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></li>
+						<li><a href="https://x.com/intent/post?url={{ postUrl | urlencode }}&amp;text={{ title | urlencode }}" target="_blank" rel="noopener">X<span class="sr-only"> (opens in a new tab)</span></a></li>
+						<li><a href="https://news.ycombinator.com/submitlink?u={{ postUrl | urlencode }}&amp;t={{ title | urlencode }}" target="_blank" rel="noopener">Hacker News<span class="sr-only"> (opens in a new tab)</span></a></li>
 						<li><a href="mailto:?subject={{ title | urlencode }}&amp;body={{ postUrl | urlencode }}">Email</a></li>
 					</ul>
 					<p class="share__status" role="status" aria-live="polite"></p>

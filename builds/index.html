@@ -75,7 +75,7 @@ eleventyExcludeFromCollections: true
 						<p class="project__links">
 							{#- Pieces without a URL say "Deploying" in the heading and get no link. #}
 							{%- if piece.url %}
-							<a href="{{ piece.url }}">{{ piece.host }}</a>
+							<a href="{{ piece.url }}">{{ piece.linkLabel or piece.host }}</a>
 							{%- endif %}
 							{%- if piece.extra %}
 							<a href="{{ piece.extra.url }}">{{ piece.extra.label }}</a>
