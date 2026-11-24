@@ -1,6 +1,6 @@
-name: Deploy site
+name: Deploy site (archived)
 
-# Disabled: migrated to Cloudflare Pages (see .github/workflows/deploy-cloudflare-pages.yml).
+# Archived / disabled: migrated to Cloudflare Pages (native GitHub integration).
 # Kept as workflow_dispatch-only for manual rollback/reference.
 on:
   workflow_dispatch:
