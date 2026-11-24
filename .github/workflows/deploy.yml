@@ -1,16 +1,8 @@
 name: Deploy site
 
-# The one deploy pipeline for jagritvats.com: build an arm64 nginx image,
-# push it to GHCR, then SSH to the Oracle VM and restart the container behind
-# the shared Traefik edge. Set repo variable DEPLOY_ENABLED to anything other
-# than 'true' to pause deploys without editing this file.
+# Disabled: migrated to Cloudflare Pages (see .github/workflows/deploy-cloudflare-pages.yml).
+# Kept as workflow_dispatch-only for manual rollback/reference.
 on:
-  push:
-    branches:
-      - main
-    paths-ignore:
-      - "README.md"
-      - "deploy/README.md"
   workflow_dispatch:
 
 concurrency:
