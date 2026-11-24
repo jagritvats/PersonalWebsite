@@ -45,6 +45,22 @@
     --button-fg: #f1f4ef;
     --focus: #13302a;
 
+    /* Drafting texture, ambient lighting & schematic mat tokens */
+    --glow-primary: rgba(242, 193, 78, 0.14);
+    --glow-secondary: rgba(42, 112, 73, 0.08);
+    --grid-minor: rgba(19, 48, 42, 0.045);
+    --grid-major: rgba(19, 48, 42, 0.075);
+    --grain-opacity: 0.045;
+    --grain-blend: multiply;
+    --mat-bg: rgba(255, 255, 255, 0.54);
+    --mat-border: rgba(19, 48, 42, 0.14);
+    --mat-dot: rgba(19, 48, 42, 0.12);
+    --mat-tick: rgba(19, 48, 42, 0.34);
+    --mat-shadow: 0 1px 2px rgba(19, 48, 42, 0.06), 0 12px 32px -12px rgba(19, 48, 42, 0.12);
+    --mat-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.85);
+    --node-shadow: drop-shadow(0 2px 3px rgba(19, 48, 42, 0.09));
+    --signal-halo: rgba(242, 193, 78, 0.35);
+
     --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
     --font-text: "Newsreader", Georgia, "Times New Roman", serif;
 
@@ -72,6 +88,21 @@
         --button-bg: #f2c14e;
         --button-fg: #0d1311;
         --focus: #f2c14e;
+
+        --glow-primary: rgba(242, 193, 78, 0.085);
+        --glow-secondary: rgba(68, 179, 132, 0.1);
+        --grid-minor: rgba(229, 236, 231, 0.032);
+        --grid-major: rgba(229, 236, 231, 0.06);
+        --grain-opacity: 0.06;
+        --grain-blend: overlay;
+        --mat-bg: rgba(16, 24, 21, 0.62);
+        --mat-border: rgba(132, 146, 138, 0.22);
+        --mat-dot: rgba(229, 236, 231, 0.09);
+        --mat-tick: rgba(242, 193, 78, 0.48);
+        --mat-shadow: 0 2px 4px rgba(0, 0, 0, 0.28), 0 18px 40px -14px rgba(0, 0, 0, 0.52);
+        --mat-highlight: inset 0 1px 0 rgba(229, 236, 231, 0.07);
+        --node-shadow: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.38));
+        --signal-halo: rgba(242, 193, 78, 0.26);
     }
 }
 
@@ -93,6 +124,21 @@
     --button-bg: #f2c14e;
     --button-fg: #0d1311;
     --focus: #f2c14e;
+
+    --glow-primary: rgba(242, 193, 78, 0.085);
+    --glow-secondary: rgba(68, 179, 132, 0.1);
+    --grid-minor: rgba(229, 236, 231, 0.032);
+    --grid-major: rgba(229, 236, 231, 0.06);
+    --grain-opacity: 0.06;
+    --grain-blend: overlay;
+    --mat-bg: rgba(16, 24, 21, 0.62);
+    --mat-border: rgba(132, 146, 138, 0.22);
+    --mat-dot: rgba(229, 236, 231, 0.09);
+    --mat-tick: rgba(242, 193, 78, 0.48);
+    --mat-shadow: 0 2px 4px rgba(0, 0, 0, 0.28), 0 18px 40px -14px rgba(0, 0, 0, 0.52);
+    --mat-highlight: inset 0 1px 0 rgba(229, 236, 231, 0.07);
+    --node-shadow: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.38));
+    --signal-halo: rgba(242, 193, 78, 0.26);
 }
 
 /* ================================ */
@@ -110,13 +156,53 @@ html {
 }
 
 body {
+    position: relative;
     margin: 0;
+    min-height: 100vh;
     background-color: var(--paper);
+    background-image:
+        radial-gradient(ellipse 68% 42% at 78% 8%, var(--glow-primary), transparent 68%),
+        radial-gradient(ellipse 58% 48% at 14% 24%, var(--glow-secondary), transparent 70%),
+        radial-gradient(ellipse 50% 35% at 85% 78%, var(--glow-secondary), transparent 72%);
+    background-attachment: fixed;
     color: var(--ink);
     font-family: var(--font-text);
     font-size: 1.125rem;
     line-height: 1.6;
     font-optical-sizing: auto;
+    isolation: isolate;
+}
+
+/* Faint architectural drafting grid that softly fades toward page edges */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background-image:
+        linear-gradient(to right, var(--grid-major) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-major) 1px, transparent 1px),
+        linear-gradient(to right, var(--grid-minor) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-minor) 1px, transparent 1px);
+    background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+    background-position: top center;
+    -webkit-mask-image: radial-gradient(ellipse 88% 72% at 50% 18%, #000 35%, rgba(0, 0, 0, 0.35) 75%, transparent 100%);
+    mask-image: radial-gradient(ellipse 88% 72% at 50% 18%, #000 35%, rgba(0, 0, 0, 0.35) 75%, transparent 100%);
+}
+
+/* Organic cotton paper / matte bookcloth grain via inline SVG fractalNoise */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    pointer-events: none;
+    opacity: var(--grain-opacity);
+    mix-blend-mode: var(--grain-blend);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 220px 220px;
 }
 
 h1, h2, h3, h4 {
@@ -324,15 +410,23 @@ a:hover {
 
 .button {
     display: inline-block;
-    padding: 0.7rem 1.25rem;
+    padding: 0.7rem 1.3rem;
     background-color: var(--button-bg);
     color: var(--button-fg);
-    border-radius: 6px;
+    border-radius: 7px;
     text-decoration: none;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    transition: background-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
 }
 
 .button:hover {
     background-color: var(--ink-soft);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.button:active {
+    transform: translateY(0);
 }
 
 :root[data-theme="dark"] .button:hover {
@@ -346,21 +440,54 @@ a:hover {
 }
 
 /* ================================ */
-/* == Diagrams                   == */
+/* == Diagrams (Drafting Mats)   == */
 /* ================================ */
 .diagram {
+    position: relative;
     width: 100%;
-    max-width: 25rem;
+    max-width: 26.5rem;
+    padding: 1.35rem 1.35rem 1.3rem;
+    border-radius: 10px;
+    background-color: var(--mat-bg);
+    background-image:
+        linear-gradient(var(--mat-tick), var(--mat-tick)),
+        linear-gradient(var(--mat-tick), var(--mat-tick)),
+        linear-gradient(var(--mat-tick), var(--mat-tick)),
+        linear-gradient(var(--mat-tick), var(--mat-tick)),
+        linear-gradient(var(--mat-tick), var(--mat-tick)),
+        linear-gradient(var(--mat-tick), var(--mat-tick)),
+        linear-gradient(var(--mat-tick), var(--mat-tick)),
+        linear-gradient(var(--mat-tick), var(--mat-tick)),
+        radial-gradient(circle, var(--mat-dot) 1px, transparent 1px);
+    background-size:
+        10px 1.5px, 1.5px 10px,
+        10px 1.5px, 1.5px 10px,
+        10px 1.5px, 1.5px 10px,
+        10px 1.5px, 1.5px 10px,
+        16px 16px;
+    background-position:
+        8px 8px, 8px 8px,
+        calc(100% - 8px) 8px, calc(100% - 8px) 8px,
+        8px calc(100% - 8px), 8px calc(100% - 8px),
+        calc(100% - 8px) calc(100% - 8px), calc(100% - 8px) calc(100% - 8px),
+        0 0;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, repeat;
+    border: 1px solid var(--mat-border);
+    box-shadow: var(--mat-highlight), var(--mat-shadow);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
 }
 
 .diagram--hero {
     justify-self: end;
-    max-width: 26rem;
+    max-width: 27.5rem;
 }
 
 .diagram figcaption {
-    margin-top: 1rem;
-    font-size: 1rem;
+    margin-top: 0.9rem;
+    padding-top: 0.75rem;
+    border-top: 1px dashed var(--rule);
+    font-size: 0.96875rem;
     line-height: 1.5;
     color: var(--ink-soft);
 }
@@ -376,6 +503,7 @@ a:hover {
     fill: var(--paper-raised);
     stroke: var(--node-line);
     stroke-width: 1.25;
+    filter: var(--node-shadow);
 }
 
 .dg .node--retry rect {
@@ -516,9 +644,21 @@ a:hover {
 }
 
 .section__head {
-    padding-top: 0.9rem;
-    border-top: 2px solid var(--ink);
+    position: relative;
+    padding-top: 0.95rem;
+    border-top: 1px solid var(--rule);
     margin-bottom: clamp(1.5rem, 4vw, 2.25rem);
+}
+
+.section__head::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 3.5rem;
+    height: 3px;
+    background-color: var(--signal);
+    border-radius: 1px;
 }
 
 .section__title {
@@ -627,6 +767,7 @@ a:hover {
 .ladder li[aria-current]::before {
     background-color: var(--signal);
     border-color: var(--ink);
+    box-shadow: 0 0 0 4px var(--signal-halo);
 }
 
 .ladder__role {
@@ -969,6 +1110,17 @@ a:hover {
     body {
         background: #fff;
         color: #000;
+    }
+
+    body::before,
+    body::after {
+        display: none;
+    }
+
+    .diagram {
+        background: none;
+        border: 1px solid #ccc;
+        box-shadow: none;
     }
 
     /* Show diagrams in their finished state, never mid-animation. */

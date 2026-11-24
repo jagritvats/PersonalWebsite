@@ -32,8 +32,12 @@
 .build__result {
     margin-top: 1.25rem;
     padding: 0.9rem 1.1rem 1rem;
-    background-color: var(--paper-raised);
-    border-radius: 6px;
+    background-color: var(--mat-bg);
+    border: 1px solid var(--mat-border);
+    box-shadow: var(--mat-highlight), var(--mat-shadow);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border-radius: 8px;
     font-size: 1.0625rem;
     line-height: 1.5;
 }
@@ -80,8 +84,9 @@
     width: 100%;
     height: auto;
     background-color: var(--paper-raised);
-    border: 1px solid var(--rule);
-    border-radius: 6px;
+    border: 1px solid var(--mat-border);
+    box-shadow: var(--mat-shadow);
+    border-radius: 8px;
 }
 
 /* == How I work: the homepage's ladder, four steps wide == */

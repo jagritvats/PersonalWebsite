@@ -317,9 +317,10 @@
     font-size: 0.875rem;
     line-height: 1.6;
     color: var(--code-ink);
-    background-color: var(--code-bg);
-    border: 1px solid var(--rule);
-    border-radius: 6px;
+    background-color: var(--mat-bg);
+    border: 1px solid var(--mat-border);
+    box-shadow: var(--mat-highlight), var(--mat-shadow);
+    border-radius: 8px;
     tab-size: 4;
     -moz-tab-size: 4;
     hyphens: none;
@@ -479,9 +480,12 @@
     max-width: var(--measure);
     margin-top: clamp(2.5rem, 6vw, 3.5rem);
     padding: 1.25rem 1.5rem;
-    background-color: var(--paper-raised);
-    border: 1px solid var(--rule);
-    border-radius: 6px;
+    background-color: var(--mat-bg);
+    border: 1px solid var(--mat-border);
+    box-shadow: var(--mat-highlight), var(--mat-shadow);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border-radius: 10px;
 }
 
 .share__title {
