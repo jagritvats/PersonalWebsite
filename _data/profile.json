@@ -192,6 +192,25 @@
 			}
 		},
 		{
+			"id": "deltawal",
+			"name": "DeltaWAL",
+			"url": "https://doi.org/10.5281/zenodo.24446418",
+			"repo": "https://github.com/jagritvats/deltawal",
+			"llms": "Preprint and code: Read-After-Write Staleness and History Erasure in Asynchronous LLM Agent Memory (Zenodo, doi:10.5281/zenodo.24446418). Measures two failures of async agent memory on LongMemEval-S: answering from a superseded fact while the newest session is still being extracted, and losing earlier values when facts are updated in place. DeltaWAL writes raw turns to a Redis write-ahead log with monotonic epochs before the broker publish and merges the relevance-gated uncommitted tail with stored facts in epoch order. With one session in flight, a plain async store answers 10.0–11.7% of knowledge-update questions correctly and DeltaWAL-Versioned 88.3–96.7%, with a 2.67 ms median write acknowledgement. A read-only history hook recovers the earlier values that Mem0 OSS 1.0.11 drops. Python, Redis, Redpanda, PostgreSQL with pgvector.",
+			"resume": {
+				"description": "Preprint: Read-After-Write Staleness and History Erasure in Asynchronous LLM Agent Memory (Zenodo, doi:10.5281/zenodo.24446418), with code.",
+				"highlights": [
+					"With one session still being extracted, a plain async memory store answers 10.0–11.7% of LongMemEval-S knowledge-update questions correctly; DeltaWAL-Versioned answers 88.3–96.7%, with a 2.67 ms median write acknowledgement.",
+					"A read-only history hook for Mem0 OSS 1.0.11 raises knowledge-update accuracy from 76.7% to 88.3–91.7% with no question lost."
+				],
+				"keywords": ["Python", "Redis", "Redpanda", "PostgreSQL", "pgvector", "LongMemEval", "Mem0"]
+			},
+			"jsonld": {
+				"@type": "ScholarlyArticle",
+				"description": "Preprint on read-after-write staleness and history erasure in asynchronous LLM agent memory, with DeltaWAL, a write-ahead-log fix."
+			}
+		},
+		{
 			"id": "residentops",
 			"name": "ResidentOps",
 			"url": "https://residentops.synpse.app",
