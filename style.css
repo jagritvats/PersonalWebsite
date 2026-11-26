@@ -1050,6 +1050,19 @@ a[target="_blank"]::after {
 }
 
 @media (max-width: 640px) {
+    /* Less space above and inside the hero, so the Email me button shows on the first screen of a phone. */
+    .hero {
+        padding-top: 1rem;
+    }
+
+    .hero__lead {
+        margin-top: 0.9rem;
+    }
+
+    .hero .actions {
+        margin-top: 1.1rem;
+    }
+
     .ladder {
         grid-template-columns: minmax(0, 1fr);
         gap: 0.9rem;
