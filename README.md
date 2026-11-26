@@ -68,7 +68,7 @@ Edit `_data/profile.json`, then set its `updated` date to today. From that one f
 
 Where the page, the résumé and `llms.txt` word something differently, the value is an object
 instead of a string: `text` is the shared wording and `page`, `llms` or `resume` override it for
-that output. For example a job highlight reads "Lead a team…" on the page and "Leads a team…" in
+that output. For example a job highlight reads "Own claims…" on the page and "Owns claims…" in
 `llms.txt`; both versions sit next to each other, so you edit them together.
 
 Still hand-written in `index.html`, so check them when the profile changes:
