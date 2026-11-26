@@ -1,6 +1,6 @@
 {
 	"$comment": "The one copy of the profile. Generates the homepage JSON-LD, its Work, Tools, Education and Contact sections, llms.txt, resume.json and the sitemap. Where the outputs word something differently today, the value is an object: \"text\" is the shared wording and \"page\", \"llms\" or \"resume\" override it for that output. Bump \"updated\" when you change anything here.",
-	"updated": "2026-11-05",
+	"updated": "2026-11-26",
 
 	"name": "Jagrit Vats",
 	"givenName": "Jagrit",
@@ -34,9 +34,9 @@
 	],
 
 	"summary": {
-		"llms": "Backend engineer at Bajaj Finserv Health, based in Bangalore, India. Leads a team building a new product from scratch on Spring Boot, works on the Kafka integration layer that connects internal services to Salesforce and other external systems, and builds AI and full-stack side projects in TypeScript and Python.",
-		"resume": "Backend engineer at Bajaj Finserv Health, building Java and Spring Boot services. Leads a team setting up a new product from scratch, and works on the integration layer that connects internal services to Salesforce and other external systems over Kafka. Builds AI and full-stack side projects in TypeScript and Python.",
-		"jsonld": "Backend engineer at Bajaj Finserv Health, based in Bangalore. Leads a team building a new product from scratch on Spring Boot, works on the Kafka integration layer that connects internal services to Salesforce and other external systems, and builds AI and full-stack side projects."
+		"llms": "Backend engineer at Bajaj Finserv Health, based in Bangalore, India. Core engineer on Sentinel, Vidal Health's new motor insurance platform, where he co-leads parts of the architecture and deployment. Before that he was the main engineer on the Kafka integration layer that connects internal services to Salesforce and other external systems. Builds AI and full-stack side projects in TypeScript and Python, including Crossroom, a room where AI agents from different vendors work together.",
+		"resume": "Backend engineer at Bajaj Finserv Health working on JVM concurrency, event-driven systems, API security and production observability. Core engineer on Sentinel, Vidal Health's new motor insurance platform, and before that the main engineer on the integration layer that connects internal services to Salesforce and other external systems over Kafka. Builds AI and full-stack side projects in TypeScript and Python.",
+		"jsonld": "Backend engineer at Bajaj Finserv Health, based in Bangalore. Core engineer on Vidal Health's new motor insurance platform, previously the main engineer on the Kafka integration layer that connects internal services to Salesforce and other external systems, and builds AI and full-stack side projects."
 	},
 
 	"jobs": [
@@ -50,20 +50,41 @@
 			],
 			"highlights": [
 				{
-					"page": "Lead a team setting up a new product from scratch on Spring Boot. That covers provisioning VMs with Ansible, the application architecture and domain entities, and deployment through Azure Pipelines to a multi-node Docker Swarm cluster.",
-					"resume": "Lead a team setting up a new product from scratch on Spring Boot: VMs provisioned with Ansible, application architecture and domain entities, and deployment through Azure Pipelines to a multi-node Docker Swarm cluster.",
-					"llms": "Leads a team setting up a new product from scratch on Spring Boot: VMs provisioned with Ansible, application architecture and domain entities, and deployment through Azure Pipelines to a multi-node Docker Swarm cluster."
+					"page": "Since July 2026: core engineer on Sentinel, Vidal Health's new motor insurance platform, built for several countries and first rolled out for a client in Qatar. One Java 25, Spring Boot 4 and Spring Modulith application covers quoting, underwriting, issuance, endorsements, claims, billing and reinsurance. Co-lead parts of its architecture, domain entities and deployment, from VMs provisioned with Ansible to Azure Pipelines deploys on a multi-node Docker Swarm cluster.",
+					"resume": "Core engineer on Sentinel (since July 2026), Vidal Health's motor insurance platform, built for several countries and first rolled out for a client in Qatar: quoting, underwriting, issuance, endorsements, claims, billing and reinsurance in one Java 25 / Spring Boot 4 / Spring Modulith application. Co-lead parts of its architecture, domain entities and deployment (VMs provisioned with Ansible, Azure Pipelines to a multi-node Docker Swarm cluster).",
+					"llms": "Since July 2026, core engineer on Sentinel, Vidal Health's motor insurance platform, built for several countries and first rolled out for a client in Qatar. One Java 25, Spring Boot 4 and Spring Modulith application covers quoting, underwriting, issuance, endorsements, claims, billing and reinsurance. Co-leads parts of its architecture, domain entities and deployment (VMs provisioned with Ansible, Azure Pipelines to a multi-node Docker Swarm cluster)."
 				},
 				{
-					"page": "Work on the integration layer that connects our services to Salesforce and other external systems through Kafka events. Retry topics and dead-letter queues mean a failed event is either tried again or parked for replay.",
-					"resume": "Work on the integration layer that connects our services to Salesforce and other external systems through Kafka events, with retry topics and dead-letter queues so failed events are retried or parked for replay.",
-					"llms": "Works on the integration layer that connects internal services to Salesforce and other external systems through Kafka events, with retry topics and dead-letter queues so failed events are retried or parked for replay."
+					"text": "Built Sentinel's pricing rule engine (risk-based rate tables, depreciation, add-ons, third-party tariffs). Fixed a production 504 spike, where median latency had grown from 7–10 s to 63–82 s, by cutting fleet-pricing database queries from about 216 to 1–3 per vehicle and halving payment-start validation passes."
 				},
 				{
-					"text": "Build multi-step asynchronous workflows on Kafka, with Redis and in-memory caching.",
-					"llms": "Builds multi-step asynchronous workflows on Kafka, with Redis and in-memory caching."
+					"text": "Added a GraalVM native-image build that cut memory by about 79% (2.36 GiB to 494 MiB), with all 311 GET endpoints checked against the JVM build. CI fails a build on module-boundary drift, field-dictionary violations or a route without JWT protection."
 				},
-				"Cut latency on endpoints that call several downstream APIs by running those calls in parallel on Java virtual threads.",
+				{
+					"text": "Own claims end to end across the customer, garage and surveyor portals (first notice of loss, estimates, LPO checklists, transfer-letter PDFs, status tracking), and integrated hosted card checkout with webhook routing.",
+					"llms": "Owns claims end to end across the customer, garage and surveyor portals (first notice of loss, estimates, LPO checklists, transfer-letter PDFs, status tracking), and integrated hosted card checkout with webhook routing."
+				},
+				{
+					"text": "Run Sentinel's production deploys on Docker Swarm (several replicas, start-first rollouts with automatic rollback), send OpenTelemetry to ClickStack, and moved runtime secrets to OpenBao with each stack kept separate.",
+					"llms": "Runs Sentinel's production deploys on Docker Swarm (several replicas, start-first rollouts with automatic rollback), sends OpenTelemetry to ClickStack, and moved runtime secrets to OpenBao with each stack kept separate."
+				},
+				{
+					"page": "2023 to 2026: main engineer on the integration layer, a Java 21 and Spring Boot service in front of Salesforce Vlocity for policies, claims, benefits, issuance and product sync. It talks to other systems through Kafka events, and retry topics and dead-letter queues mean a failed event is either tried again or parked for replay. Redis caching cut policy status lookups from 2.3 s to 91 ms.",
+					"resume": "Main engineer on the integration layer (2023 to 2026): a Java 21 / Spring Boot service in front of Salesforce Vlocity for policies, claims, benefits, issuance and product sync, connected to other systems through Kafka with retry topics and dead-letter queues. Redis caching cut policy status lookups from 2.3 s to 91 ms.",
+					"llms": "From 2023 to 2026, main engineer on the integration layer: a Java 21 and Spring Boot service in front of Salesforce Vlocity for policies, claims, benefits, issuance and product sync, connected to other systems through Kafka with retry topics and dead-letter queues. Redis caching cut policy status lookups from 2.3 s to 91 ms."
+				},
+				{
+					"text": "Moved I/O-bound APIs, Kafka consumers and scheduled jobs onto Java 21 virtual threads, including endpoints that call several downstream APIs in parallel. Replaced synchronized blocks with ReentrantLock to stop carrier-thread pinning and kept trace IDs intact. Peak burst capacity went up about 5x, average production latency fell 36% (286 to 182 ms), and cascading hung-thread 504s stopped."
+				},
+				{
+					"text": "Built the gRPC bridge that subscribes to Salesforce Platform Events (replay-ID recovery, token refresh, single-pod readiness) and the Kafka processor behind it, with dead-letter handling."
+				},
+				{
+					"text": "Replaced wkhtmltopdf with a pooled headless Chromium service for claim letters and welcome kits (recycling on failure, dead-letter topics, graceful shutdown), deployed through ArgoCD. In a load test at 20 concurrent users, p95 was 2.6 s with 0.26% errors."
+				},
+				{
+					"text": "Owned Azure API Management across dev, UAT and prod: JWT policies, per-IP rate limits of 1,000 requests a minute set from observed peaks of 850–870, and OpenAPI specs published from CI. Added full-body payload encryption on cashless APIs, Resilience4j circuit breakers and ShedLock for single-pod jobs."
+				},
 				{
 					"text": "Improved tracing across services with Spring Boot advice and custom interceptors that propagate trace IDs, and that also handle payload encryption and a standard response format.",
 					"page": "Improved tracing across services with Spring Boot advice and custom interceptors that pass trace IDs along. The same interceptors handle payload encryption and a standard response format."
@@ -74,9 +95,7 @@
 					"llms": "Cut service startup time roughly in half through application-initialization changes and Kubernetes liveness and readiness probe tuning. Other services adopted the same approach."
 				},
 				{
-					"page": "Automated release steps with Azure Pipelines and OpenAPI/Swagger contract generation, and take part in design and architecture reviews for new core modules.",
-					"resume": "Automated release steps with Azure Pipelines and OpenAPI/Swagger contract generation, and contribute to design and architecture reviews for new core modules.",
-					"llms": "Automated release steps with Azure Pipelines and OpenAPI/Swagger contract generation, and contributes to design and architecture reviews for new core modules."
+					"text": "Shipped NestJS and Kafka fulfilment pipelines for Niva Bupa, HDFC and ABHI, SSO and issuance flows for PeopleStrong and Tata AIG, and encryption SDK samples for partners in Java, Android, iOS and React Native."
 				}
 			]
 		},
@@ -102,6 +121,10 @@
 			"llms": "Puts up to six AI agents in one room, each working from its own files, and keeps the recap. Live and in active development (formerly called Parley). Agents from different vendors join through seat links or MCP; excerpts they share carry their source paths, and the minutes are rendered from the event log. Each room is encrypted at rest under its own key, with optional end-to-end encryption. Crossroom Code runs Claude Code, Codex, OpenCode and Grok as chats on your own computer and lets another device carry on with them. TypeScript, Hono, MCP SDK, SQLite, React.",
 			"resume": {
 				"description": "Puts up to six AI agents from different vendors in one room, each working from its own files. Shared excerpts carry their source paths, the minutes are rendered from the event log, and each room is encrypted at rest under its own key.",
+				"highlights": [
+					"Agents join from Claude Code, Codex, Cursor, Gemini CLI or any MCP client, and can split a change across repositories or hand work to each other.",
+					"Ships as a web app, an open-source CLI on npm and Homebrew, a VS Code extension, TypeScript and Python SDKs and an Android app."
+				],
 				"keywords": ["TypeScript", "Hono", "MCP", "SQLite", "React"]
 			},
 			"jsonld": {
@@ -171,7 +194,7 @@
 		{
 			"id": "residentops",
 			"name": "ResidentOps",
-			"url": "https://residentops.fiddletech.xyz",
+			"url": "https://residentops.synpse.app",
 			"repo": "https://github.com/jagritvats/residentops-pb",
 			"llms": "An agent that handles maintenance issues for a residents' association, built for AWS's Agents for Humans hackathon. Python, Strands Agents, Amazon Bedrock.",
 			"resume": {
@@ -199,6 +222,20 @@
 			}
 		},
 		{
+			"id": "dolly",
+			"name": "Dolly",
+			"url": "https://github.com/jagritvats/omarchy-dolly",
+			"llms": "A Screen Studio-style screen recorder for Omarchy (Arch Linux with Hyprland), with automatic zoom. Published on the Omarchy plugin marketplace in November 2026.",
+			"resume": {
+				"description": "A Screen Studio-style screen recorder for Omarchy (Arch Linux with Hyprland), with automatic zoom. Published on the Omarchy plugin marketplace.",
+				"keywords": ["Linux", "Hyprland", "Omarchy"]
+			},
+			"jsonld": {
+				"@type": "SoftwareSourceCode",
+				"description": "A Screen Studio-style screen recorder for Omarchy (Arch Linux with Hyprland), published on the Omarchy plugin marketplace."
+			}
+		},
+		{
 			"id": "presentic",
 			"name": "Presentic",
 			"llms": "A command-line tool and MCP server that makes narrated demo videos from a JSON plan, using Playwright and Remotion. Private repository."
@@ -208,18 +245,18 @@
 	"skills": [
 		{
 			"name": { "text": "At work", "resume": "Backend (at work)" },
-			"list": "Java, Spring Boot, JPA/Hibernate, microservices, REST APIs, Kafka (retries, dead-letter queues), concurrency and virtual threads, Redis, MongoDB, JUnit, Mockito, OpenAPI/Swagger",
-			"keywords": ["Java", "Spring Boot", "JPA/Hibernate", "Microservices", "REST APIs", "Kafka (retries, dead-letter queues)", "Concurrency and virtual threads", "Redis", "MongoDB", "JUnit", "Mockito", "OpenAPI/Swagger"]
+			"list": "Java 21 and 25, Spring Boot, Spring Modulith, GraalVM native image, JPA/Hibernate, microservices, REST APIs, gRPC, Kafka (retries, dead-letter queues), concurrency and virtual threads, Redis, MongoDB, Resilience4j, JUnit, Mockito, OpenAPI/Swagger",
+			"keywords": ["Java", "Spring Boot", "Spring Modulith", "GraalVM native image", "JPA/Hibernate", "Microservices", "REST APIs", "gRPC", "Kafka (retries, dead-letter queues)", "Concurrency and virtual threads", "Redis", "MongoDB", "Resilience4j", "JUnit", "Mockito", "OpenAPI/Swagger"]
 		},
 		{
 			"name": { "text": "Deployment", "llms": "Deployment at work", "resume": "Deployment (at work)" },
-			"list": "Kubernetes (AKS), ArgoCD, Docker, Docker Swarm, Ansible, Azure Pipelines",
-			"keywords": ["Kubernetes (AKS)", "ArgoCD", "Docker", "Docker Swarm", "Ansible", "Azure Pipelines"]
+			"list": "Kubernetes (AKS), ArgoCD, Docker, Docker Swarm, Ansible, Azure Pipelines, Azure API Management, OpenBao",
+			"keywords": ["Kubernetes (AKS)", "ArgoCD", "Docker", "Docker Swarm", "Ansible", "Azure Pipelines", "Azure API Management", "OpenBao"]
 		},
 		{
 			"name": "Observability",
-			"list": { "text": "Distributed tracing, ELK stack, ClickStack (HyperDX)", "llms": "distributed tracing, ELK stack, ClickStack (HyperDX)" },
-			"keywords": ["Distributed tracing", "ELK stack", "ClickStack (HyperDX)"]
+			"list": { "text": "OpenTelemetry, distributed tracing, ELK stack, ClickStack (HyperDX)", "llms": "OpenTelemetry, distributed tracing, ELK stack, ClickStack (HyperDX)" },
+			"keywords": ["OpenTelemetry", "Distributed tracing", "ELK stack", "ClickStack (HyperDX)"]
 		},
 		{
 			"name": "Side projects",
@@ -272,10 +309,11 @@
 	"jsonld": {
 		"$comment": "Only used in the homepage JSON-LD (schema.org).",
 		"occupation": "Backend software engineer",
-		"skills": "Java, Spring Boot, JPA/Hibernate, Apache Kafka, microservices, virtual threads, Redis, MongoDB, PostgreSQL, Kubernetes (AKS), ArgoCD, Docker, Docker Swarm, Ansible, ELK stack, TypeScript, Node.js, Python, CI/CD",
+		"skills": "Java, Spring Boot, Spring Modulith, GraalVM, JPA/Hibernate, Apache Kafka, microservices, virtual threads, gRPC, Redis, MongoDB, PostgreSQL, Kubernetes (AKS), ArgoCD, Docker, Docker Swarm, Ansible, ELK stack, TypeScript, Node.js, Python, CI/CD",
 		"knowsAbout": [
 			"Java",
 			"Spring Boot",
+			"Spring Modulith",
 			"Apache Kafka",
 			"Event-driven architecture",
 			"Microservices",
@@ -295,6 +333,8 @@
 			"Ansible",
 			"Salesforce integration",
 			"Distributed tracing",
+			"OpenTelemetry",
+			"Insurance technology",
 			"CI/CD",
 			"Azure Pipelines",
 			"AI agents",
