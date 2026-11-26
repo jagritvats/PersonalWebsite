@@ -194,7 +194,7 @@
 		{
 			"id": "residentops",
 			"name": "ResidentOps",
-			"url": "https://residentops.fiddletech.xyz",
+			"url": "https://residentops.synpse.app",
 			"repo": "https://github.com/jagritvats/residentops-pb",
 			"llms": "An agent that handles maintenance issues for a residents' association, built for AWS's Agents for Humans hackathon. Python, Strands Agents, Amazon Bedrock.",
 			"resume": {
