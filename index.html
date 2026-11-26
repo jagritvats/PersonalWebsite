@@ -507,6 +507,16 @@
 					<h3 class="more__title">Also built in 2026</h3>
 					<ul class="more__list">
 						<li class="more__item">
+							<h4 class="more__name">DeltaWAL (preprint)</h4>
+							<p>Agent memories that extract facts asynchronously answer from a superseded fact while the newest session is still being extracted, and in-place updates erase earlier values. I measured both on LongMemEval-S and fixed them with a Redis write-ahead log read in epoch order. With one session in flight, knowledge-update accuracy goes from 10.0–11.7% to 88.3–96.7%, and writes still acknowledge in 2.67 ms.</p>
+							<p class="more__meta">Python, Redis, Redpanda, PostgreSQL with pgvector.</p>
+							<p class="more__links">
+								<a href="/writing/deltawal-async-agent-memory/">Write-up</a>
+								<a href="https://doi.org/10.5281/zenodo.24446418">Paper</a>
+								<a href="https://github.com/jagritvats/deltawal">Code on GitHub</a>
+							</p>
+						</li>
+						<li class="more__item">
 							<h4 class="more__name">ResidentOps</h4>
 							<p>Handles maintenance issues for a residents' association. When several residents report different faults, it uses a map of the building's equipment to find a shared cause, asks contractors for quotes, and goes to the committee only when money or a judgement call is involved. Spending limits are checked in code, and blocked actions are logged.</p>
 							<p class="more__meta">AWS Agents for Humans hackathon. Python, Strands Agents, Amazon Bedrock.</p>
