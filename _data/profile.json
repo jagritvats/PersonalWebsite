@@ -58,7 +58,7 @@
 					"text": "Built Sentinel's pricing rule engine (risk-based rate tables, depreciation, add-ons, third-party tariffs). Fixed a production 504 spike, where median latency had grown from 7–10 s to 63–82 s, by cutting fleet-pricing database queries from about 216 to 1–3 per vehicle and halving payment-start validation passes."
 				},
 				{
-					"text": "Added a GraalVM native-image build that cut memory by about 79% (2.36 GiB to 494 MiB), with all 311 GET endpoints checked against the JVM build. CI fails a build on module-boundary drift, field-dictionary violations or a route without JWT protection."
+					"text": "Added a GraalVM native-image build that cut memory by about 79% (2.36 GiB to 494 MiB). CI fails a build on module-boundary drift, field-dictionary violations or a route without JWT protection."
 				},
 				{
 					"text": "Own claims end to end across the customer, garage and surveyor portals (first notice of loss, estimates, LPO checklists, transfer-letter PDFs, status tracking), and integrated hosted card checkout with webhook routing.",
